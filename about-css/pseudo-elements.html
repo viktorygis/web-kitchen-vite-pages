@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Псевдоэлементы в CSS</title>
+<meta name="description" content="Обзор псевдоэлементов в CSS, их использование и примеры." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <!-- Меню страницы -->
+                <nav class="nav-tabs">
+                    <a href="#pseudoelem-intro">Введение</a>
+                    <a href="#pseudoelem-before">before</a>
+                    <a href="#pseudoelem-after">after</a>
+                    <a href="#pseudoelem-first-letter">first-letter</a>
+                    <a href="#pseudoelem-first-line">first-line</a>
+                    <a href="#pseudoelem-table">Сводная таблица</a>
+                </nav>
+
+                <!-- Введение: Что такое псевдоэлементы -->
+                <section class="section" id="pseudoelem-intro">
+                    <div class="container">
+                        <h2>🔍 Что такое псевдоэлементы?</h2>
+                        <p class="note">
+                            <b>Псевдоэлементы</b>
+                            — это специальные ключевые слова в CSS, которые добавляют стили к определённой части элемента или создают дополнительное содержимое, не меняя HTML-разметку.
+                        </p>
+                        <ul class="list-ul">
+                            <li>
+                                Начинаются с двойного двоеточия
+                                <b>::</b>
+                                (например,
+                                <code>::before</code>
+                                ), но для совместимости часто поддерживается и одно двоеточие.
+                            </li>
+                            <li>Позволяют стилизовать первую букву, первую строку, добавлять контент до или после элемента и многое другое.</li>
+                            <li>Используются для украшения, создания декоративных элементов, выделения или вспомогательного оформления.</li>
+                        </ul>
+                        <h4>Пример</h4>
+                        <p>
+                            Добавим слово "Внимание:" перед параграфом с помощью
+                            <code>::before</code>
+                            :
+                        </p>
+                        <div class="grid-column-50">
+                            <pre><code>
+p.warning::before {
+  content: "Внимание: ";
+  color: red;
+  font-weight: bold;
+}
+              </code></pre>
+                            <div class="example">
+                                <p class="warning">Это сообщение с псевдоэлементом.</p>
+                                <style>
+                                    .example .warning::before {
+                                        content: "Внимание: ";
+                                        color: red;
+                                        font-weight: bold;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ::before -->
+                <section class="section" id="pseudoelem-before">
+                    <div class="container">
+                        <h2>::before</h2>
+                        <p class="note">
+                            <b>::before</b>
+                            позволяет добавить виртуальный элемент
+                            <b>перед</b>
+                            содержимым тега. Это удобно для добавления иконок, пометок или декоративных символов без изменения HTML-разметки.
+                        </p>
+
+                        <div class="grid-column-50">
+                            <pre><code>HTML:
+	&lt;p&gt;Пример текста&lt;/p&gt;
+
+	CSS:
+	p::before {
+	  content: "🔥 ";
+	  color: red;
+	}</code></pre>
+                            <div class="example">
+                                <p class="before-demo">Пример текста</p>
+                                <style>
+                                    .example .before-demo::before {
+                                        content: "🔥 ";
+                                        color: red;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>
+                                <b>::before</b>
+                                — добавляет содержимое
+                                <b>до</b>
+                                текста элемента.
+                            </li>
+                            <li>Часто используется для декоративных иконок, лейблов и т.д.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ::after -->
+                <section class="section" id="pseudoelem-after">
+                    <div class="container">
+                        <h2>::after</h2>
+                        <p class="note">
+                            <b>::after</b>
+                            работает аналогично
+                            <code>::before</code>
+                            , но добавляет виртуальный элемент
+                            <b>после</b>
+                            содержимого тега. Это часто используется для добавления иконок, декоративных символов или пояснений без изменения HTML-кода.
+                        </p>
+
+                        <div class="grid-column-50">
+                            <pre><code>HTML:
+&lt;p&gt;Пример текста&lt;/p&gt;
+
+CSS:
+p::after {
+   content: " ✨";
+   color: gold;
+}</code></pre>
+                            <div class="example">
+                                <p class="after-demo">Пример текста</p>
+                                <style>
+                                    .example .after-demo::after {
+                                        content: " ✨";
+                                        color: gold;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>
+                                <b>::after</b>
+                                — добавляет содержимое
+                                <b>после</b>
+                                текста элемента.
+                            </li>
+                            <li>Часто используется для декоративных целей: иконки, хвостики, стрелки, подписи и т.д.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ::first-line -->
+                <section class="section" id="pseudoelem-first-line">
+                    <div class="container">
+                        <h2>::first-line</h2>
+                        <p class="note">
+                            <b>::first-line</b>
+                            позволяет стилизовать
+                            <b>первую строку</b>
+                            текста в блочном элементе (например, абзаце или заголовке).
+                            <br />
+                            <br />
+                            Это удобно для выделения начала абзаца, цитаты или привлечения внимания к первой строке текста.
+                            <br />
+                            <br />
+                            💡
+                            <b>Работает только с блочными элементами и зависит от ширины контейнера. Если текст переносится, первая строка меняется.</b>
+                        </p>
+                        <div class="grid-column-50">
+                            <pre><code>HTML:
+&lt;p&gt;Прекрасное утро!
+Пусть оно принесёт вам радость и вдохновение.&lt;/p&gt;
+
+CSS:
+p::first-line {
+   font-size: 1.5em;
+   color: navy;
+   font-style: italic;
+}</code></pre>
+                            <div class="example">
+                                <p class="first-line-demo">Прекрасное утро! Пусть оно принесёт вам радость и вдохновение.</p>
+                                <style>
+                                    .example .first-line-demo::first-line {
+                                        font-size: 1.5em;
+                                        color: navy;
+                                        font-style: italic;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Стили применяются только к первой строке текста (до первого переноса строки).</li>
+                            <li>Удобно для выделения зачинки или первой строки абзаца.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ::first-letter -->
+                <section class="section" id="pseudoelem-first-letter">
+                    <div class="container">
+                        <h2>::first-letter</h2>
+                        <p class="note">
+                            <b>::first-letter</b>
+                            позволяет стилизовать
+                            <b>первую букву</b>
+                            блочного элемента (например, абзаца или заголовка).
+                            <br />
+                            <br />
+                            Это удобно для создания красивых заглавных букв, как в книгах и блогах.
+                            <br />
+                            <br />
+                            💡
+                            <b>Работает только с блочными элементами.</b>
+                        </p>
+                        <div class="grid-column-50">
+                            <pre><code>HTML:
+&lt;p&gt;Начните день с улыбки!&lt;/p&gt;
+
+CSS:
+p::first-letter {
+   font-size: 2em;
+   color: red;
+   font-family: serif;
+   font-weight: bold;
+   float: left;
+   line-height: 1;
+   margin-right: 0.1em;
+}</code></pre>
+                            <div class="example">
+                                <p class="first-letter-demo">Начните день с улыбки!</p>
+                                <style>
+                                    .example .first-letter-demo::first-letter {
+                                        font-size: 2em;
+                                        color: red;
+                                        font-family: serif;
+                                        font-weight: bold;
+                                        float: left;
+                                        line-height: 1;
+                                        margin-right: 0.1em;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Стили применяются только к первой букве блочного элемента.</li>
+                            <li>Применяют для эффектных drop caps (больших букв в начале абзаца), оформления статей, блогов и книг.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Сводная таблица псевдоэлементов -->
+                <section class="section" id="pseudoelem-table">
+                    <div class="container">
+                        <style>
+                            .example-table tr:hover {
+                                background: none;
+                            }
+                            .example-table tr:nth-child(even) {
+                                background: none;
+                            }
+                        </style>
+                        <h2>Сводная таблица псевдоэлементов</h2>
+                        <table class="example-table">
+                            <thead>
+                                <tr>
+                                    <th>Псевдоэлемент</th>
+                                    <th>Описание</th>
+                                    <th>Пример CSS</th>
+                                    <th>Видимый результат</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- before -->
+                                <tr>
+                                    <!-- ::before -->
+                                    <td><b>::before</b></td>
+                                    <td>Добавляет контент перед содержимым элемента.</td>
+                                    <td>
+                                        <pre><code>/* ::before — перед элементом */
+p::before {
+  content: "Примечание: ";
+  color: #3498db;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example">
+                                            <p class="ex-before">Это абзац текста</p>
+                                            <style>
+                                                .example .ex-before::before {
+                                                    content: "Примечание: ";
+                                                    color: #3498db;
+                                                }
+                                            </style>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- after -->
+                                <tr>
+                                    <!-- ::after -->
+                                    <td><b>::after</b></td>
+                                    <td>Добавляет контент после содержимого элемента.</td>
+                                    <td>
+                                        <pre><code>/* ::after — после элемента */
+p::after {
+  content: " (конец)";
+  color: #ff9800;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example">
+                                            <p class="ex-after">Это абзац текста</p>
+                                            <style>
+                                                .example .ex-after::after {
+                                                    content: " (конец)";
+                                                    color: #ff9800;
+                                                }
+                                            </style>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- first-line -->
+                                <tr>
+                                    <!-- ::first-line -->
+                                    <td><b>::first-line</b></td>
+                                    <td>Применяется к первой строке текста элемента.</td>
+                                    <td>
+                                        <pre><code>/* ::first-line — первая строка */
+p::first-line {
+  font-weight: bold;
+  color: green;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example" style="max-width: 250px">
+                                            <p class="ex-fl">Это пример абзаца, где первая строка будет выделена жирным и зелёным цветом.</p>
+                                            <style>
+                                                .example .ex-fl::first-line {
+                                                    font-weight: bold;
+                                                    color: green;
+                                                }
+                                            </style>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- first-letter -->
+                                <tr>
+                                    <!-- ::first-letter -->
+                                    <td><b>::first-letter</b></td>
+                                    <td>Применяется к первой букве текста элемента.</td>
+                                    <td>
+                                        <pre><code>/* ::first-letter — первая буква */
+p::first-letter {
+  font-size: 2em;
+  color: red;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example">
+                                            <p class="ex-flt">Яркая заглавная буква.</p>
+                                            <style>
+                                                .example .ex-flt::first-letter {
+                                                    font-size: 2em;
+                                                    color: red;
+                                                }
+                                            </style>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- selection -->
+                                <tr>
+                                    <!-- ::selection -->
+                                    <td><b>::selection</b></td>
+                                    <td>Позволяет стилизовать выделенный текст.</td>
+                                    <td>
+                                        <pre><code>/* ::selection — выделение */
+::selection {
+  background: yellow;
+  color: black;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example">
+                                            <p class="ex-selection">Выдели этот текст мышкой!</p>
+                                            <style>
+                                                .example .ex-selection::selection {
+                                                    background: yellow;
+                                                    color: black;
+                                                }
+                                            </style>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- placeholder -->
+                                <tr>
+                                    <!-- ::placeholder -->
+                                    <td><b>::placeholder</b></td>
+                                    <td>
+                                        Стилизует текст плейсхолдера в
+                                        <code>&lt;input&gt;</code>
+                                        и
+                                        <code>&lt;textarea&gt;</code>
+                                        .
+                                    </td>
+                                    <td>
+                                        <pre><code>/* ::placeholder — плейсхолдер */
+input::placeholder {
+  color: gray;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example">
+                                            <input class="ex-ph" type="text" placeholder="Введите текст..." />
+                                            <style>
+                                                .example .ex-ph::placeholder {
+                                                    color: gray;
+                                                }
+                                            </style>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- marker -->
+                                <tr>
+                                    <!-- ::marker -->
+                                    <td><b>::marker</b></td>
+                                    <td>Стилизует маркеры списка.</td>
+                                    <td>
+                                        <pre><code>/* ::marker — маркеры списка */
+li::marker {
+  color: blue;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example">
+                                            <ul>
+                                                <li class="ex-marker">Первый пункт</li>
+                                                <li class="ex-marker">Второй пункт</li>
+                                            </ul>
+                                            <style>
+                                                .example .ex-marker::marker {
+                                                    color: blue;
+                                                }
+                                            </style>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- backdrop -->
+                                <tr>
+                                    <td><b>::backdrop</b></td>
+                                    <td>
+                                        Стилизация фона модальных окон (например,
+                                        <code>&lt;dialog&gt;</code>
+                                        ).
+                                    </td>
+                                    <td>
+                                        <pre><code>/* ::backdrop — фон модального окна */
+::backdrop {
+  background: rgba(0,0,0,0.5);
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example">
+                                            <div>
+                                                <div class="backdrop" id="backdrop" onclick="closeModal()"></div>
+                                                <div class="modal" id="modal">
+                                                    <p>Это модальное окно!</p>
+                                                    <button onclick="closeModal()">Закрыть</button>
+                                                </div>
+                                                <button onclick="openModal()">Открыть модальное окно</button>
+                                                <script>
+                                                    function openModal() {
+                                                        document.getElementById("modal").style.display = "block";
+                                                        document.getElementById("backdrop").style.display = "block";
+                                                    }
+                                                    function closeModal() {
+                                                        document.getElementById("modal").style.display = "none";
+                                                        document.getElementById("backdrop").style.display = "none";
+                                                    }
+                                                </script>
+                                                <style>
+                                                    .modal {
+                                                        display: none;
+                                                        background: white;
+                                                        padding: 20px;
+                                                        border-radius: 8px;
+                                                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                                                        position: relative;
+                                                        z-index: 2;
+                                                    }
+                                                    .backdrop {
+                                                        display: none;
+                                                        position: fixed;
+                                                        top: 0;
+                                                        left: 0;
+                                                        right: 0;
+                                                        bottom: 0;
+                                                        background: rgba(0, 0, 0, 0.5);
+                                                        z-index: 1;
+                                                    }
+                                                </style>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- slotted -->
+                                <tr>
+                                    <!-- ::slotted -->
+                                    <td><b>::slotted</b></td>
+                                    <td>
+                                        Стилизует элементы внутри
+                                        <code>&lt;slot&gt;</code>
+                                        в Web Components.
+                                    </td>
+                                    <td>
+                                        <pre><code>/* ::slotted — для Web Components */
+::slotted(p) {
+  color: red;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <span style="font-size: 0.95em; color: #888">Работает только внутри Web Components</span>
+                                    </td>
+                                </tr>
+
+                                <!-- grammar-error -->
+                                <tr>
+                                    <!-- ::grammar-error -->
+                                    <td><b>::grammar-error</b></td>
+                                    <td>Стилизует текст с грамматическими ошибками.</td>
+                                    <td>
+                                        <pre><code>/* ::grammar-error — грамматическая ошибка */
+::grammar-error {
+  background: pink;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <span style="background: pink; border-radius: 3px; padding: 0 3px">ошибка</span>
+                                    </td>
+                                </tr>
+
+                                <!-- spelling-error -->
+                                <tr>
+                                    <!-- ::spelling-error -->
+                                    <td><b>::spelling-error</b></td>
+                                    <td>Стилизует текст с орфографическими ошибками.</td>
+                                    <td>
+                                        <pre><code>/* ::spelling-error — орфографическая ошибка */
+::spelling-error {
+  background: lightblue;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <span style="background: lightblue; border-radius: 3px; padding: 0 3px">текс</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+
+        <style>
+            .example-box {
+                background-color: #f8f9fa;
+                border-left: 4px solid #3498db;
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+                border-radius: 0 8px 8px 0;
+            }
+            .spec-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 1.5rem 0;
+            }
+            .spec-table th,
+            .spec-table td {
+                border: 1px solid #dee2e6;
+                padding: 0.75rem;
+                text-align: left;
+            }
+            .spec-table th {
+                background-color: #e9ecef;
+                font-weight: 600;
+            }
+            .spec-table tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+            @media (max-width: 768px) {
+                .comparison {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </body>
+</html>

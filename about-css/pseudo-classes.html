@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Псевдоклассы в CSS</title>
+<meta name="description" content="Обзор псевдоклассов в CSS, их использование и примеры." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <!-- Меню страницы -->
+                <nav class="nav-tabs">
+                    <a href="#pseudo-intro">Введение</a>
+                    <a href="#pseudo-hover">Псевдокласс :hover</a>
+                    <a href="#pseudo-active">Псевдокласс :active</a>
+                    <a href="#pseudo-focus">Псевдокласс :focus</a>
+                    <a href="#pseudo-nth-child">Псевдокласс :nth-child(n)</a>
+                    <a href="#examples-pseudoclasses">Примеры</a>
+                    <a href="#table-pseudoclasses">Сводная таблица</a>
+                </nav>
+
+                <!-- Введение: Что такое псевдоклассы -->
+                <section class="section" id="pseudo-intro">
+                    <div class="container">
+                        <h2>🔍 Что такое псевдоклассы?</h2>
+                        <p class="note">
+                            <b>Псевдоклассы</b>
+                            — это специальные ключевые слова в CSS, которые добавляются к селекторам и позволяют стилизовать элементы в зависимости от их состояния или положения на странице.
+                        </p>
+                        <ul class="list-ul">
+                            <li>
+                                Всегда начинаются с двоеточия
+                                <b>:</b>
+                                (например,
+                                <code>:hover</code>
+                                )
+                            </li>
+                            <li>Позволяют стилизовать состояния, которые не заданы явно в HTML</li>
+                            <li>Используются для реакции на действия пользователя — например, наведение мыши, клик или фокусировка</li>
+                        </ul>
+                        <h4>Пример</h4>
+                        <p>При наведении курсора на ссылку она меняет цвет:</p>
+                        <div class="grid-column-50">
+                            <pre><code>
+a:hover {
+  color: red; /* Меняет цвет ссылки при наведении */
+}</code></pre>
+
+                            <div class="example">
+                                <a href="">Нажми на меня</a>
+                            </div>
+                            <style>
+                                .example a:hover {
+                                    color: red; /* Меняет цвет ссылки при наведении */
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Псевдокласс :hover -->
+                <section class="section" id="pseudo-hover">
+                    <div class="container">
+                        <h2>:hover — эффект при наведении</h2>
+                        <p class="note">
+                            <b>:hover</b>
+                            — это один из самых часто используемых псевдоклассов. Он применяется к элементу, когда пользователь наводит на него курсор мыши (или удерживает палец на мобильном устройстве).
+                        </p>
+                        <ul class="list-ul">
+                            <li>Позволяет создавать интерактивные эффекты для ссылок, кнопок, картинок и других элементов.</li>
+                            <li>Применяется моментально при наведении, без задержки.</li>
+                        </ul>
+                        <h4>Пример</h4>
+                        <p>При наведении курсора на ссылку она становится синей и подчёркнутой:</p>
+                        <div class="grid-column-50">
+                            <pre><code>
+a:hover {
+  color: blue;                /* Ссылка становится синей */
+  text-decoration: underline; /* Добавляется подчёркивание */
+}
+      </code></pre>
+
+                            <div class="example">
+                                <a class="hover-demo" href="#">Наведи на меня!</a>
+                            </div>
+                            <style>
+                                .example .hover-demo:hover {
+                                    color: blue;
+                                    text-decoration: underline;
+                                }
+                            </style>
+                        </div>
+                        <p>Когда наведёшь курсор на ссылку, она изменит цвет и станет подчёркнутой.</p>
+                        <p class="note">
+                            💡
+                            <b>Совет:</b>
+                            <code>:hover</code>
+                            используется для стилизации любых интерактивных элементов — ссылок, кнопок, карточек и т.д.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Псевдокласс :active -->
+                <section class="section" id="pseudo-active">
+                    <div class="container">
+                        <h2>:active — состояние нажатия</h2>
+                        <p class="note">
+                            <b>:active</b>
+                            применяется к элементу, когда на него кликают мышью или удерживают палец на экране.
+                            <br />
+                            Очень часто используется для кнопок и ссылок, чтобы дать визуальный отклик при нажатии.
+                        </p>
+                        <h4>Пример</h4>
+                        <div class="grid-column-50">
+                            <pre><code>
+<a href="#">Кликни меня</a>
+
+a:active {
+  color: white;
+  background: #1976d2;
+}
+      </code></pre>
+                            <div class="example">
+                                <a class="active-demo" href="#">Кликни меня</a>
+                                <style>
+                                    .example .active-demo:active {
+                                        color: white;
+                                        background: #1976d2;
+                                        padding: 2px 8px;
+                                        border-radius: 3px;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <p>Когда держишь кнопку мыши на ссылке — она изменяет цвет и фон.</p>
+                        <p class="note">
+                            💡
+                            <b>Совет:</b>
+                            <code>:active</code>
+                            можно применять не только к ссылкам, но и к кнопкам, карточкам и любым интерактивным элементам.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Псевдокласс :focus -->
+                <section class="section" id="pseudo-focus">
+                    <div class="container">
+                        <h2>:focus — когда элемент в фокусе</h2>
+                        <p class="note">
+                            <b>:focus</b>
+                            — это псевдокласс, который применяется к элементу, когда он получает фокус. Обычно это происходит при клике мышью или при переходе к элементу с помощью клавиши Tab.
+                        </p>
+                        <ul class="list-ul">
+                            <li>Особенно полезен для стилизации полей ввода, кнопок или ссылок, чтобы показать пользователю, какой элемент сейчас активен.</li>
+                            <li>Помогает сделать формы и интерфейс более удобными и понятными.</li>
+                        </ul>
+                        <h4>Пример</h4>
+                        <p>Когда поле ввода получает фокус, появляется синяя рамка:</p>
+                        <div class="grid-column-50">
+                            <pre><code>
+input:focus {
+  border: 2px solid blue; /* Синяя рамка */
+  outline: none;          /* Убираем стандартное выделение */
+}
+      </code></pre>
+                            <div class="example">
+                                <input class="focus-demo" type="text" placeholder="Напиши что-нибудь" />
+                            </div>
+                            <style>
+                                .example .focus-demo:focus {
+                                    border: 2px solid blue;
+                                    outline: none;
+                                }
+                            </style>
+                        </div>
+
+                        <p class="note">
+                            Кликни мышью по полю или перейди к нему с клавиатуры — и увидишь, как появляется синяя рамка.
+                            <br />
+                            💡
+                            <b>Совет:</b>
+                            Используй
+                            <code>:focus</code>
+                            для выделения активных элементов и улучшения UX (пользовательского опыта) в формах!
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Псевдокласс :nth-child(n) -->
+                <section class="section" id="pseudo-nth-child">
+                    <div class="container">
+                        <h2>:nth-child(n) — выбор по порядку</h2>
+                        <p class="note">
+                            Псевдокласс
+                            <b>:nth-child(n)</b>
+                            выбирает элементы на основе их порядкового номера среди "соседей".
+                            <br />
+                            Особенно полезен для списков, таблиц или строк.
+                        </p>
+
+                        <h3>Выбор по порядку</h3>
+                        <h4>Пример</h4>
+                        <div class="grid-column-50">
+                            <pre><code>
+<ul>
+  &lt;li&gt;Первый элемент&lt;/li&gt;
+  &lt;li&gt;Второй элемент&lt;/li&gt;
+  &lt;li&gt;Третий элемент&lt;/li&gt;
+</ul>
+
+li:nth-child(2) {
+  color: red; /* Второй элемент становится красным */
+}
+      </code></pre>
+                            <div class="example example-01">
+                                <ul>
+                                    <li>Первый элемент</li>
+                                    <li>Второй элемент</li>
+                                    <li>Третий элемент</li>
+                                </ul>
+                                <style>
+                                    .example-01 ul li:nth-child(2) {
+                                        color: red;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                        <p>Только второй элемент списка становится красным.</p>
+
+                        <h3>
+                            <b>odd</b>
+                            (нечётные) и
+                            <b>even</b>
+                            (чётные)
+                        </h3>
+
+                        <p>
+                            💡 Можно использовать
+                            <b>odd</b>
+                            (нечётные) и
+                            <b>even</b>
+                            (чётные) для стилизации сразу нескольких элементов:
+                        </p>
+                        <div class="grid-column-50">
+                            <pre><code>
+li:nth-child(odd)  { background: #f0f0f0; /* Нечётные */ }
+li:nth-child(even) { background: #e0e0e0; /* Чётные */ }
+      </code></pre>
+                            <div class="example example-02">
+                                <ul>
+                                    <li>Первый элемент</li>
+                                    <li>Второй элемент</li>
+                                    <li>Третий элемент</li>
+                                    <li>Четвёртый элемент</li>
+                                </ul>
+                                <style>
+                                    .example-02 ul li:nth-child(odd) {
+                                        background: #f0f0f0;
+                                    }
+                                    .example-02 ul li:nth-child(even) {
+                                        background: #e0e0e0;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Примеры псевдоклассов -->
+                <section class="section" id="examples-pseudoclasses">
+                    <div class="container">
+                        <h2>2. Примеры популярных псевдоклассов</h2>
+
+                        <!-- :hover -->
+                        <h3>:hover — эффект при наведении</h3>
+                        <div class="grid-column-50">
+                            <pre><code>
+/* Ссылка */
+a.demo-hover:hover {
+  color: #1976d2;
+  text-decoration: underline;
+}
+/* Кнопка */
+.button-demo:hover {
+  background: #43a047;
+  color: #fff;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+/* Карточка */
+.card-demo:hover {
+  box-shadow: 0 8px 24px rgba(25, 118, 210, 0.18);
+  border-color: #1976d2;
+}
+      </code></pre>
+                            <div class="example">
+                                <a class="demo-hover" href="#">Ссылка с эффектом :hover</a>
+                                <br />
+                                <br />
+                                <button class="button-demo">Кнопка :hover</button>
+                                <div class="card-demo" style="margin-top: 18px">
+                                    <b>Карточка</b>
+                                    <br />
+                                    Наведи курсор на меня!
+                                </div>
+                                <style>
+                                    a.demo-hover:hover {
+                                        color: #1976d2;
+                                        text-decoration: underline;
+                                    }
+                                    .button-demo {
+                                        padding: 8px 22px;
+                                        border: none;
+                                        border-radius: 6px;
+                                        background: #1976d2;
+                                        color: #fff;
+                                        font-size: 1em;
+                                        cursor: pointer;
+                                        transition: background 0.2s, color 0.2s, transform 0.2s;
+                                    }
+                                    .button-demo:hover {
+                                        background: #43a047;
+                                        color: #fff;
+                                        transform: scale(1.05);
+                                    }
+                                    .card-demo {
+                                        background: #fff;
+                                        border: 2px solid #e0e0e0;
+                                        border-radius: 10px;
+                                        padding: 16px 20px;
+                                        margin-top: 10px;
+                                        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.12);
+                                        transition: box-shadow 0.2s, border-color 0.2s;
+                                        width: 220px;
+                                        display: inline-block;
+                                    }
+                                    .card-demo:hover {
+                                        box-shadow: 0 8px 24px rgba(25, 118, 210, 0.18);
+                                        border-color: #1976d2;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+
+                        <!-- :active -->
+                        <h3>:active — эффект нажатия</h3>
+                        <div class="grid-column-50">
+                            <pre><code>
+/* Ссылка */
+a.demo-active:active {
+  color: #fff;
+  background: #1976d2;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+/* Кнопка */
+.button-active:active {
+  background: #1565c0;
+  color: #fff;
+}
+/* Карточка */
+.card-active:active {
+  border-color: #43a047;
+  box-shadow: 0 2px 8px rgba(67,160,71,0.30);
+}
+      </code></pre>
+                            <div class="example">
+                                <a class="demo-active" href="#">Ссылка с :active</a>
+                                <br />
+                                <br />
+                                <button class="button-active">Кнопка :active</button>
+                                <div class="card-active" style="margin-top: 18px">
+                                    <b>Карточка</b>
+                                    <br />
+                                    Нажми и удерживай!
+                                </div>
+                                <style>
+                                    a.demo-active:active {
+                                        color: #fff;
+                                        background: #1976d2;
+                                        padding: 2px 8px;
+                                        border-radius: 3px;
+                                    }
+                                    .button-active {
+                                        padding: 8px 22px;
+                                        border: none;
+                                        border-radius: 6px;
+                                        background: #1976d2;
+                                        color: #fff;
+                                        font-size: 1em;
+                                        cursor: pointer;
+                                        transition: background 0.2s, color 0.2s;
+                                    }
+                                    .button-active:active {
+                                        background: #1565c0;
+                                        color: #fff;
+                                    }
+                                    .card-active {
+                                        background: #fff;
+                                        border: 2px solid #e0e0e0;
+                                        border-radius: 10px;
+                                        padding: 16px 20px;
+                                        margin-top: 10px;
+                                        box-shadow: 0 4px 16px rgba(25, 118, 210, 0.12);
+                                        transition: box-shadow 0.2s, border-color 0.2s;
+                                        width: 220px;
+                                        display: inline-block;
+                                    }
+                                    .card-active:active {
+                                        border-color: #43a047;
+                                        box-shadow: 0 2px 8px rgba(67, 160, 71, 0.3);
+                                    }
+                                </style>
+                            </div>
+                        </div>
+
+                        <!-- :focus -->
+                        <h3>:focus — элемент в фокусе</h3>
+                        <div class="grid-column-50">
+                            <pre><code>
+input.demo-focus:focus {
+  border: 2px solid #1976d2;
+  outline: none;
+}
+button.demo-focus:focus {
+  box-shadow: 0 0 0 2px #1976d2;
+}
+a.demo-focus:focus {
+  color: #43a047;
+  outline: 2px dashed #43a047;
+}
+      </code></pre>
+                            <div class="example">
+                                <input class="demo-focus" type="text" placeholder="Фокус на поле ввода" />
+                                <button class="demo-focus" style="margin-left: 12px">Кнопка с :focus</button>
+                                <br />
+                                <br />
+                                <a class="demo-focus" href="#">Ссылка с :focus</a>
+                                <style>
+                                    input.demo-focus:focus {
+                                        border: 2px solid #1976d2;
+                                        outline: none;
+                                    }
+                                    button.demo-focus:focus {
+                                        box-shadow: 0 0 0 2px #1976d2;
+                                    }
+                                    a.demo-focus:focus {
+                                        color: #43a047;
+                                        outline: 2px dashed #43a047;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+
+                        <!-- :nth-child(n) -->
+                        <h3>:nth-child(n) — выбор по порядку</h3>
+                        <div class="grid-column-50">
+                            <pre><code>
+<ul>
+  &lt;li&gt;Первый элемент&lt;/li&gt;
+  &lt;li&gt;Второй элемент&lt;/li&gt;
+  &lt;li&gt;Третий элемент&lt;/li&gt;
+  &lt;li&gt;Четвертый элемент&lt;/li&gt;
+</ul>
+
+li:nth-child(2)   { color: red; }
+li:nth-child(odd) { background: #f0f0f0; }
+li:nth-child(even){ background: #e0e0e0; }
+      </code></pre>
+                            <div class="example">
+                                <ul class="demo-nth">
+                                    <li>Первый элемент</li>
+                                    <li>Второй элемент</li>
+                                    <li>Третий элемент</li>
+                                    <li>Четвертый элемент</li>
+                                </ul>
+                                <style>
+                                    ul.demo-nth li:nth-child(2) {
+                                        color: red;
+                                    }
+                                    ul.demo-nth li:nth-child(odd) {
+                                        background: #f0f0f0;
+                                    }
+                                    ul.demo-nth li:nth-child(even) {
+                                        background: #e0e0e0;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Сводная таблица -->
+                <section class="section" id="table-pseudoclasses">
+                    <div class="container">
+                        <h2>Сводная таблица псевдоклассов</h2>
+                        <style>
+                            .example-table tr:hover {
+                                background: none;
+                            }
+                            .example-table tr:nth-child(even) {
+                                background: none;
+                            }
+                            .example-table tr th:nth-child(1) {
+                                width: 15%;
+                            }
+                            .example-table tr th:nth-child(2) {
+                                width: 25%;
+                            }
+                            .example-table tr th:nth-child(3) {
+                                width: 30%;
+                            }
+                            .example-table tr th:nth-child(4) {
+                                width: 30%;
+                            }
+                            .example-table-td {
+                                padding: 20px;
+                                border-radius: 8px;
+                                background-color: #fff;
+                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                            }
+                            .example-table pre {
+                                margin: 0;
+                            }
+                            /* hover */
+                            .example-table-td a:hover {
+                                text-decoration: underline;
+                            }
+                            /* active */
+                            .example-table-td button:active {
+                                background-color: grey;
+                            }
+                            /* link */
+                            .example-table-td button:link {
+                                color: blue;
+                            }
+                            /* visited */
+                            .example-table-td a:visited {
+                                border: 2px solid purple;
+                            }
+
+                            /* focus */
+                            .example-table-td input:focus {
+                                border: 2px solid blue;
+                                outline: none; /* Это уберёт оранжевый outline */
+                            }
+
+                            /* enabled */
+                            .enabled input:enabled {
+                                background-color: rgb(255, 157, 221);
+                            }
+                        </style>
+
+                        <table class="example-table">
+                            <thead>
+                                <tr>
+                                    <th>Псевдокласс</th>
+                                    <th>Описание</th>
+                                    <th>Пример CSS</th>
+                                    <th>Видимый результат</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- hover -->
+                                <tr>
+                                    <td><b>:hover</b></td>
+                                    <td>Когда курсор находится над элементом.</td>
+                                    <td>
+                                        <pre><code>a:hover {
+  text-decoration: underline;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td"><a href="#" style="color: #1976d2">Наведи мышку</a></div>
+                                    </td>
+                                </tr>
+
+                                <!-- active -->
+                                <tr>
+                                    <td><b>:active</b></td>
+                                    <td>Когда элемент нажат.</td>
+                                    <td>
+                                        <pre><code>button:active {
+  background-color: grey;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <button>Кликни и держи</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- link -->
+                                <tr>
+                                    <td><b>:link</b></td>
+                                    <td>Применяется к ссылкам, которые ещё не были посещены.</td>
+                                    <td>
+                                        <pre><code>a:link {
+  color: blue;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td"><a href="#" style="color: blue; text-decoration: underline">Пример ссылки</a></div>
+                                    </td>
+                                </tr>
+
+                                <!-- visited -->
+                                <tr>
+                                    <td><b>:visited</b></td>
+                                    <td>К ссылкам, которые уже были посещены.</td>
+                                    <td>
+                                        <pre><code>a:visited {
+  color: purple;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <a href="#" style="color: purple; text-decoration: underline">Пример посещённой</a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!--  focus -->
+                                <tr>
+                                    <td><b>:focus</b></td>
+                                    <td>Когда элемент получает фокус.</td>
+                                    <td>
+                                        <pre><code>input:focus {
+  border: 2px solid blue;
+  outline: none; /* Это уберёт оранжевый outline */
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <input style="padding: 2px 4px" placeholder="Фокус сюда" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!--first-child  -->
+                                <tr>
+                                    <td><b>:first-child</b></td>
+                                    <td>Первый дочерний элемент среди своих "сестёр".</td>
+                                    <td>
+                                        <pre><code>p:first-child {
+  font-weight: bold;
+  color:brown
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <div>
+                                                <p style="font-weight: bold; color: brown">Первый</p>
+                                                <p>Второй</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- last-child -->
+                                <tr>
+                                    <td><b>:last-child</b></td>
+                                    <td>Последний дочерний элемент среди своих "сестёр".</td>
+                                    <td>
+                                        <pre><code>p:last-child {
+  font-weight: bold;
+  color: plum;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <div>
+                                                <p>Первый</p>
+                                                <p style="font-weight: bold; color: plum">Последний</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- nth-child(n) -->
+                                <tr>
+                                    <td><b>:nth-child(n)</b></td>
+                                    <td>n-ый элемент среди своих "сестёр".</td>
+                                    <td>
+                                        <pre><code>li:nth-child(2) {
+  color: red;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <ul style="margin: 0; padding-left: 18px">
+                                                <li>Первый</li>
+                                                <li style="color: red">Второй</li>
+                                                <li>Третий</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- nth-of-type(n) -->
+                                <tr>
+                                    <td><b>:nth-of-type(n)</b></td>
+                                    <td>n-ый элемент определённого типа среди своих "сестёр".</td>
+                                    <td>
+                                        <pre><code>p:nth-of-type(2) {
+  font-style: italic;
+  color:#0be2be;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <div style="font-size: 14px">
+                                                <p>Первый параграф</p>
+                                                <span style="padding: 20px">Отдельный элемент</span>
+                                                <p style="font-style: italic; color: #0be2be">Второй параграф</p>
+                                                <p>Третий параграф</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- only-child -->
+                                <tr>
+                                    <td><b>:only-child</b></td>
+                                    <td>Если элемент — единственный среди своих "сестёр".</td>
+                                    <td>
+                                        <pre><code>div:only-child {
+  border: 1px solid black;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td"><div style="border: 1px solid black; display: inline-block; padding: 2px">Я один!</div></div>
+                                    </td>
+                                </tr>
+
+                                <!-- empty -->
+                                <tr>
+                                    <td><b>:empty</b></td>
+                                    <td>Если элемент не содержит дочерних элементов.</td>
+                                    <td>
+                                        <pre><code>div:empty {
+  display: none;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <div style="display: inline-block; border: 1px solid #ccc; padding: 2px">
+                                                <span style="color: #aaa">[видимого содержимого нет]</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- checked -->
+                                <tr>
+                                    <td><b>:checked</b></td>
+                                    <td>К отмеченным элементам форм.</td>
+                                    <td>
+                                        <pre><code>input:checked {
+  background-color: lightgreen;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td"><input type="checkbox" checked style="accent-color: lightgreen" /></div>
+                                    </td>
+                                </tr>
+
+                                <!-- disabled -->
+                                <tr>
+                                    <td><b>:disabled</b></td>
+                                    <td>К неактивным элементам форм.</td>
+                                    <td>
+                                        <pre><code>input:disabled {
+  background-color: lightgrey;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td"><input type="text" disabled style="background: lightgrey" value="disabled" /></div>
+                                    </td>
+                                </tr>
+
+                                <!-- enabled -->
+                                <tr>
+                                    <td><b>:enabled</b></td>
+                                    <td>К активным элементам форм.</td>
+                                    <td>
+                                        <pre><code>input:enabled {
+  background-color: rgb(255, 157, 221);
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td enabled"><input type="text" value="enabled" /></div>
+                                    </td>
+                                </tr>
+
+                                <!-- valid -->
+                                <tr>
+                                    <td><b>:valid</b></td>
+                                    <td>К элементам с валидными (правильными) данными.</td>
+                                    <td>
+                                        <pre><code>input:valid {
+  border-color: green;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td"><input type="email" value="test@mail.com" style="border: 1px solid green" /></div>
+                                    </td>
+                                </tr>
+
+                                <!-- invalid -->
+                                <tr>
+                                    <td><b>:invalid</b></td>
+                                    <td>К элементам с невалидными данными.</td>
+                                    <td>
+                                        <pre><code>input:invalid {
+  border-color: red;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td"><input type="email" value="не email" style="border: 1px solid red" /></div>
+                                    </td>
+                                </tr>
+
+                                <!-- required -->
+                                <tr>
+                                    <td><b>:required</b></td>
+                                    <td>К обязательным полям формы.</td>
+                                    <td>
+                                        <pre><code>input:required {
+  background-color: yellow;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td"><input type="text" required style="background: yellow" placeholder="Обязательное поле" /></div>
+                                    </td>
+                                </tr>
+
+                                <!-- optional -->
+                                <tr>
+                                    <td><b>:optional</b></td>
+                                    <td>К необязательным полям формы.</td>
+                                    <td>
+                                        <pre><code>input:optional {
+  background-color: lightblue;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td"><input type="text" style="background: lightblue" placeholder="Необязательное поле" /></div>
+                                    </td>
+                                </tr>
+
+                                <!-- first-of-type -->
+                                <tr>
+                                    <td><b>:first-of-type</b></td>
+                                    <td>Первый элемент заданного типа среди сиблингов.</td>
+                                    <td>
+                                        <pre><code>div:first-of-type {
+  font-size: 20px;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <div style="font-size: 20px; display: inline-block">Первый div</div>
+                                            <div style="display: inline-block">Второй div</div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- last-of-type -->
+                                <tr>
+                                    <td><b>:last-of-type</b></td>
+                                    <td>Последний элемент заданного типа среди сиблингов.</td>
+                                    <td>
+                                        <pre><code>div:last-of-type {
+  font-weight: bold;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <div style="display: inline-block">Первый div</div>
+                                            <div style="font-weight: bold; display: inline-block">Последний div</div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- not(selector) -->
+                                <tr>
+                                    <td><b>:not(selector)</b></td>
+                                    <td>Ко всем элементам, кроме указанных.</td>
+                                    <td>
+                                        <pre><code>div:not(.highlight) {
+  opacity: 0.5;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <div style="opacity: 0.5; display: inline-block">Не выделен</div>
+                                            <div class="highlight" style="display: inline-block">Выделен</div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- not(:last-child) -->
+                                <tr>
+                                    <td><b>:not(:last-child)</b></td>
+                                    <td>Ко всем элементам, кроме последнего среди "сестёр".</td>
+                                    <td>
+                                        <pre><code>p:not(:last-child) {
+  color: orange;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <div>
+                                                <p style="color: orange">Первый</p>
+                                                <p style="color: orange">Второй</p>
+                                                <p>Последний</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- target -->
+                                <tr>
+                                    <td><b>:target</b></td>
+                                    <td>К элементу, чей ID соответствует фрагменту URL.</td>
+                                    <td>
+                                        <pre><code>#content:target {
+  color: red;
+}</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="example-table-td">
+                                            <a href="#target-demo" style="display: inline-block">Перейти к блоку</a>
+                                            <div id="target-demo" style="color: red; margin-top: 4px">#content:target</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+
+        <style>
+            .example-box {
+                background-color: #f8f9fa;
+                border-left: 4px solid #3498db;
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+                border-radius: 0 8px 8px 0;
+            }
+
+            @media (max-width: 768px) {
+                .comparison {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </body>
+</html>

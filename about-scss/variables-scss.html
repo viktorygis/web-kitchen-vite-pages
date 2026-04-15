@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript: Основы DOM</title>
+<meta name="description" content="Полное руководство по DOM API с примерами" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <nav class="nav-tabs">
+                    <a href="#intro" class="active">Введение</a>
+                    <a href="#sass-vars">Sass-переменные</a>
+                    <a href="#css-vars">CSS-переменные</a>
+                    <a href="#comparison">Сравнение</a>
+                    <a href="#best-practices">Рекомендации</a>
+                </nav>
+
+                <!-- Введение -->
+                <section class="section" id="intro">
+                    <div class="container">
+                        <h1>Разница между Sass-переменными и CSS-переменными</h1>
+
+                        <p class="note">
+                            <strong>Переменные в CSS</strong>
+                            — это мощный инструмент для создания поддерживаемых и гибких стилей. Однако между Sass-переменными (препроцессор) и CSS-переменными (нативные кастомные свойства) есть принципиальные различия.
+                        </p>
+
+                        <div class="grid-column-50">
+                            <div>
+                                <h3>Ключевые отличия:</h3>
+                                <ul class="list-ul">
+                                    <li>Sass-переменные компилируются в CSS</li>
+                                    <li>CSS-переменные существуют в браузере</li>
+                                    <li>Sass имеет расширенные функции для работы с переменными</li>
+                                    <li>CSS-переменные можно изменять через JavaScript</li>
+                                    <li>Sass-переменные работают во всех браузерах</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>Основные термины:</h3>
+                                <ul class="list-ul">
+                                    <li>
+                                        <span class="sass-color">Sass-переменные</span>
+                                        - переменные препроцессора Sass
+                                    </li>
+                                    <li>
+                                        <span class="css-var-color">CSS-переменные</span>
+                                        - кастомные свойства CSS (var(--name))
+                                    </li>
+                                    <li>
+                                        <strong>Препроцессор</strong>
+                                        - инструмент для расширения возможностей CSS
+                                    </li>
+                                    <li>
+                                        <strong>Компиляция</strong>
+                                        - преобразование Sass в обычный CSS
+                                    </li>
+                                    <li>
+                                        <strong>Каскадирование</strong>
+                                        - наследование свойств в CSS
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="interactive-demo">
+                            <h3>Эксперимент: Просмотр скомпилированного кода</h3>
+                            <p>Посмотрите, как Sass-переменные преобразуются в обычный CSS:</p>
+
+                            <div class="grid-column-50">
+                                <div class="demo-box">
+                                    <h4>Исходный Sass</h4>
+                                    <div class="code-block">
+                                        <pre><code>$primary-color: #3498db;
+$padding: 1rem;
+
+.button {
+  background: $primary-color;
+  padding: $padding;
+}</code></pre>
+                                    </div>
+                                </div>
+
+                                <div class="demo-box">
+                                    <h4>Скомпилированный CSS</h4>
+                                    <div class="code-block">
+                                        <pre><code>.button {
+  background: #3498db;
+  padding: 1rem;
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sass-переменные -->
+                <section class="section" id="sass-vars">
+                    <div class="container">
+                        <h2>Sass-переменные</h2>
+
+                        <div class="feature-card">
+                            <h3>Особенности Sass-переменных</h3>
+                            <ul class="list-ul">
+                                <li>
+                                    Определяются с помощью символа
+                                    <code>$</code>
+                                </li>
+                                <li>Компилируются в фиксированные значения</li>
+                                <li>Доступны только на этапе компиляции</li>
+                                <li>Не существуют в итоговом CSS</li>
+                                <li>Поддерживают сложные операции и функции</li>
+                            </ul>
+
+                            <div class="code-block">
+                                <pre><code>// Определение переменных
+$primary-color: #3498db;
+$base-padding: 1rem;
+$border-radius: 4px;
+
+// Использование
+.button {
+  background: $primary-color;
+  padding: $base-padding * 1.5;
+  border-radius: $border-radius;
+}</code></pre>
+                                <button class="copy-btn">Копировать</button>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <h3>Преимущества Sass</h3>
+                            <ul class="list-ul">
+                                <li>
+                                    <strong>Математические операции</strong>
+                                    - можно выполнять вычисления с переменными
+                                </li>
+                                <li>
+                                    <strong>Функции для работы с цветами</strong>
+                                    - darken(), lighten(), transparentize()
+                                </li>
+                                <li>
+                                    <strong>Миксины и функции</strong>
+                                    - создание переиспользуемых блоков кода
+                                </li>
+                                <li>
+                                    <strong>Полная совместимость</strong>
+                                    - работает во всех браузерах после компиляции
+                                </li>
+                                <li>
+                                    <strong>Логика и циклы</strong>
+                                    - условные операторы и циклы для генерации стилей
+                                </li>
+                            </ul>
+
+                            <div class="code-block">
+                                <pre><code>// Пример использования функций
+$primary: #3498db;
+
+.button {
+  background: $primary;
+  &amp;:hover {
+    background: darken($primary, 10%);
+  }
+}
+
+// Пример цикла
+@for $i from 1 through 5 {
+  .mt-#{$i} {
+    margin-top: #{$i * 0.5}rem;
+  }
+}</code></pre>
+                                <button class="copy-btn">Копировать</button>
+                            </div>
+                        </div>
+
+                        <div class="interactive-demo">
+                            <h3>Практика: Работа с Sass</h3>
+                            <p>Попробуйте изменить значения и посмотрите результат:</p>
+
+                            <div class="demo-container">
+                                <div class="demo-box" id="sass-demo" style="padding: 1rem; background: #3498db; color: white; border-radius: 4px">Кнопка с Sass-стилями</div>
+                            </div>
+
+                            <div class="demo-buttons">
+                                <button class="demo-btn" id="change-sass-color">Изменить цвет</button>
+                                <button class="demo-btn" id="change-sass-padding">Изменить отступы</button>
+                                <button class="demo-btn" id="reset-sass">Сбросить</button>
+                            </div>
+
+                            <div class="demo-result" id="sass-result"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CSS-переменные -->
+                <section class="section" id="css-vars">
+                    <div class="container">
+                        <h2>CSS-переменные (кастомные свойства)</h2>
+
+                        <div class="feature-card">
+                            <h3>Особенности CSS-переменных</h3>
+                            <ul class="list-ul">
+                                <li>
+                                    Определяются с помощью
+                                    <code>--имя-переменной</code>
+                                </li>
+                                <li>
+                                    Используются с функцией
+                                    <code>var()</code>
+                                </li>
+                                <li>Существуют в браузере</li>
+                                <li>Могут изменяться во время выполнения</li>
+                                <li>Поддерживают каскадирование и наследование</li>
+                            </ul>
+
+                            <div class="code-block">
+                                <pre><code>/* Определение переменных */
+:root {
+  --primary-color: #3498db;
+  --base-padding: 1rem;
+  --border-radius: 4px;
+}
+
+/* Использование */
+.button {
+  background: var(--primary-color);
+  padding: var(--base-padding);
+  border-radius: var(--border-radius);
+}</code></pre>
+                                <button class="copy-btn">Копировать</button>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <h3>Преимущества CSS-переменных</h3>
+                            <ul class="list-ul">
+                                <li>
+                                    <strong>Динамическое изменение</strong>
+                                    - можно менять через JavaScript
+                                </li>
+                                <li>
+                                    <strong>Каскадирование</strong>
+                                    - переменные наследуются как обычные свойства
+                                </li>
+                                <li>
+                                    <strong>Темы оформления</strong>
+                                    - легкое переключение между темами
+                                </li>
+                                <li>
+                                    <strong>Доступ в медиа-запросах</strong>
+                                    - изменение значений на разных разрешениях
+                                </li>
+                                <li>
+                                    <strong>Нативные в браузере</strong>
+                                    - не требуют компиляции
+                                </li>
+                            </ul>
+
+                            <div class="code-block">
+                                <pre><code>/* Переключение тем */
+:root {
+  --bg-color: white;
+  --text-color: black;
+}
+
+[data-theme="dark"] {
+  --bg-color: #333;
+  --text-color: white;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Изменение через JavaScript */
+document.documentElement.style.setProperty('--bg-color', '#222');</code></pre>
+                                <button class="copy-btn">Копировать</button>
+                            </div>
+                        </div>
+
+                        <div class="interactive-demo">
+                            <h3>Практика: Работа с CSS-переменными</h3>
+                            <p>Измените значения переменных в реальном времени:</p>
+
+                            <div class="demo-container">
+                                <div class="demo-box" id="css-var-demo" style="padding: var(--demo-padding, 1rem); background: var(--demo-bg, #3498db); color: white; border-radius: var(--demo-radius, 4px)">Кнопка с CSS-переменными</div>
+                            </div>
+
+                            <div class="demo-controls">
+                                <label>
+                                    Цвет фона:
+                                    <input type="color" id="css-color" value="#3498db" />
+                                </label>
+
+                                <label>
+                                    Отступы (px):
+                                    <input type="range" id="css-padding" min="5" max="30" value="16" />
+                                </label>
+
+                                <label>
+                                    Скругление (px):
+                                    <input type="range" id="css-radius" min="0" max="20" value="4" />
+                                </label>
+                            </div>
+
+                            <div class="demo-result" id="css-var-result"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Сравнение -->
+                <section class="section" id="comparison">
+                    <div class="container">
+                        <h2>Сравнение возможностей</h2>
+
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Характеристика</th>
+                                    <th class="sass-color">Sass-переменные</th>
+                                    <th class="css-var-color">CSS-переменные</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Тип</td>
+                                    <td>Препроцессорные</td>
+                                    <td>Нативные в браузере</td>
+                                </tr>
+                                <tr>
+                                    <td>Синтаксис</td>
+                                    <td><code>$variable: value;</code></td>
+                                    <td><code>--variable: value;</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Использование</td>
+                                    <td><code>property: $variable;</code></td>
+                                    <td><code>property: var(--variable);</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Динамическое изменение</td>
+                                    <td>Нет (фиксируется при компиляции)</td>
+                                    <td>Да (через JavaScript)</td>
+                                </tr>
+                                <tr>
+                                    <td>Область видимости</td>
+                                    <td>Файловая (с помощью @import)</td>
+                                    <td>CSS-каскад (наследование)</td>
+                                </tr>
+                                <tr>
+                                    <td>Поддержка браузерами</td>
+                                    <td>Все (после компиляции)</td>
+                                    <td>Все современные (IE11 нет)</td>
+                                </tr>
+                                <tr>
+                                    <td>Работа с медиа-запросами</td>
+                                    <td>Да</td>
+                                    <td>Да</td>
+                                </tr>
+                                <tr>
+                                    <td>Математические операции</td>
+                                    <td>Да (сложные вычисления)</td>
+                                    <td>Ограниченно (только с calc())</td>
+                                </tr>
+                                <tr>
+                                    <td>Функции для работы с цветами</td>
+                                    <td>Да (darken, lighten и др.)</td>
+                                    <td>Нет</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="interactive-demo">
+                            <h3>Когда что использовать?</h3>
+                            <div class="grid-column-50">
+                                <div class="use-case sass-color">
+                                    <h4>Используйте Sass-переменные:</h4>
+                                    <ul class="list-ul">
+                                        <li>Для сложных вычислений и операций</li>
+                                        <li>Когда нужны функции для работы с цветами</li>
+                                        <li>Для генерации стилей через циклы</li>
+                                        <li>В проектах с поддержкой старых браузеров</li>
+                                        <li>Для конфигурации миксинов и функций</li>
+                                    </ul>
+                                </div>
+
+                                <div class="use-case css-var-color">
+                                    <h4>Используйте CSS-переменные:</h4>
+                                    <ul class="list-ul">
+                                        <li>Для динамического изменения стилей</li>
+                                        <li>При реализации смены тем оформления</li>
+                                        <li>Для значений, зависящих от размера экрана</li>
+                                        <li>Когда нужно изменять стили через JavaScript</li>
+                                        <li>Для каскадного наследования значений</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Рекомендации -->
+                <section class="section" id="best-practices">
+                    <div class="container">
+                        <h2>Рекомендации и лучшие практики</h2>
+
+                        <div class="feature-card">
+                            <h3>Комбинированный подход</h3>
+                            <p>Оптимальное решение - использовать оба типа переменных вместе, где это уместно:</p>
+
+                            <div class="code-block">
+                                <pre><code>// Sass-переменные для сложных вычислений
+$base-spacing: 1rem;
+$primary-color: #3498db;
+
+:root {
+  // Экспорт Sass-переменных в CSS-переменные
+  --spacing: #{$base-spacing};
+  --primary: #{$primary-color};
+  --primary-dark: #{darken($primary-color, 10%)};
+}
+
+.element {
+  // Использование CSS-переменных
+  padding: calc(var(--spacing) * 2);
+  background: var(--primary);
+
+  &amp;:hover {
+    background: var(--primary-dark);
+  }
+}</code></pre>
+                                <button class="copy-btn">Копировать</button>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <h3>Практические советы</h3>
+                            <ul class="list-ul">
+                                <li>
+                                    <strong>Используйте префиксы</strong>
+                                    для CSS-переменных (--theme-primary, --spacing-md)
+                                </li>
+                                <li>
+                                    <strong>Определяйте CSS-переменные в :root</strong>
+                                    для глобального доступа
+                                </li>
+                                <li>
+                                    <strong>Задавайте значения по умолчанию</strong>
+                                    с помощью var(--var, default)
+                                </li>
+                                <li>
+                                    <strong>Используйте Sass для сложных вычислений</strong>
+                                    перед экспортом в CSS-переменные
+                                </li>
+                                <li>
+                                    <strong>Проверяйте поддержку браузеров</strong>
+                                    для CSS-переменных
+                                </li>
+                            </ul>
+
+                            <div class="code-block">
+                                <pre><code>/* Значение по умолчанию */
+.element {
+  background: var(--theme-bg, #f0f0f0);
+}
+
+/* Проверка поддержки в CSS */
+@supports (--css: variables) {
+  /* Стили с CSS-переменными */
+}
+
+/* Проверка поддержки в JavaScript */
+if (window.CSS && window.CSS.supports && window.CSS.supports('--a', 0)) {
+  // Поддерживает CSS-переменные
+}</code></pre>
+                                <button class="copy-btn">Копировать</button>
+                            </div>
+                        </div>
+
+                        <div class="interactive-demo">
+                            <h3>Демонстрация комбинированного подхода</h3>
+                            <p>Нажмите кнопку, чтобы переключить тему оформления:</p>
+
+                            <div class="demo-container">
+                                <div class="demo-box" id="combined-demo" style="padding: 1.5rem; border-radius: 8px; background: var(--demo-bg, #f0f0f0); color: var(--demo-text, #333)">
+                                    <h4>Пример элемента</h4>
+                                    <p>Этот элемент использует комбинацию Sass и CSS переменных</p>
+                                    <button class="demo-btn" id="toggle-theme">Переключить тему</button>
+                                </div>
+                            </div>
+
+                            <div class="demo-result" id="combined-result"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+        <script>
+            // Демо: Работа с Sass (эмуляция)
+            document.getElementById("change-sass-color").addEventListener("click", () => {
+                const demo = document.getElementById("sass-demo");
+                demo.style.backgroundColor = "#e74c3c";
+                document.getElementById("sass-result").innerHTML = "Цвет изменен (в реальном проекте это потребовало бы перекомпиляции Sass)";
+                document.getElementById("sass-result").style.display = "block";
+            });
+
+            document.getElementById("change-sass-padding").addEventListener("click", () => {
+                const demo = document.getElementById("sass-demo");
+                demo.style.padding = "1.5rem";
+                document.getElementById("sass-result").innerHTML = "Отступы увеличены (изменения фиксированы после компиляции)";
+                document.getElementById("sass-result").style.display = "block";
+            });
+
+            document.getElementById("reset-sass").addEventListener("click", () => {
+                const demo = document.getElementById("sass-demo");
+                demo.style = "padding: 1rem; background: #3498db; color: white; border-radius: 4px;";
+                document.getElementById("sass-result").style.display = "none";
+            });
+
+            // Демо: Работа с CSS-переменными
+            document.getElementById("css-color").addEventListener("input", function () {
+                document.documentElement.style.setProperty("--demo-bg", this.value);
+                document.getElementById("css-var-result").innerHTML = `Цвет фона изменен на: ${this.value}`;
+                document.getElementById("css-var-result").style.display = "block";
+            });
+
+            document.getElementById("css-padding").addEventListener("input", function () {
+                const padding = `${this.value}px`;
+                document.documentElement.style.setProperty("--demo-padding", padding);
+                document.getElementById("css-var-result").innerHTML = `Отступы изменены на: ${padding}`;
+                document.getElementById("css-var-result").style.display = "block";
+            });
+
+            document.getElementById("css-radius").addEventListener("input", function () {
+                const radius = `${this.value}px`;
+                document.documentElement.style.setProperty("--demo-radius", radius);
+                document.getElementById("css-var-result").innerHTML = `Скругление изменено на: ${radius}`;
+                document.getElementById("css-var-result").style.display = "block";
+            });
+
+            // Демо: Комбинированный подход
+            let isDarkTheme = false;
+
+            document.getElementById("toggle-theme").addEventListener("click", () => {
+                isDarkTheme = !isDarkTheme;
+
+                if (isDarkTheme) {
+                    document.documentElement.style.setProperty("--demo-bg", "#333");
+                    document.documentElement.style.setProperty("--demo-text", "#fff");
+                    document.getElementById("combined-result").innerHTML = "Тёмная тема активирована";
+                } else {
+                    document.documentElement.style.setProperty("--demo-bg", "#f0f0f0");
+                    document.documentElement.style.setProperty("--demo-text", "#333");
+                    document.getElementById("combined-result").innerHTML = "Светлая тема активирована";
+                }
+
+                document.getElementById("combined-result").style.display = "block";
+            });
+        </script>
+    </body>
+</html>

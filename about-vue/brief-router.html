@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Маршрутизация во Vue: теория, примеры, динамические и вложенные маршруты, обработка 404</title>
+<meta name="description" content="Главное о роутинге во Vue: структура, навигация, динамические маршруты, редиректы, обработка 404, работа с параметрами, best practices." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+<head>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.js"></script>
+  <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main class="page">
+      <nav class="nav-tabs">
+        <a href="#intro">Введение</a>
+        <a href="#structure">Структура роутера</a>
+        <a href="#route-types">Виды маршрутов</a>
+        <a href="#navigation">Навигация</a>
+        <a href="#static">Статические маршруты</a>
+        <a href="#dynamic">Динамические маршруты</a>
+        <a href="#nested">Вложенные маршруты</a>
+        <a href="#programmatic-navigation">Программная навигация</a>
+        <a href="#route-state">Состояние маршрутов</a>
+        <a href="#redirects">Редиректы и 404</a>
+        <a href="#guards">Защита маршрутов</a>
+        <a href="#practice">Практика</a>
+        <a href="#bestpractices">Лучшие практики</a>
+      </nav>
+
+      <!-- Введение -->
+      <section class="section" id="intro">
+        <div class="container">
+          <h1>Маршрутизация во Vue</h1>
+          <p class="note">
+            <strong>Vue Router</strong> — официальная библиотека для маршрутизации в приложениях на Vue.js. Она позволяет создавать одностраничные приложения (SPA) с навигацией между "страницами" без перезагрузки. <br>
+            <strong>Маршрутизация во Vue.js</strong> - это процесс управления навигацией между различными компонентами и представлениями в одностраничном приложении (SPA) с использованием библиотеки Vue Router.<br>
+            <strong>Навигация</strong> осуществляется путем определения маршрутов, которые связывают URL-пути с соответствующими Vue-компонентами, позволяя пользователям переходить между различными частями приложения без полной перезагрузки страницы.
+            <br>
+            <strong>маршруты</strong> — это правила, которые определяют, какой компонент должен отображаться при переходе на определенный URL-путь.
+            <br>
+            <strong>Виды маршрутов:</strong> статические (фиксированные пути), динамические (с параметрами), вложенные (children), редиректы и обработка ошибок 404.
+          </p>
+
+          <h4>Основные возможности Vue Router:</h4>
+          <!-- с эмодзи -->
+          <ul class="list-icon">
+            <li>📍 <b>Определение маршрутов:</b> связывание URL-путей с компонентами Vue.</li>
+            <li>🔄 <b>Навигация:</b> переход между страницами без перезагрузки страницы.</li>
+            <li>🧩 <b>Динамические маршруты:</b> использование параметров в URL для отображения различных данных.</li>
+            <li>📂 <b>Вложенные маршруты:</b> создание иерархии страниц и компонентов.</li>
+            <li>➡️ <b>Программная навигация:</b> переход по маршрутам через код (например, при клике на кнопку).</li>
+            <li> 📋 <b>Состояние маршрутов:</b> управление историей браузера и состоянием навигации.</li>
+            <li>↪️ <b>Редиректы:</b> перенаправление пользователей с одного пути на другой.</li>
+            <li>❓ <b>Обработка ошибок 404:</b> отображение страницы ошибки при неправильном URL.</li>
+            <li> 🔐 <b>Защита маршрутов:</b> реализация аутентификации и авторизации для доступа к определенным страницам.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Структура роутера -->
+      <section class="section" id="structure">
+        <div class="container">
+          <h2>Структура роутера в проекте</h2>
+          <p class="note">
+            <strong>Структура роутера в проекте</strong> - это организация файлов и компонентов, связанных с маршрутизацией, для обеспечения удобной навигации и управления состоянием приложения. <br>
+            Обычно маршруты настраиваются в отдельном файле (например, <code>router.js</code>), а компоненты-страницы хранятся в папке <code>views/</code>. Главный компонент <code>App.vue</code> содержит <code>&lt;router-view&gt;</code> для отображения текущего маршрута.
+          </p>
+
+          <h4>Типичная структура проекта с Vue Router:</h4>
+          <div class="code-block">
+            <pre><code>📂 src/
+ ├── 📂 components/
+ ├── 📂 views/
+ │    ├── Home.vue
+ │    ├── About.vue
+ │    ├── Profile.vue
+ │    ├── NotFound.vue
+ │    ├── Dashboard.vue
+ ├── router.js
+ ├── App.vue
+ ├── main.js</code></pre>
+          </div>
+
+          <h5>Описание ключевых файлов и папок:</h5>
+          <ul class="list-ul">
+            <li><code>views/</code> — папка для компонентов-страниц.</li>
+            <li><code>router.js</code> — файл для настройки маршрутов.</li>
+            <li><code>App.vue</code> — главный компонент с <code>&lt;router-view&gt;</code>.</li>
+            <li><code>main.js</code> — точка входа, где создается Vue-приложение и подключается роутер.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Виды маршрутов -->
+      <section class="section" id="route-types">
+        <div class="container">
+          <h1>Виды маршрутов во Vue Router</h1>
+          <p class="note">
+            <strong>Виды маршрутов во Vue Router</strong> включают статические маршруты с фиксированными путями, динамические маршруты с параметрами, вложенные маршруты (children), редиректы и обработку ошибок 404. <br>
+            Каждый вид маршрута служит для различных целей и позволяет создавать гибкую и удобную навигацию в одностраничных приложениях (SPA).
+          </p>
+          <!-- Таблица сравнения видов маршрутов -->
+          <table class="table-note">
+            <thead>
+              <tr>
+                <th>Тип маршрута</th>
+                <th>Описание</th>
+                <th>Пример</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Статический маршрут</b></td>
+                <td>Фиксированный путь без параметров.</td>
+                <td><code>/home</code></td>
+              </tr>
+              <tr>
+                <td><b>Динамический маршрут</b></td>
+                <td>Путь с параметрами, например, ID пользователя.</td>
+                <td><code>/user/:id</code></td>
+              </tr>
+              <tr>
+                <td><b>Вложенный маршрут</b></td>
+                <td>Маршруты внутри других маршрутов.</td>
+                <td><code>/admin/users/:id/profile</code></td>
+              </tr>
+              <tr>
+                <td><b>Редирект</b></td>
+                <td>Перенаправление с одного пути на другой.</td>
+                <td><code>/old-page → /new-page</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Навигация -->
+      <section class="section" id="navigation">
+        <div class="container">
+          <h2>Навигация между страницами</h2>
+          <p class="note">
+            <strong>Навигация между страницами</strong> во Vue.js осуществляется с помощью Vue Router, который позволяет пользователям переходить между различными компонентами и представлениями без перезагрузки страницы. <br>
+            Навигация может быть реализована с помощью компонентов <code>&lt;router-link&gt;</code> для создания ссылок и <code>&lt;router-view&gt;</code> для отображения текущего маршрута.
+          </p>
+          <h4>Основные способы навигации:</h4>
+          <p><b>Ссылки в шаблоне:</b></p>
+
+          <div class="code-block">
+            <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;nav&gt;
+      &lt;router-link to="/"&gt;Главная&lt;/router-link&gt;
+      &lt;router-link to="/about"&gt;О нас&lt;/router-link&gt;
+      &lt;router-link :to="'/profile/1'"&gt;Профиль 1&lt;/router-link&gt;
+    &lt;/nav&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'App'
+}
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code>&lt;router-link&gt;</code> — компонент для создания ссылок на маршруты.</li>
+            <li>Атрибут <code>to</code> указывает путь маршрута.</li>
+            <li><code>&lt;router-view&gt;</code> — место для отображения текущего компонента маршрута.</li>
+          </ul>
+
+          <p><b>Программная навигация в методах</b></p>
+          <p>Используйте <code>this.$router.push()</code> для перехода по маршрутам из методов Vue-компонентов:</p>
+          <div class="code-block">
+            <pre><code>methods: {
+    goToProfile(userId) {
+        this.$router.push(`/profile/${userId}`);
+    }
+}</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code>this.$router.push()</code> — метод для программного перехода на указанный маршрут.</li>
+            <li>Можно использовать динамические параметры в пути.</li>
+          </ul>
+          <!-- Вывод: -->
+          <p class="note note--info">
+            🚀
+            <strong>Вывод:</strong> Навигация во Vue.js с помощью Vue Router обеспечивает плавный и удобный переход между страницами, улучшая пользовательский опыт в одностраничных приложениях.
+          </p>
+
+
+
+        </div>
+      </section>
+
+      <!-- Статические маршруты -->
+      <section class="section" id="static">
+        <div class="container">
+          <h2>Статические маршруты</h2>
+          <p class="note">
+            <strong>Статические маршруты</strong> — это маршруты, которые не содержат параметров и всегда ведут к одному и тому же компоненту. Они используются для отображения фиксированных страниц. Например, главная страница или страница "О нас".
+          </p>
+          <div class="code-block">
+            <pre><code>{
+  path: '/about',
+  component: About
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Динамические маршруты -->
+      <section class="section" id="dynamic">
+        <div class="container">
+          <h2>Динамические маршруты с параметрами</h2>
+          <p class="note">
+            <strong>Динамические маршруты</strong> - это маршруты, которые содержат параметры, позволяющие отображать различные данные в зависимости от значения этих параметров. Например , профиль пользователя с уникальным ID.
+            <br>
+            В Vue Router динамические параметры обозначаются двоеточием (<code>:</code>) в пути маршрута.
+          </p>
+
+          <h4>Пример динамического маршрута:</h4>
+          <p>Маршрут для профиля пользователя с параметром <code>id</code>:</p>
+          <div class="code-block">
+            <pre><code>{ path: '/profile/:id', name: 'profile', component: Profile }
+</code></pre>
+          </div>
+
+          <h4>Получение параметров в компоненте:</h4>
+          <p>В компоненте можно получить доступ к параметрам маршрута через <code>this.$route.params</code>:</p>
+          <div class="code-block">
+            <pre><code>export default {
+  computed: {
+    userId() {
+      return this.$route.params.id;
+    }
+  }
+}</code></pre>
+          </div>
+
+          <h4>Создание ссылок с параметрами:</h4>
+          <p>Используйте <code>&lt;router-link&gt;</code> с динамическим значением для параметра:</p>
+          <div class="code-block">
+            <pre><code>&lt;router-link :to="`/profile/${user.id}`"&gt;Профиль&lt;/router-link&gt;</code></pre>
+          </div>
+
+          <h4>Несколько параметров в маршруте:</h4>
+          <p>Маршрут с несколькими динамическими параметрами:</p>
+          <div class="code-block">
+            <pre><code>{ path: '/category/:categoryId/product/:productId', component: Product }
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Вложенные маршруты -->
+      <section class="section" id="nested">
+        <div class="container">
+          <h2>Вложенные маршруты</h2>
+          <p class="note">
+            <strong>Вложенные маршруты</strong> - это маршруты, которые находятся внутри других маршрутов, позволяя создавать иерархическую структуру страниц и компонентов. <br>
+            В Vue Router вложенные маршруты определяются с помощью свойства <code>children</code> в объекте маршрута.
+          </p>
+          <h4>Как использовать вложенные маршруты:</h4>
+          <ul class="list-ul">
+            <li>Определите родительский маршрут с дочерними маршрутами в свойстве <code>children</code>.</li>
+            <li>Используйте <code>&lt;router-view&gt;</code> внутри родительского компонента для отображения дочерних компонентов.</li>
+          </ul>
+
+          <h4>Пример вложенных маршрутов:</h4>
+          <p>Маршрут Dashboard с двумя вложенными маршрутами:</p>
+          <div class="code-block">
+            <pre><code>{
+  path: "/dashboard",
+  component: Dashboard,
+  children: [
+    { path: "analytics", component: Analytics },
+    { path: "settings", component: Settings }
+  ]
+}</code></pre>
+          </div>
+
+          <h4>Навигация по вложенным маршрутам:</h4>
+          <p>Используйте <code>&lt;router-link&gt;</code> для перехода к вложенным маршрутам:</p>
+          <div class="code-block">
+            <pre><code>&lt;router-link to="/dashboard/analytics"&gt;Аналитика&lt;/router-link&gt;
+&lt;router-link to="/dashboard/settings"&gt;Настройки&lt;/router-link&gt;</code></pre>
+          </div>
+          <h4>Отображение вложенных маршрутов:</h4>
+
+          <p>Для отображения вложенной страницы — в Dashboard.vue используйте <code>&lt;router-view&gt;</code> (будет внутри родителя).</p>
+          <div class="code-block">
+            <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h2&gt;Панель управления&lt;/h2&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Программная навигация -->
+      <section class="section" id="programmatic-navigation">
+        <div class="container">
+          <h2>Программная навигация</h2>
+          <p class="note">
+            <strong>Программная навигация</strong> - это способ перехода между маршрутами в Vue.js с помощью методов Vue Router, таких как <code>this.$router.push()</code> и <code>this.$router.replace()</code>. <br>
+            Этот подход позволяет выполнять навигацию в ответ на события, такие как клики на кнопки или завершение асинхронных операций.
+          </p>
+          <h4>Метлоды программной навигации:</h4>
+          <ul class="list-ul">
+            <li><code>this.$router.push(location)</code> — добавляет новый маршрут в историю браузера.</li>
+            <li><code>this.$router.replace(location)</code> — заменяет текущий маршрут без добавления в историю.</li>
+            <li><code>this.$router.go(n)</code> — перемещается вперед или назад в истории на n шагов.</li>
+          </ul>
+
+          <h4>Как использовать программную навигацию:</h4>
+          <ul class="list-ul">
+            <li>Используйте методы <code>this.$router.push()</code>, когда нужно перейти на новый маршрут, например, после успешной отправки формы.</li>
+            <li>Используйте <code>this.$router.replace()</code>, чтобы заменить текущий маршрут,например, после логина пользователя.</li>
+            <li>Вызывайте эти методы внутри методов Vue-компонентов.</li>
+            <li>Можно использовать <code>this.$router.push()</code>, <code>this.$router.replace()</code> и другие для перехода по маршрутам.</li>
+            <li>Можно передавать параметры и query-параметры при навигации.</li>
+          </ul>
+
+          <h4>Пример программной навигации:</h4>
+          <p>Переход на страницу профиля пользователя при клике на кнопку:</p>
+          <div class="code-block">
+            <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;button @click="goToProfile(1)"&gt;Перейти к профилю 1&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  methods: {
+    goToProfile(userId) {
+      this.$router.push(`/profile/${userId}`);
+    }
+  }
+}
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>При клике на кнопку вызывается метод <code>goToProfile</code>.</li>
+            <li>Метод использует <code>this.$router.push()</code> для перехода на маршрут профиля с указанным ID.</li>
+          </ul>
+
+          <!-- Вывод: -->
+          <p class="note note--info">
+            🚀
+            <strong>Вывод:</strong> Программная навигация во Vue.js с помощью Vue Router позволяет гибко управлять переходами между страницами, улучшая взаимодействие пользователя с приложением.
+          </p>
+
+        </div>
+      </section>
+
+
+      <!-- Состояние маршрутов -->
+      <section class="section" id="route-state">
+        <div class="container">
+          <h2>Состояние маршрутов и история навигации</h2>
+          <p class="note">
+            <strong>Состояние маршрутов</strong> - это информация о текущем маршруте, включая параметры, query-параметры и метаданные. <br>
+            Vue Router позволяет управлять историей навигации с помощью методов, таких как <code>this.$router.go(n)</code>, для перемещения вперед или назад в истории браузера.
+          </p>
+          <h4>Основные аспекты состояния маршрутов:</h4>
+          <ul class="list-ul">
+            <li><code>this.$route.params</code> — доступ к динамическим параметрам маршрута.</li>
+            <li><code>this.$route.query</code> — доступ к query-параметрам URL.</li>
+            <li><code>this.$route.name</code> — имя текущего маршрута.</li>
+            <li><code>this.$route.fullPath</code> — полный путь текущего маршрута.</li>
+          </ul>
+          <h4>Управление историей навигации:</h4>
+          <ul class="list-ul">
+            <li><code>this.$router.go(n)</code> — перемещение на n шагов вперед или назад в истории.</li>
+            <li><code>this.$router.back()</code> — переход на предыдущий маршрут.</li>
+            <li><code>this.$router.forward()</code> — переход на следующий маршрут.</li>
+          </ul>
+          <h4>Передача параметров через query</h4>
+          <p>Query-параметры позволяют передавать дополнительные данные в URL в формате ключ-значение. Они добавляются после знака вопроса (<code>?</code>) в URL.</p>
+          <p>Пример передачи query-параметров при навигации:</p>
+          <div class="code-block">
+            <pre><code>this.$router.push({ path: '/search', query: { q: 'vue' } });</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Переход на маршрут <code>/search</code> с query-параметром <code>q</code>, равным <code>'vue'</code>.</li>
+          </ul>
+          <h4>Получение query-параметров в компоненте:</h4>
+          <p>В компоненте можно получить доступ к query-параметрам через <code>this.$route.query</code>:</p>
+          <div class="code-block">
+            <pre><code>export default {
+  computed: {
+    searchQuery() {
+      return this.$route.query.q;
+    }
+  }
+}</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Используется вычисляемое свойство <code>searchQuery</code> для получения значения query-параметра <code>q</code>.</li>
+          </ul>
+          <h4>Якорь ( hash ) в маршрутах</h4>
+          <p>Якорь ( hash ) позволяет ссылаться на определенные части страницы, используя символ <code>#</code> в URL. Это полезно для навигации к определенным секциям внутри одной страницы.</p>
+          <p>Пример использования якоря в маршруте:</p>
+          <div class="code-block">
+            <pre><code>this.$router.push({ path: '/about', hash: '#team' });</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Переход на маршрут <code>/about</code> с якорем <code>#team</code>, который указывает на секцию "team" на странице "about".</li>
+          </ul>
+          <h4>Комбинирование query-параметров и якоря</h4>
+          <p>Можно одновременно использовать query-параметры и якорь при навигации:</p>
+          <div class="code-block">
+            <pre><code>this.$router.push({ path: '/search', query: { q: 'vue' }, hash: '#results' });</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code> path: '/search'</code> - маршрут для перехода, где <b>search</b> — это путь к странице поиска.</li>
+            <li><code>query: { q: 'vue' }</code> - передача query-параметра <code>q</code> со значением <code>'vue'</code>.</li>
+            <li><code>hash: '#results'</code> - указание якоря <code>#results</code> для навигации к определенной секции на странице.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Редиректы и 404 -->
+      <section class="section" id="redirects">
+        <div class="container">
+          <h2>Редиректы и обработка ошибок 404</h2>
+          <p class="note">
+            <strong>Редиректы</strong> — это перенаправления пользователей с одного маршрута на другой. Они полезны для управления устаревшими ссылками или упрощения навигации. <br>
+            <strong>Обработка ошибок 404</strong> позволяет отображать специальную страницу, когда пользователь пытается перейти на несуществующий маршрут.
+          </p>
+          <h4>Как настроить редиректы и 404:</h4>
+          <ul class="list-ul">
+            <li>Используйте свойство <code>redirect</code> для создания редиректов.</li>
+            <li>Создайте маршрут с шаблоном <code>/:pathMatch(.*)*</code> для обработки всех неизвестных путей.</li>
+          </ul>
+          <h4>Примеры кода:</h4>
+          <p>Редирект с главной страницы на /dashboard и маршрут 404:</p>
+          <div class="code-block">
+            <pre><code>{
+  path: "/",
+  redirect: "/dashboard" // Редирект с главной страницы
+},
+{
+  path: "/:pathMatch(.*)*", // Маршрут 404
+  component: NotFound
+}
+            </code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Первый маршрут перенаправляет пользователей с <code>/</code> на <code>/dashboard</code>.</li>
+            <li>Второй маршрут ловит все неизвестные пути и отображает компонент <code>NotFound</code>.</li>
+          </ul>
+
+
+          <h4>Создание компонента 404:</h4>
+          <p>Пример простого компонента для страницы 404:</p>
+          <div class="code-block">
+            <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h2&gt;404 - Страница не найдена&lt;/h2&gt;
+    &lt;router-link to="/dashboard"&gt;Вернуться на главную&lt;/router-link&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+          </div>
+
+
+
+
+
+        </div>
+      </section>
+
+      <!-- Защита маршрутов -->
+      <section class="section" id="guards">
+        <div class="container">
+          <h2>Защита маршрутов</h2>
+          <p class="note">
+            <strong>Защита маршрутов</strong> — это механизм, позволяющий контролировать доступ к определенным маршрутам в приложении на Vue.js. <br>
+            С помощью навигационных охранников можно реализовать аутентификацию и авторизацию пользователей, предотвращая доступ к защищенным страницам без соответствующих прав.
+          </p>
+
+
+          <h4>Типы навигационных охранников:</h4>
+          <ul class="list-ul">
+            <li><b>Глобальные охранники:</b> применяются ко всем маршрутам. Пример: <code>router.beforeEach()</code>.</li>
+            <li><b>Охранники маршрута:</b> определяются в объекте маршрута с помощью свойства <code>beforeEnter</code>.</li>
+            <li><b>Охранники компонента:</b> определяются внутри компонентов с помощью хуков жизненного цикла:
+              <ul>
+                <li><code>beforeRouteEnter</code> - вызывается перед входом на маршрут для компонента.</li>
+                <li><code>beforeRouteUpdate</code> - вызывается при обновлении маршрута для компонента.</li>
+                <li><code>beforeRouteLeave</code> - вызывается перед выходом с маршрута.</li>
+              </ul>
+          </ul>
+          <h4>Пример глобального охранника:</h4>
+          <p>Проверка аутентификации перед переходом на защищенный маршрут:</p>
+
+          <div class="code-block">
+            <pre><code>router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !isAuthenticated()) {
+    next('/login'); // Перенаправление на страницу логина
+  } else {
+    next(); // Разрешение перехода
+  }
+});</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Проверяется, требует ли маршрут аутентификации через <code>to.meta.requiresAuth</code>.</li>
+            <li>Если пользователь не аутентифицирован, происходит перенаправление на страницу логина.</li>
+            <li>Если все условия выполнены, вызывается <code>next()</code> для разрешения перехода.</li>
+          </ul>
+          <!-- Вывод: -->
+          <p class="note note--info">🚀 <strong>навигационные охранники</strong> — позволяют контролировать доступ к маршрутам, обеспечивая безопасность и управление пользовательским опытом.
+          </p>
+        </div>
+      </section>
+
+      <!-- Практика -->
+      <section class="section" id="practice">
+        <div class="container">
+          <h2>Практика: настрой маршруты!</h2>
+          <p class="note">
+            Попрактикуйтесь в создании маршрутов во Vue Router, реализовав следующие задачи:
+          </p>
+          <ul class="list-ul">
+            <li>Создайте статические маршруты для главной страницы и страницы "О нас".</li>
+            <li>Добавьте динамический маршрут для профиля пользователя с параметром ID.</li>
+            <li>Настройте вложенные маршруты внутри панели управления (Dashboard).</li>
+            <li>Реализуйте редирект с главной страницы на панель управления.</li>
+            <li>Создайте маршрут для обработки ошибок 404.</li>
+          </ul>
+          <h4>Пример решения:</h4>
+
+
+          <div class="code-block">
+            <pre><code>// Пример настройки маршрутов в router.js
+import { createRouter, createWebHistory } from 'vue-router';
+import Dashboard from './views/Dashboard.vue';
+import About from './views/About.vue';
+import Profile from './views/Profile.vue';
+import NotFound from './views/NotFound.vue';
+
+const routes = [
+  { path: '/', redirect: '/dashboard' },
+  { path: '/dashboard', component: Dashboard },
+  { path: '/about', component: About },
+  { path: '/profile/:id', name: 'profile', component: Profile },
+  { path: '/:pathMatch(.*)*', component: NotFound }
+];
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+export default router;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Настроены статические маршруты для <code>/dashboard</code> и <code>/about</code>.</li>
+            <li>Добавлен динамический маршрут для профиля пользователя с параметром <code>id</code>.</li>
+            <li>Реализован редирект с главной страницы на панель управления.</li>
+            <li>Создан маршрут для обработки ошибок 404.</li>
+          </ul>
+
+          <div class="interactive-demo">
+            <div id="vue-router-demo"></div>
+          </div>
+
+      </section>
+
+      <!-- Лучшие практики -->
+      <section class="section" id="bestpractices">
+        <div class="container">
+          <h2>Лучшие практики роутинга</h2>
+          <p class="note">
+            Следуйте этим лучшим практикам для эффективного использования Vue Router в ваших проектах:
+          </p>
+          <ul class="list-ul">
+            <li>Организуйте маршруты в отдельном файле (например, <code>router.js</code>) для удобства управления.</li>
+            <li>Используйте именованные маршруты для упрощения навигации и передачи параметров.</li>
+            <li>Разделяйте компоненты на страницы и общие компоненты для лучшей структуры проекта.</li>
+            <li>Используйте lazy loading для оптимизации загрузки компонентов.</li>
+            <li>Обрабатывайте ошибки навигации с помощью глобальных хуков маршрутизации.</li>
+            <li>Реализуйте защиту маршрутов для аутентификации и авторизации.</li>
+            <li>Тестируйте маршруты и навигацию для обеспечения корректной работы приложения.</li>
+          </ul>
+
+
+
+
+
+
+        </div>
+      </section>
+    </main>
+    <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+  </div>
+
+  <script>
+    // Демо роутинга
+    const Home = {
+      template: `<div><h2>Главная страница</h2><p>Добро пожаловать!</p></div>`
+    };
+    const About = {
+      template: `<div><h2>О нас</h2><p>Мы изучаем Vue Router!</p></div>`
+    };
+    const Profile = {
+      computed: {
+        userId() {
+          return this.$route.params.id;
+        }
+      },
+      template: `<div><h2>Профиль пользователя</h2><p>ID: {{ userId }}</p></div>`
+    }
+    const NotFound = {
+      template: `<div><h2>404 - Страница не найдена</h2><router-link to="/dashboard">Вернуться на главную</router-link></div>`
+    };
+    const Dashboard = {
+      template: `<div><h2>Панель управления</h2></div>`
+    };
+    const routes = [{
+        path: "/",
+        redirect: "/dashboard"
+      },
+      {
+        path: "/dashboard",
+        component: Dashboard
+      },
+      {
+        path: "/about",
+        component: About
+      },
+      {
+        path: "/profile/:id",
+        name: "profile",
+        component: Profile
+      },
+      {
+        path: "/:pathMatch(.*)*",
+        component: NotFound
+      }
+    ];
+    const router = VueRouter.createRouter({
+      history: VueRouter.createWebHistory(),
+      routes,
+    });
+    Vue.createApp({
+        template: `
+            <div>
+                <nav>
+                    <router-link to="/dashboard">Главная</router-link>
+                    <router-link to="/about">О нас</router-link>
+                    <router-link :to="'/profile/1'">Профиль 1</router-link>
+                </nav>
+                <router-view></router-view>
+            </div>
+        `
+      })
+      .use(router)
+      .mount("#vue-router-demo");
+  </script>
+  <style>
+    #vue-router-demo {
+      margin: 16px 0;
+    }
+
+    #vue-router-demo nav {
+      margin-bottom: 12px;
+    }
+
+    #vue-router-demo a {
+      margin-right: 14px;
+      color: #3366d4;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    #vue-router-demo a.router-link-exact-active {
+      color: #fff;
+      background: #3366d4;
+      border-radius: 5px;
+      padding: 5px 14px;
+    }
+  </style>
+</body>
+
+</html>

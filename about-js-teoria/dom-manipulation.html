@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript: Основы DOM</title>
+<meta name="description" content="Полное руководство по DOM API с примерами" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <style>
+        .interactive-demo {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+
+        .demo-container {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .demo-box {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex: 1;
+        }
+
+        .demo-result {
+            padding: 1rem;
+            background: #e3f2fd;
+            border-radius: 4px;
+        }
+        /* Сетка: 4 карточки в ряд на десктопе, адаптивные колонки на меньших экранах */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        @media (max-width: 1200px) {
+            .cards {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 560px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Карточка */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e6e8eb;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: #c7cdd4;
+            box-shadow: 0 6px 20px rgba(16, 24, 40, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .card:focus-within {
+            outline: 2px solid #4f46e5; /* фокус */
+            outline-offset: 2px;
+        }
+
+        /* Заголовок и описание */
+        .card__title {
+            margin: 0 0 8px;
+            font-size: 16px;
+            line-height: 1.3;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .card__desc {
+            margin: 0;
+            color: #4b5563;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Встроенный код */
+        .card__desc code {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 0 0.35em;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 12.5px;
+            color: #111827;
+        }
+
+        /* Темная тема (опционально, если используете data-theme="dark") */
+        @media (prefers-color-scheme: dark) {
+            .card {
+                background: #0f172a;
+                border-color: #263142;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            }
+            .card:hover {
+                border-color: #3a4a61;
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+            }
+            .card__title {
+                color: #e5e7eb;
+            }
+            .card__desc {
+                color: #cbd5e1;
+            }
+            .card__desc code {
+                background: #0b1220;
+                border-color: #1e2a3b;
+                color: #e5e7eb;
+            }
+        }
+    </style>
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <nav class="nav-tabs">
+                    <a href="#dom-intro" class="active">Введение</a>
+                    <a href="#dom-text-html">Изменять текст и HTML</a>
+                    <a href="#dom-create-remove">Создавать и удалять элементы</a>
+                    <a href="#dom-multiple">Динамическое создание множества элементов</a>
+                </nav>
+
+                <!-- Введение -->
+                <section class="section" id="dom-intro">
+                    <div class="container">
+                        <h1>Манипуляция с элементами DOM</h1>
+                        <p>Манипуляция DOM — основа для создания интерактивных сайтов. С помощью JavaScript ты можешь добавлять уведомления, товары, комментарии и многое другое прямо на страницу!</p>
+                        <h3>Что можно делать:</h3>
+                        <div class="cards cards--4">
+                            <article class="card">
+                                <h4 class="card__title">Изменять текст и HTML</h4>
+                                <p class="card__desc">
+                                    Меняйте содержимое элемента:
+                                    <code>element.textContent</code>
+                                    — для текста,
+                                    <br />
+                                    <code>element.innerHTML</code>
+                                    — для HTML-разметки.
+                                </p>
+                            </article>
+
+                            <article class="card">
+                                <h4 class="card__title">Менять стили</h4>
+                                <p class="card__desc">
+                                    Управляйте инлайн-стилями элемента, например:
+                                    <code>element.style.color = 'blue'</code>
+                                    .
+                                </p>
+                            </article>
+
+                            <article class="card">
+                                <h4 class="card__title">Работать с классами</h4>
+                                <p class="card__desc">
+                                    Добавляйте, удаляйте и переключайте классы через
+                                    <code>element.classList.add()</code>
+                                    ,
+                                    <br />
+                                    <code>.remove()</code>
+                                    ,
+                                    <br />
+                                    <code>.toggle()</code>
+                                    .
+                                </p>
+                            </article>
+
+                            <article class="card">
+                                <h4 class="card__title">Создавать и удалять элементы</h4>
+                                <p class="card__desc">
+                                    Создавайте узлы и вставляйте в DOM:
+                                    <code>document.createElement()</code>
+                                    ,
+                                    <br />
+                                    удаляйте через
+                                    <code>element.remove()</code>
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Изменять текст и HTML -->
+                <section class="section" id="dom-text-html">
+                    <div class="container">
+                        <h2>Изменять текст и HTML</h2>
+                        <div class="note-block">
+                            <p class="note note--info">
+                                У элементов есть два базовых способа работы с содержимым:
+                                <code>textContent</code>
+                                и
+                                <code>innerHTML</code>
+                                .
+                            </p>
+                        </div>
+
+                        <!-- textContent -->
+                        <h3>textContent</h3>
+                        <p class="note">
+                            <strong><code>textContent</code></strong>
+                            — устанавливает или возвращает чистый текст.
+                            <br />
+                            Любые теги будут отображены как текст. Это безопаснее и обычно быстрее.
+                        </p>
+                        <h4>Примеры:</h4>
+
+                        <div class="grid-column-100">
+                            <div>
+                                <p><b>Пример: заменить текст (textContent)</b></p>
+                                <div class="code-block">
+                                    <pre><code>// HTML:
+		// &lt;h1 id="greeting"&gt;Привет, мир!&lt;/h1&gt;
+
+		const greeting = document.getElementById('greeting');
+		greeting.textContent = 'Добро пожаловать!';
+		console.log(greeting.textContent); // "Добро пожаловать!"</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p><b>Получить текущее содержимое (textContent)</b></p>
+                                <div class="code-block">
+                                    <pre><code>// HTML:
+	// &lt;p id="text"&gt;Это текст&lt;/p&gt;
+
+	const textElement = document.getElementById('text');
+	console.log(textElement.textContent); // "Это текст"</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p><b>Пример: очистить содержимое (textContent)</b></p>
+                                <div class="code-block">
+                                    <pre><code>// HTML:
+	// &lt;div id="content"&gt;Привет, это содержимое!&lt;/div&gt;
+
+	const content = document.getElementById('content');
+	content.textContent = ''; // безопасно для любого содержимого</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- innerHTML -->
+                        <h3>innerHTML</h3>
+                        <p class="note">
+                            <strong><code>innerHTML</code></strong>
+                            — устанавливает или возвращает HTML-разметку.
+                            <br />
+                            Строка парсится как HTML, теги превращаются в элементы.
+                        </p>
+                        <h4>Примеры:</h4>
+                        <div class="grid-column-100">
+                            <div>
+                                <p><b>вставить HTML (innerHTML)</b></p>
+                                <div class="code-block">
+                                    <pre><code>// HTML:
+		// &lt;div id="container"&gt;Здесь что-то важное&lt;/div&gt;
+
+		const container = document.getElementById('container');
+		container.innerHTML = '&lt;b&gt;Важный текст!&lt;/b&gt;';
+		console.log(container.innerHTML); // "&lt;b&gt;Важный текст&lt;/b&gt;"</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p><b>Получить текущее содержимое (innerHTML)</b></p>
+                                <div class="code-block">
+                                    <pre><code>// HTML:
+		// &lt;p&gt;&lt;b&gt;Жирный текст&lt;/b&gt;&lt;/p&gt;
+		const textElement = document.getElementById('text');
+		console.log(textElement.innerHTML); // "&lt;b&gt;Жирный текст&lt;/b&gt;"
+		console.log(textElement.textContent); // "Жирный текст"</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p><b>Очистить содержимое (innerHTML)</b></p>
+                                <div class="code-block">
+                                    <pre><code>// HTML:
+		// &lt;div id="content"&gt;Привет, это содержимое!&lt;/div&gt;
+
+		const content = document.getElementById('content');
+		content.innerHTML = '';   // удалит всю разметку внутри</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Когда что использовать?</h3>
+                        <div class="example">
+                            <ul class="list-ul">
+                                <li>
+                                    Если нужно просто поменять текст — используй
+                                    <code>textContent</code>
+                                    (быстрее и безопаснее).
+                                </li>
+                                <li>
+                                    Если нужно добавить разметку — используй
+                                    <code>innerHTML</code>
+                                    или создавай узлы через
+                                    <code>createElement</code>
+                                    и
+                                    <code>append</code>
+                                    .
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h3>Безопасность</h3>
+                        <div class="example">
+                            <ul class="list-ul">
+                                <li>
+                                    Никогда не передавай в
+                                    <code>innerHTML</code>
+                                    непроверенные данные пользователей — это риск XSS.
+                                </li>
+                                <li>
+                                    Если данные приходят извне, используй
+                                    <code>textContent</code>
+                                    , специальные санитайзеры, либо создавай элементы вручную:
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="code-block" style="margin-top: 0.5rem">
+                            <pre><code>const msg = document.createElement('b');
+msg.textContent = userInput; // безопасно — теги экранируются
+container.replaceChildren(msg);</code></pre>
+                            <button class="copy-btn">Скопировать</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Создавать и удалять элементы -->
+                <section class="section" id="dom-create-remove">
+                    <div class="container">
+                        <h2>Создавать и удалять элементы</h2>
+
+                        <div class="note-block">
+                            <p class="note note--info">
+                                В работе с DOM есть два ключевых процесса:
+                                <strong>создание</strong>
+                                новых элементов и
+                                <strong>удаление</strong>
+                                уже существующих.
+                                <br />
+                                Оба действия делаются через специальные методы объекта
+                                <code>document</code>
+                                и самих элементов.
+                            </p>
+                        </div>
+
+                        <!-- Создание элементов -->
+                        <h3>Создать элемент</h3>
+                        <p class="note">
+                            <strong><code>createElement</code></strong>
+                            — создает новый DOM-узел (но НЕ вставляет его в страницу).
+                        </p>
+                        <h4>Примеры:</h4>
+                        <div class="grid-column-100">
+                            <div>
+                                <p><b>Пример: создать и добавить новый элемент</b></p>
+                                <div class="code-block">
+                                    <pre><code>// Создать элемент:
+const newElement = document.createElement('p');
+// Наполнить содержимым:
+newElement.textContent = 'Привет, я новый элемент!';
+// Вставить в DOM:
+const container = document.getElementById('container');
+container.appendChild(newElement);</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p><b>Современный способ: append</b></p>
+                                <div class="code-block">
+                                    <pre><code>// Можно добавить сразу текст или элементы:
+container.append('Привет, я текст!');
+container.append(newElement);</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p><b>Перемещение элемента</b></p>
+                                <div class="code-block">
+                                    <pre><code>// Если элемент уже есть в DOM, он будет перемещён:
+document.body.appendChild(newElement); // newElement переедет в body</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Удалять элементы</h3>
+                        <p class="note">
+                            <strong><code>removeChild</code></strong>
+                            — удаляет дочерний элемент через родителя.
+                            <br />
+                            <strong><code>remove</code></strong>
+                            — удаляет элемент напрямую.
+                        </p>
+                        <h4>Примеры:</h4>
+                        <div class="grid-column-100">
+                            <div>
+                                <p><b>Удалить через родителя (removeChild)</b></p>
+                                <div class="code-block">
+                                    <pre><code>const container = document.getElementById('container');
+const text = document.getElementById('text');
+container.removeChild(text);</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p><b>Современный способ: remove</b></p>
+                                <div class="code-block">
+                                    <pre><code>const text = document.getElementById('text');
+text.remove();</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Когда что использовать?</h3>
+                        <div class="example">
+                            <ul class="list-ul">
+                                <li>
+                                    Чтобы добавить новый элемент —
+                                    <code>createElement</code>
+                                    +
+                                    <code>appendChild</code>
+                                    /
+                                    <code>append</code>
+                                    .
+                                </li>
+                                <li>
+                                    Чтобы удалить —
+                                    <code>remove</code>
+                                    (проще и быстрее), либо
+                                    <code>removeChild</code>
+                                    , если нужен контроль через родителя.
+                                </li>
+                                <li>Если элемент добавляется повторно — он перемещается, а не клонируется.</li>
+                            </ul>
+                        </div>
+
+                        <h3>Безопасность</h3>
+                        <div class="example">
+                            <ul class="list-ul">
+                                <li>
+                                    Никогда не вставляй в DOM элементы с несанитизированным
+                                    <code>innerHTML</code>
+                                    .
+                                </li>
+                                <li>
+                                    Для динамического создания — всегда используй
+                                    <code>createElement</code>
+                                    и
+                                    <code>textContent</code>
+                                    , чтобы избежать XSS.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="code-block" style="margin-top: 0.5rem">
+                            <pre><code>const msg = document.createElement('b');
+msg.textContent = userInput; // безопасно, даже если userInput содержит теги!
+container.replaceChildren(msg);</code></pre>
+                            <button class="copy-btn">Скопировать</button>
+                        </div>
+
+                        <div class="interactive-demo">
+                            <h4>Практика: Манипуляция элементами</h4>
+                            <div class="demo-container" id="manipulation-demo">
+                                <div class="demo-box" id="box-to-change">
+                                    <h4>Измени меня</h4>
+                                    <p>Нажмите кнопки ниже</p>
+                                </div>
+                            </div>
+                            <div class="demo-buttons">
+                                <button class="demo-btn" id="create-element">Создать элемент</button>
+                                <button class="demo-btn" id="remove-element">Удалить элемент</button>
+                                <button class="demo-btn" id="change-text">Изменить текст (textContent)</button>
+                                <button class="demo-btn" id="set-html">Вставить HTML (innerHTML)</button>
+                                <button class="demo-btn" id="clear-content">Очистить содержимое</button>
+                                <button class="demo-btn" id="reset-manipulation">Сбросить</button>
+                            </div>
+                            <div class="demo-result" id="manipulation-result"></div>
+                        </div>
+
+                        <div class="note note--info">
+                            <strong>Пример из жизни:</strong>
+                            <br />
+                            JavaScript на сайте новостей создает новые элементы для каждой свежей статьи, а старые удаляет — так страница всегда актуальна.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Динамическое создание множества элементов -->
+                <section class="section" id="dom-multiple">
+                    <div class="container">
+                        <h2>Динамическое создание множества элементов</h2>
+
+                        <div class="note-block">
+                            <p class="note note--info">
+                                Для динамического добавления сразу нескольких элементов (например, пунктов списка, карточек, блоков) — используй
+                                <strong>циклы</strong>
+                                и
+                                <code>createElement</code>
+                                .
+                                <br />
+                                Это универсальный способ для работы с массивами данных и шаблонами.
+                            </p>
+                        </div>
+
+                        <!-- Создание элементов в цикле -->
+                        <h3>Добавить сразу несколько элементов</h3>
+                        <p class="note">
+                            <strong><code>createElement</code></strong>
+                            — создает новый элемент;
+                            <strong><code>appendChild</code></strong>
+                            (или
+                            <code>append</code>
+                            ) — вставляет в DOM.
+                            <br />
+                            Всё повторяется в цикле!
+                        </p>
+                        <h4>Примеры:</h4>
+                        <div class="grid-column-100">
+                            <div>
+                                <p><b>Пример: добавить 3 пункта списка</b></p>
+                                <div class="code-block">
+                                    <pre><code>// HTML:
+&lt;ul id="my-list"&gt;&lt;/ul&gt;
+
+// JS:
+const list = document.getElementById("my-list");
+for (let i = 1; i &lt;= 3; i++) {
+  const listItem = document.createElement("li");
+  listItem.textContent = `Пункт ${i}`;
+  list.appendChild(listItem);
+}</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p><b>Добавление карточек из массива</b></p>
+                                <div class="code-block">
+                                    <pre><code>const users = ["Иван", "Ольга", "Сергей"];
+const box = document.getElementById("cards");
+users.forEach(name =&gt; {
+  const card = document.createElement("div");
+  card.className = "user-card";
+  card.textContent = name;
+  box.appendChild(card);
+});</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p><b>Оптимизация: вставка одним действием</b></p>
+                                <div class="code-block">
+                                    <pre><code>// Сначала в память, потом в DOM:
+const frag = document.createDocumentFragment();
+for (let i = 1; i &lt;= 5; i++) {
+  const li = document.createElement("li");
+  li.textContent = `Пункт ${i}`;
+  frag.appendChild(li);
+}
+list.appendChild(frag);</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Удалять сразу несколько элементов</h3>
+                        <p class="note">
+                            <strong><code>removeChild</code></strong>
+                            — удаляет по одному;
+                            <strong><code>replaceChildren([])</code></strong>
+                            — современный способ очистить контейнер.
+                            <br />
+                            Всё делается в цикле или разом!
+                        </p>
+                        <h4>Примеры:</h4>
+                        <div class="grid-column-100">
+                            <div>
+                                <p><b>Удалить все элементы списка вручную</b></p>
+                                <div class="code-block">
+                                    <pre><code>const list = document.getElementById("my-list");
+while (list.firstChild) {
+  list.removeChild(list.firstChild);
+}</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p><b>Современный способ: replaceChildren</b></p>
+                                <div class="code-block">
+                                    <pre><code>list.replaceChildren(); // Мгновенно удаляет все дочерние элементы</code></pre>
+                                    <button class="copy-btn">Скопировать</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Когда что использовать?</h3>
+                        <div class="example">
+                            <ul class="list-ul">
+                                <li>
+                                    Для генерации большого количества элементов — всегда используйте
+                                    <code>createElement</code>
+                                    в цикле.
+                                </li>
+                                <li>
+                                    Для очистки контейнера — используйте
+                                    <code>replaceChildren</code>
+                                    или удаляйте по одному в цикле.
+                                </li>
+                                <li>
+                                    Для ускорения — используйте
+                                    <code>DocumentFragment</code>
+                                    и вставку одним действием.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h3>Безопасность</h3>
+                        <div class="example">
+                            <ul class="list-ul">
+                                <li>
+                                    В цикле всегда используйте
+                                    <code>textContent</code>
+                                    для добавления текста.
+                                </li>
+                                <li>
+                                    Не вставляйте массивы данных через
+                                    <code>innerHTML</code>
+                                    — это опасно для XSS!
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="code-block" style="margin-top: 0.5rem">
+                            <pre><code>const li = document.createElement('li');
+li.textContent = userInput; // безопасно, даже если userInput содержит теги!
+list.appendChild(li);</code></pre>
+                            <button class="copy-btn">Скопировать</button>
+                        </div>
+
+                        <div class="interactive-demo">
+                            <h4>Практика: Множественное создание и удаление</h4>
+                            <div class="demo-container" id="multiple-demo">
+                                <ul id="my-list"></ul>
+                            </div>
+                            <div class="demo-buttons">
+                                <button class="demo-btn" id="add-items">Добавить пункты</button>
+                                <button class="demo-btn" id="clear-list">Очистить список</button>
+                            </div>
+                            <div class="demo-result" id="multiple-result"></div>
+                        </div>
+                        <div class="note note--info">
+                            <strong>Пример из жизни:</strong>
+                            <br />
+                            В интернет-магазине при смене категории — все карточки товаров пересоздаются и старые удаляются.
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+
+        <script>
+            // Демо: Получение элементов
+            function setupSelectionDemo() {
+                document.getElementById("select-by-id").addEventListener("click", () => {
+                    const element = document.getElementById("demo-box1");
+                    showResult("selection-result", `Найден элемент с ID "demo-box1": ${element.outerHTML}`);
+                });
+                document.getElementById("select-by-class").addEventListener("click", () => {
+                    const elements = document.getElementsByClassName("demo-item");
+                    showResult("selection-result", `Найдено элементов: ${elements.length}`);
+                });
+                document.getElementById("select-by-tag").addEventListener("click", () => {
+                    const elements = document.getElementsByTagName("div");
+                    showResult("selection-result", `Найдено div элементов: ${elements.length}`);
+                });
+                document.getElementById("select-by-query").addEventListener("click", () => {
+                    const element = document.querySelector(".demo-special");
+                    showResult("selection-result", `Найден специальный элемент: ${element.outerHTML}`);
+                });
+            }
+
+            // Демо: Манипуляция элементами
+            function setupManipulationDemo() {
+                // Получаем контейнер для демо
+                const demoContainer = document.getElementById("manipulation-demo");
+
+                // 1. Создать элемент
+                document.getElementById("create-element").addEventListener("click", () => {
+                    const newElement = document.createElement("div");
+                    newElement.className = "demo-box";
+                    newElement.innerHTML = "<h4>Новый элемент</h4><p>Создан динамически</p>";
+                    demoContainer.appendChild(newElement);
+                    showResult("manipulation-result", "Создан новый элемент");
+                });
+                // 2. Удалить элемент (удаляет последний demo-box, включая основной, если он остался один)
+                document.getElementById("remove-element").addEventListener("click", () => {
+                    const boxes = demoContainer.querySelectorAll(".demo-box");
+                    if (boxes.length > 0) {
+                        const lastBox = boxes[boxes.length - 1];
+                        demoContainer.removeChild(lastBox);
+                        showResult("manipulation-result", "Удалён последний элемент");
+                    } else {
+                        showResult("manipulation-result", "Нет элементов для удаления");
+                    }
+                });
+
+                // 3. Изменить текст (textContent) для всех demo-box
+                document.getElementById("change-text").addEventListener("click", () => {
+                    const boxes = demoContainer.querySelectorAll(".demo-box");
+                    let changed = 0;
+                    boxes.forEach((box) => {
+                        const h4 = box.querySelector("h4");
+                        const p = box.querySelector("p");
+                        if (h4) h4.textContent = "Текст изменен!";
+                        if (p) p.textContent = "Мы изменили текст этого элемента";
+                        changed++;
+                    });
+                    showResult("manipulation-result", changed > 0 ? "Текст всех элементов изменен" : "Нет элементов для изменения");
+                });
+
+                // 4. Вставить HTML (innerHTML) для всех demo-box
+                document.getElementById("set-html").addEventListener("click", () => {
+                    const boxes = demoContainer.querySelectorAll(".demo-box");
+                    let changed = 0;
+                    boxes.forEach((box) => {
+                        box.innerHTML = "<h4>HTML добавлен!</h4><p><i>Вставили HTML-разметку</i></p>";
+                        changed++;
+                    });
+                    showResult("manipulation-result", changed > 0 ? "Содержимое всех элементов изменено через innerHTML" : "Нет элементов для изменения");
+                });
+
+                // 5. Очистить содержимое для всех demo-box
+                document.getElementById("clear-content").addEventListener("click", () => {
+                    const boxes = demoContainer.querySelectorAll(".demo-box");
+                    let cleared = 0;
+                    boxes.forEach((box) => {
+                        box.textContent = "";
+                        cleared++;
+                    });
+                    showResult("manipulation-result", cleared > 0 ? "Содержимое всех элементов очищено" : "Нет элементов для очистки");
+                });
+
+                // 6. Сбросить (восстановить изначальное состояние)
+                document.getElementById("reset-manipulation").addEventListener("click", () => {
+                    // Восстанавливаем основной элемент, если был удален
+                    let box = document.getElementById("box-to-change");
+                    if (!box) {
+                        box = document.createElement("div");
+                        box.className = "demo-box";
+                        box.id = "box-to-change";
+                        box.innerHTML = "<h4>Измени меня</h4><p>Нажмите кнопки ниже</p>";
+                        demoContainer.insertBefore(box, demoContainer.firstChild);
+                    } else {
+                        box.innerHTML = "<h4>Измени меня</h4><p>Нажмите кнопки ниже</p>";
+                        box.className = "demo-box";
+                        box.style = "";
+                    }
+                    // Удаляем все demo-box кроме основного
+                    Array.from(demoContainer.querySelectorAll(".demo-box")).forEach((child) => {
+                        if (child !== box) demoContainer.removeChild(child);
+                    });
+                    const result = document.getElementById("manipulation-result");
+                    if (result) result.style.display = "none";
+                });
+            }
+
+            // Демо: События
+            function setupEventDemo() {
+                function eventHandler() {
+                    console.log("Обработчик события выполнен!");
+                    showResult("event-result", "Обработчик события выполнен! Проверьте консоль браузера.");
+                }
+                document.getElementById("add-event").addEventListener("click", () => {
+                    document.getElementById("event-box").addEventListener("mouseover", eventHandler);
+                    showResult("event-result", "Обработчик события mouseover добавлен");
+                });
+                document.getElementById("remove-event").addEventListener("click", () => {
+                    document.getElementById("event-box").removeEventListener("mouseover", eventHandler);
+                    showResult("event-result", "Обработчик события mouseover удален");
+                });
+            }
+
+            // Демо: Делегирование событий
+            function setupDelegationDemo() {
+                document.getElementById("event-delegation-demo").addEventListener("click", (e) => {
+                    if (e.target.matches(".demo-item")) {
+                        const id = e.target.getAttribute("data-id");
+                        showResult("delegation-result", `Клик по элементу с ID: ${id}`);
+                    }
+                    if (e.target.matches('[data-action="add"]')) {
+                        const container = document.getElementById("items-container");
+                        const itemCount = container.children.length + 1;
+                        const newItem = document.createElement("div");
+                        newItem.className = "demo-item";
+                        newItem.setAttribute("data-id", itemCount);
+                        newItem.textContent = `Элемент ${itemCount} (новый)`;
+                        container.appendChild(newItem);
+                        showResult("delegation-result", `Добавлен новый элемент с ID: ${itemCount}`);
+                    }
+                });
+            }
+
+            // Вспомогательная функция для вывода результата
+            function showResult(id, text) {
+                const result = document.getElementById(id);
+                if (result) {
+                    result.textContent = text;
+                    result.style.display = "block";
+                }
+            }
+
+            // Демо: Множественное создание и удаление элементов
+            function setupMultipleDemo() {
+                const list = document.getElementById("my-list");
+                const result = document.getElementById("multiple-result");
+
+                // Добавить пункты
+                document.getElementById("add-items").addEventListener("click", () => {
+                    // Создаём элементы через DocumentFragment для оптимизации
+                    const frag = document.createDocumentFragment();
+                    for (let i = 1; i <= 5; i++) {
+                        const li = document.createElement("li");
+                        li.textContent = `Пункт ${i}`;
+                        frag.appendChild(li);
+                    }
+                    list.appendChild(frag);
+                    result.textContent = "Добавлены 5 пунктов";
+                    result.style.display = "block";
+                });
+
+                // Очистить список
+                document.getElementById("clear-list").addEventListener("click", () => {
+                    list.replaceChildren();
+                    result.textContent = "Список очищен";
+                    result.style.display = "block";
+                });
+            }
+
+            // Инициализация всех демо функций
+            function initDomDemo() {
+                setupCopyButtons();
+                setupSmoothScroll();
+                setupSelectionDemo();
+                setupManipulationDemo();
+                setupEventDemo();
+                setupDelegationDemo();
+                setupMultipleDemo();
+            }
+            // Вызвать инициализацию после загрузки DOM
+            document.addEventListener("DOMContentLoaded", initDomDemo);
+        </script>
+    </body>
+</html>

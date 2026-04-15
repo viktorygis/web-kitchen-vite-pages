@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Каскадность и Наследование в CSS</title>
+<meta name="description" content="Обзор каскадности и наследования в CSS" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        .value-display {
+            padding: 20px 0 0 0;
+            text-align: center;
+            margin: 0;
+            font-weight: 600;
+        }
+        .example-box {
+            background-color: var(--light-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .interactive-demo {
+            background-color: #f0f7ff;
+            border: 1px solid #c2e0ff;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+        }
+
+        .demo-element {
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+        }
+
+        .inheritance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .inheritance-card {
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .inheritance-card h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .inheritance-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <div class="nav-tabs">
+                    <a href="#box-model-intro" class="active">Блочная модель</a>
+                    <a href="#box-sizing-compare">Сравнение box-sizing</a>
+                    <a href="#border-box-tip">Рекомендация border-box</a>
+                    <a href="#sizes-properties">Управление размерами</a>
+                </div>
+
+                <!-- Введение: Блочная модель и box-sizing -->
+                <section class="section" id="box-model-intro">
+                    <div class="container">
+                        <h1>Блочная модель и box-sizing</h1>
+                        <p class="note">
+                            <b>Блочная модель CSS</b>
+                            — это схема, по которой рассчитываются размеры любого элемента. В неё входят:
+                            <br />
+                            <b>контент</b>
+                            (content),
+                            <b>внутренние отступы</b>
+                            (padding),
+                            <b>границы</b>
+                            (border) и
+                            <b>внешние отступы</b>
+                            (margin).
+                            <br />
+                            <code>box-sizing</code>
+                            — свойство, определяющее, как браузер вычисляет ширину и высоту элемента: учитывает ли только контент или также padding и border.
+                        </p>
+                        <div class="box-model-demo">
+                            <div class="box">
+                                <span class="box-label content-label">Контент</span>
+                                <span class="box-label padding-label">Padding</span>
+                                <span class="box-label border-label">Border</span>
+                                <span class="box-label margin-label">Margin</span>
+                            </div>
+                        </div>
+                        <table class="table-note">
+                            <thead>
+                                <tr>
+                                    <th style="width: 20%">Значение</th>
+                                    <th style="width: 40%">Описание</th>
+                                    <th style="width: 30%">Формула расчета ширины</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>content-box</code></td>
+                                    <td>
+                                        По умолчанию.
+                                        <br />
+                                        width и height включают только контент, padding и border добавляются сверху.
+                                    </td>
+                                    <td>Общая ширина = width + padding + border</td>
+                                </tr>
+                                <tr>
+                                    <td><code>border-box</code></td>
+                                    <td>width и height включают контент, padding и border.</td>
+                                    <td>Общая ширина = width (всё внутри)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Сравнение box-sizing -->
+                <section class="section" id="box-sizing-compare">
+                    <div class="container">
+                        <h2>
+                            Сравнение
+                            <code>content-box</code>
+                            и
+                            <code>border-box</code>
+                        </h2>
+                        <div>
+                            <h4>content-box (по умолчанию)</h4>
+                            <div class="grid-column-50">
+                                <pre><code>div {
+  width: 500px;
+  padding: 20px;
+  border: 5px solid black;
+}</code></pre>
+                                <div class="example">
+                                    <p style="width: 500px; padding: 20px; border: 5px solid black; background: #fff197; text-align: center; box-sizing: content-box">
+                                        Общая ширина = 500px (content) + 20px × 2 (padding) + 5px × 2 (border) =
+                                        <b>550px</b>
+                                        <br />
+                                        <b>box-sizing: content-box;</b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <h4>border-box</h4>
+
+                            <div class="grid-column-50">
+                                <pre><code>div {
+  width: 500px;
+  padding: 20px;
+  border: 5px solid black;
+  box-sizing: border-box;
+}</code></pre>
+                                <div class="example">
+                                    <p style="width: 500px; padding: 20px; border: 5px solid black; box-sizing: border-box; background: #d2f8e3; text-align: center">
+                                        Общая ширина =
+                                        <b>500px</b>
+                                        (content + padding + border)
+                                        <br />
+                                        <b>box-sizing: border-box;</b>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4>Интерактивная демонстрация box-sizing:</h4>
+                        <div class="interactive-demo">
+                            <div class="controls">
+                                <div class="control-group">
+                                    <label for="box-sizing">box-sizing:</label>
+                                    <select id="box-sizing" onchange="updateBoxModel()">
+                                        <option value="content-box">content-box</option>
+                                        <option value="border-box" selected>border-box</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="width">
+                                        Ширина:
+                                        <span id="width-value">200</span>
+                                        px
+                                    </label>
+                                    <input type="range" id="width" min="100" max="300" value="200" oninput="updateBoxModel()" />
+                                </div>
+                                <div class="control-group">
+                                    <label for="padding">
+                                        Padding:
+                                        <span id="padding-value">20</span>
+                                        px
+                                    </label>
+                                    <input type="range" id="padding" min="0" max="50" value="20" oninput="updateBoxModel()" />
+                                </div>
+                                <div class="control-group">
+                                    <label for="border">
+                                        Border:
+                                        <span id="border-value">15</span>
+                                        px
+                                    </label>
+                                    <input type="range" id="border" min="0" max="30" value="15" oninput="updateBoxModel()" />
+                                </div>
+                            </div>
+                            <div class="box-model-demo">
+                                <div id="box-model-demo" style="width: 200px; padding: 20px; border: 15px solid #3498db; background-color: #2ecc71; color: white; text-align: center; margin: 0 auto; box-sizing: border-box; transition: width 0.2s, padding 0.2s, border 0.2s">
+                                    Фактическая ширина:
+                                    <span id="actual-width">200</span>
+                                    px
+                                </div>
+                                <p class="value-display">
+                                    width:
+                                    <span id="formula-width">200</span>
+                                    px + padding:
+                                    <span id="formula-padding">40</span>
+                                    px (20px × 2) + border:
+                                    <span id="formula-border">30</span>
+                                    px (15px × 2) =
+                                    <span id="total-width">270</span>
+                                    px
+                                </p>
+                            </div>
+                        </div>
+                        <script>
+                            function updateBoxModel() {
+                                // Получаем значения
+                                const width = parseInt(document.getElementById("width").value, 10);
+                                const padding = parseInt(document.getElementById("padding").value, 10);
+                                const border = parseInt(document.getElementById("border").value, 10);
+                                const boxSizing = document.getElementById("box-sizing").value;
+
+                                // Обновляем отображение значений
+                                document.getElementById("width-value").textContent = width;
+                                document.getElementById("padding-value").textContent = padding;
+                                document.getElementById("border-value").textContent = border;
+
+                                // Формула для расчета полной ширины
+                                let totalWidth;
+                                let actualWidth;
+                                let formulaPadding = padding * 2;
+                                let formulaBorder = border * 2;
+
+                                if (boxSizing === "content-box") {
+                                    totalWidth = width + formulaPadding + formulaBorder;
+                                    actualWidth = width;
+                                } else {
+                                    totalWidth = width;
+                                    actualWidth = width;
+                                }
+
+                                // Обновляем стили блока
+                                const boxDemo = document.getElementById("box-model-demo");
+                                boxDemo.style.width = width + "px";
+                                boxDemo.style.padding = padding + "px";
+                                boxDemo.style.border = border + "px solid #3498db";
+                                boxDemo.style.boxSizing = boxSizing;
+
+                                // Обновляем текст
+                                document.getElementById("actual-width").textContent = actualWidth;
+                                document.getElementById("formula-width").textContent = width;
+                                document.getElementById("formula-padding").textContent = formulaPadding;
+                                document.getElementById("formula-border").textContent = formulaBorder;
+                                document.getElementById("total-width").textContent = totalWidth;
+
+                                // Меняем формулу отображения в зависимости от box-sizing
+                                if (boxSizing === "content-box") {
+                                    document.querySelector(".value-display").innerHTML =
+                                        'width: <span id="formula-width">' +
+                                        width +
+                                        '</span>px + padding: <span id="formula-padding">' +
+                                        formulaPadding +
+                                        "</span>px (" +
+                                        padding +
+                                        'px × 2) + border: <span id="formula-border">' +
+                                        formulaBorder +
+                                        "</span>px (" +
+                                        border +
+                                        'px × 2) = <span id="total-width">' +
+                                        totalWidth +
+                                        "</span>px";
+                                } else {
+                                    document.querySelector(".value-display").innerHTML = 'Общая ширина = <span id="total-width">' + totalWidth + "</span>px (width + padding + border внутри)";
+                                }
+                            }
+
+                            // Инициализация при загрузке
+                            document.addEventListener("DOMContentLoaded", function () {
+                                updateBoxModel();
+                            });
+                        </script>
+                    </div>
+                </section>
+
+                <!-- Рекомендация: Используйте border-box -->
+                <section class="section" id="border-box-tip">
+                    <div class="container">
+                        <h2>
+                            Совет: всегда используйте
+                            <code>box-sizing: border-box</code>
+                        </h2>
+                        <p class="note">
+                            Для современной верстки практически всегда лучше использовать
+                            <code>box-sizing: border-box</code>
+                            для всех элементов.
+                            <br />
+                            Это избавит вас от неожиданных переполнений, сложных расчетов и проблем с адаптивностью.
+                        </p>
+                        <pre><code>*, *::before, *::after {
+  box-sizing: border-box;
+}</code></pre>
+                        <ul class="list-ul">
+                            <li>Блоки легко размещать и делать адаптивными</li>
+                            <li>Размеры элементов всегда предсказуемы</li>
+                            <li>Верстка становится проще и стабильнее</li>
+                        </ul>
+
+                        <div class="note">
+                            💡 Важно помнить:
+
+                            <ul class="list-ul">
+                                <li>
+                                    <b>content-box</b>
+                                    — считает только содержимое, но добавляет отступы и границы сверху.
+                                </li>
+                                <li>
+                                    <b>border-box</b>
+                                    — включает в ширину и высоту всё: содержимое, отступы и границы.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section" id="sizes-properties">
+                    <div class="container">
+                        <h2>Управление размерами элементов в CSS</h2>
+                        <p class="note">В CSS ты можешь гибко управлять размерами с помощью различных свойств:</p>
+                        <ul class="list-ul">
+                            <li>
+                                <b>width</b>
+                                и
+                                <b>height</b>
+                                — задают ширину и высоту содержимого.
+                                <br />
+                                Если используется
+                                <code>box-sizing: border-box</code>
+                                , ширина и высота включают padding и border.
+                            </li>
+                            <li>
+                                <b>max-width</b>
+                                и
+                                <b>max-height</b>
+                                — ограничивают максимальную ширину и высоту элемента.
+                                <br />
+                                Элемент никогда не будет больше этого значения, даже если родитель больше.
+                            </li>
+                            <li>
+                                <b>min-width</b>
+                                и
+                                <b>min-height</b>
+                                — задают минимальные размеры.
+                                <br />
+                                Элемент не уменьшится меньше указанного значения.
+                            </li>
+                        </ul>
+                        <h4>Пример</h4>
+                        <pre><code>div {
+  width: 50%;        /* Половина ширины родителя */
+  max-width: 300px;  /* Не больше 300px */
+  min-width: 100px;  /* Не меньше 100px */
+}</code></pre>
+                        <div class="example">
+                            <div style="width: 50%; max-width: 300px; min-width: 100px; background: #d6eaff; padding: 16px; border-radius: 5px; text-align: center; margin: 0 auto">
+                                Этот блок всегда будет от 100px до 300px шириной и займёт 50% ширины родителя, если позволяет пространство.
+                                <br />
+                                Попробуй изменить размер окна браузера!
+                            </div>
+                        </div>
+
+                        <!-- Таблица сравнения свойств для одного и того же элемента -->
+                        <h4>Таблица свойств для одного элемента</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Свойство</th>
+                                    <th>CSS</th>
+                                    <th>Визуальный пример</th>
+                                    <th>Комментарий</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>width</code></td>
+                                    <td><code>width: 200px;</code></td>
+                                    <td>
+                                        <div class="example">
+                                            <div style="width: 200px; background: #e1f0fa; padding: 8px; border-radius: 3px; text-align: center; margin: 0 auto">width: 200px</div>
+                                        </div>
+                                    </td>
+                                    <td>Фиксированная ширина: всегда 200px</td>
+                                </tr>
+                                <tr>
+                                    <td><code>height</code></td>
+                                    <td><code>height: 60px;</code></td>
+                                    <td>
+                                        <div class="example">
+                                            <div style="width: 180px; height: 60px; background: #fff197; padding: 8px; border-radius: 3px; text-align: center; margin: 0 auto">height: 60px</div>
+                                        </div>
+                                    </td>
+                                    <td>Фиксированная высота: всегда 60px</td>
+                                </tr>
+                                <tr>
+                                    <td><code>max-width</code></td>
+                                    <td><code>max-width: 120px;</code></td>
+                                    <td>
+                                        <div class="example">
+                                            <div style="width: 90%; max-width: 120px; background: #d2f8e3; padding: 8px; border-radius: 3px; text-align: center; margin: 0 auto">max-width: 120px</div>
+                                        </div>
+                                    </td>
+                                    <td>Ширина не превысит 120px</td>
+                                </tr>
+                                <tr>
+                                    <td><code>min-width</code></td>
+                                    <td><code>min-width: 80px;</code></td>
+                                    <td>
+                                        <div class="example">
+                                            <div style="width: 30px; min-width: 80px; background: #ffe1e1; padding: 8px; border-radius: 3px; text-align: center; margin: 0 auto">min-width: 80px</div>
+                                        </div>
+                                    </td>
+                                    <td>Ширина не станет меньше 80px</td>
+                                </tr>
+                                <tr>
+                                    <td><code>max-height</code></td>
+                                    <td><code>max-height: 40px;</code></td>
+                                    <td>
+                                        <div class="example">
+                                            <div style="height: 80px; max-height: 40px; background: #e1ffe8; padding: 8px; border-radius: 3px; text-align: center; margin: 0 auto">max-height: 40px</div>
+                                        </div>
+                                    </td>
+                                    <td>Высота не превысит 40px</td>
+                                </tr>
+                                <tr>
+                                    <td><code>min-height</code></td>
+                                    <td><code>min-height: 50px;</code></td>
+                                    <td>
+                                        <div class="example">
+                                            <div style="height: 20px; min-height: 50px; background: #f9e1ff; padding: 8px; border-radius: 3px; text-align: center; margin: 0 auto">min-height: 50px</div>
+                                        </div>
+                                    </td>
+                                    <td>Высота не станет меньше 50px</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+    </body>
+</html>

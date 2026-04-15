@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Функции в JavaScript — основы и примеры</title>
+<meta name="description" content="" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+            <main class="page">
+                <!-- Навигация по вкладкам -->
+                <nav class="nav-tabs">
+                    <a href="#fn-intro" class="active">Введение</a>
+                    <a href="#fn-create">Создание</a>
+                    <a href="#fn-call">Вызов</a>
+                    <a href="#fn-params">Параметры</a>
+                    <a href="#fn-return">Возврат</a>
+                    <a href="#fn-scope">Область видимости</a>
+                    <a href="#fn-defaults">По умолчанию</a>
+                    <a href="#fn-naming">Именование</a>
+                    <a href="#fn-good">Практики</a>
+                    <a href="#fn-summary">Сводка</a>
+                </nav>
+
+                <!-- Введение -->
+                <section class="section" id="fn-intro">
+                    <div class="container">
+                        <h1>Функции в JavaScript</h1>
+
+                        <p class="note">
+                            <strong>Функции</strong>
+                            — это основа программирования. Это блоки кода, которые выполняют конкретную задачу, и их можно запускать много раз. Они помогают:
+                        </p>
+
+                        <ul class="list-ul">
+                            <li>
+                                <strong>Повторно использовать код</strong>
+                                : написал один раз — вызывай когда нужно.
+                            </li>
+                            <li>
+                                <strong>Организовывать программу</strong>
+                                : дели большой код на небольшие понятные части.
+                            </li>
+                            <li>
+                                <strong>Делать код читаемым</strong>
+                                : хорошая функция = понятная мини-команда.
+                            </li>
+                        </ul>
+
+                        <div class="example" style="margin-top: 20px">
+                            <h4>Что такое функция простыми словами?</h4>
+                            <p>Представь рецепт. Ты записал шаги приготовления блюда — это и есть функция. Рецепт можно использовать снова и снова. Чтобы «приготовить блюдо» — нужно выполнить рецепт. Чтобы выполнить код функции — её нужно вызвать.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Создание функции -->
+                <section class="section" id="fn-create">
+                    <div class="container">
+                        <h2>Как создать функцию?</h2>
+
+                        <p>
+                            Используй ключевое слово
+                            <code>function</code>
+                            , за ним — имя функции, круглые скобки
+                            <code>()</code>
+                            , затем фигурные
+                            <code>{ }</code>
+                            с кодом внутри.
+                        </p>
+
+                        <ol class="list-ol">
+                            <li>
+                                Напиши
+                                <code>function</code>
+                            </li>
+                            <li>
+                                Придумай понятное имя (например,
+                                <code>greet</code>
+                                )
+                            </li>
+                            <li>Добавь круглые скобки (там позже будут параметры)</li>
+                            <li>В фигурных скобках — что должна делать функция</li>
+                        </ol>
+
+                        <div class="example">
+                            <h4>Пример:</h4>
+                            <pre><code>function greet() {
+  console.log("Привет, мир!");
+}</code></pre>
+                        </div>
+
+                        <p class="note">
+                            <strong>Совет:</strong>
+                            Имя должно описывать действие:
+                            <code>printReport</code>
+                            ,
+                            <code>loadUser</code>
+                            ,
+                            <code>calcTotal</code>
+                            .
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Вызов функции -->
+                <section class="section" id="fn-call">
+                    <div class="container">
+                        <h2>Как вызвать функцию?</h2>
+
+                        <p>
+                            Чтобы выполнить функцию — напиши её имя и добавь круглые скобки:
+                            <code>greet();</code>
+                        </p>
+
+                        <div class="example">
+                            <h4>Пример вызова:</h4>
+                            <pre><code>function greet() {
+  console.log("Привет!");
+}
+
+greet(); // Вызов функции
+greet(); // Можно снова
+greet(); // И ещё раз</code></pre>
+                        </div>
+
+                        <p class="note">
+                            <strong>Что происходит при вызове?</strong>
+                            <br />
+                            JS находит функцию → выполняет её код → возвращается к месту вызова.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Параметры -->
+                <section class="section" id="fn-params">
+                    <div class="container">
+                        <h2>Параметры и аргументы</h2>
+                        <p>
+                            <strong>Параметры</strong>
+                            — «переменные-заглушки» внутри круглых скобок при объявлении функции.
+                            <br />
+                            <strong>Аргументы</strong>
+                            — реальные значения, которые передаём при вызове.
+                        </p>
+
+                        <div class="example">
+                            <h4>Простой пример:</h4>
+                            <pre><code>function greet(name) {        // name — параметр
+  console.log("Привет, " + name + "!");
+}
+
+greet("Кодик");               // "Кодик" — аргумент
+// Привет, Кодик!</code></pre>
+                        </div>
+
+                        <div class="example">
+                            <h4>Несколько параметров:</h4>
+                            <pre><code>function introduce(name, age) {
+  console.log("Меня зовут " + name + ", мне " + age + " лет.");
+}
+
+introduce("Лена", 25);
+// Меня зовут Лена, мне 25 лет.</code></pre>
+                        </div>
+
+                        <p class="note">
+                            <strong>Советы:</strong>
+                            <br />
+                            Имена параметров — понятные. Можно передавать любые типы: строки, числа, объекты, массивы, функции.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Возврат -->
+                <section class="section" id="fn-return">
+                    <div class="container">
+                        <h2>Возврат значения</h2>
+
+                        <p>
+                            Функции в JavaScript могут не только выполнять код, но и
+                            <strong>возвращать результат</strong>
+                            . Для этого используется ключевое слово
+                            <code>return</code>
+                            . Как только интерпретатор встречает
+                            <code>return</code>
+                            — выполнение функции прекращается, и указанное значение передаётся «наружу».
+                        </p>
+
+                        <div class="note">
+                            <strong>Что можно вернуть?</strong>
+                            Любое значение: число, строку, булево, массив, объект,
+                            <code>null</code>
+                            ,
+                            <code>undefined</code>
+                            , другую функцию.
+                        </div>
+
+                        <div class="example">
+                            <h4>Базовый пример</h4>
+                            <pre><code>function sum(a, b) {
+  return a + b; // Возвращаем сумму
+}
+
+let result = sum(5, 10);         // Сохраняем результат
+console.log("Сумма:", result);   // Сумма: 15
+
+// Пояснение:
+// 1. sum получает a и b
+// 2. вычисляет a + b
+// 3. возвращает значение в место вызова
+// 4. мы сохраняем его в result и используем дальше
+</code></pre>
+                        </div>
+
+                        <div class="grid-column-50" style="margin-top: 24px">
+                            <div class="example">
+                                <h4>С return</h4>
+                                <pre><code>function multiply(a, b) {
+  return a * b;
+}
+
+let m = multiply(3, 4);
+console.log(m); // 12</code></pre>
+                            </div>
+                            <div class="example">
+                                <h4>Без return</h4>
+                                <pre><code>function logMultiply(a, b) {
+  console.log(a * b);
+}
+
+let v = logMultiply(3, 4); // выведет 12
+console.log(v);            // undefined</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="example">
+                            <h4>Возврат объекта / функции</h4>
+                            <pre><code>function makeUser(name) {
+  return { name, created: Date.now() };
+}
+
+function makeAdder(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+const user = makeUser("Аня");
+console.log(user.name); // "Аня"
+
+const add5 = makeAdder(5);
+console.log(add5(3)); // 8</code></pre>
+                        </div>
+
+                        <div class="note">
+                            <strong>Почему это полезно?</strong>
+                            <ul class="list-ul">
+                                <li>Можно сохранить результат и использовать позже</li>
+                                <li>Код становится модульным и переиспользуемым</li>
+                                <li>Проще тестировать (функция возвращает «чистый» результат)</li>
+                                <li>Легче комбинировать функции между собой</li>
+                            </ul>
+                        </div>
+
+                        <div class="example">
+                            <h4>Остановка выполнения после return</h4>
+                            <pre><code>function check(n) {
+  if (n < 0) {
+    return "Отрицательное";
+  }
+  console.log("Это сообщение выполнится только если n >= 0");
+  return "Неотрицательное";
+}</code></pre>
+                        </div>
+
+                        <div class="warning">
+                            <strong>Опасность автоматической вставки точки с запятой (ASI):</strong>
+                            <br />
+                            Не переносите выражение на новую строку сразу после
+                            <code>return</code>
+                            .
+                            <pre><code>function bad() {
+  return
+  5; // интерпретатор вставит ; после return → вернёт undefined
+}
+
+function good() {
+  return 5; // правильно
+}</code></pre>
+                        </div>
+
+                        <div class="example">
+                            <h4>Мини-шпаргалка</h4>
+                            <pre><code>// Возврат простого значения
+return 42;
+
+// Возврат выражения
+return a * (b + c);
+
+// Возврат объекта
+return { ok: true };
+
+// Возврат ничего (явно)
+return;          // undefined
+
+// Без return (неявно)
+function f() {}
+f(); // undefined</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Область видимости -->
+                <section class="section" id="fn-scope">
+                    <div class="container">
+                        <h2>Область видимости (scope)</h2>
+
+                        <p>
+                            <strong>Область видимости</strong>
+                            — это зона, в которой переменная доступна. Понимание различий помогает избежать ошибок и конфликтов имён.
+                        </p>
+
+                        <div class="grid-column-50">
+                            <div class="example">
+                                <h4>👉 Локальные переменные</h4>
+                                <ul class="list-ul">
+                                    <li>Создаются внутри функции</li>
+                                    <li>Видны только внутри этой функции</li>
+                                    <li>Недоступны снаружи</li>
+                                </ul>
+                                <pre><code>function test() {
+  let localVar = "Я локальная!";
+  console.log(localVar); // Видна тут
+}
+
+test();
+console.log(localVar); // Ошибка: localVar is not defined</code></pre>
+                            </div>
+
+                            <div class="example">
+                                <h4>🌍 Глобальные переменные</h4>
+                                <ul class="list-ul">
+                                    <li>Создаются вне функций (в верхнем уровне файла/скрипта)</li>
+                                    <li>Доступны везде (если не в модульной изоляции)</li>
+                                    <li>Видны внутри функций</li>
+                                </ul>
+                                <pre><code>let globalVar = "Я глобальная!";
+
+function show() {
+  console.log(globalVar); // Видна
+}
+
+show();
+console.log(globalVar); // Тоже видна</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="example">
+                            <h4>Пример: локальная + глобальная вместе</h4>
+                            <pre><code>let globalVar = "Я глобальная!"; // Глобальная переменная
+
+function test() {
+  let localVar = "Я локальная!"; // Локальная
+  console.log(globalVar); // Видна
+  console.log(localVar);  // Видна
+}
+
+test();
+
+console.log(globalVar); // Видна
+console.log(localVar);  // Ошибка! localVar не существует здесь</code></pre>
+                        </div>
+
+                        <div class="grid-column-50" style="margin-top: 24px">
+                            <div class="example">
+                                <h4>Изменение глобальной внутри функции</h4>
+                                <pre><code>let count = 0;
+
+function inc() {
+  count++; // Меняем глобальную
+}
+
+inc();
+inc();
+console.log(count); // 2</code></pre>
+                            </div>
+                            <div class="example">
+                                <h4>«Затенение» (shadowing)</h4>
+                                <pre><code>let user = "Вася";
+
+function demo() {
+  let user = "Петя"; // Новая локальная, не изменяет глобальную
+  console.log(user); // Петя (локальная)
+}
+
+demo();
+console.log(user); // Вася (глобальная)</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="example">
+                            <h4>Функциональная область (var) vs блочная (let/const)</h4>
+                            <pre><code>if (true) {
+  var a = 1;      // function-scoped (утечёт наружу)
+  let b = 2;      // block-scoped
+  const c = 3;    // block-scoped
+}
+console.log(a); // 1
+console.log(b); // Ошибка
+console.log(c); // Ошибка</code></pre>
+                        </div>
+
+                        <div class="note">
+                            <strong>Советы:</strong>
+                            <ul class="list-ul">
+                                <li>Минимизируй количество глобальных переменных</li>
+                                <li>
+                                    Используй
+                                    <code>let</code>
+                                    /
+                                    <code>const</code>
+                                    вместо
+                                    <code>var</code>
+                                    для предсказуемой области видимости
+                                </li>
+                                <li>Давай переменным понятные имена в своей области</li>
+                                <li>
+                                    Избегай неявного создания глобальных (без
+                                    <code>let</code>
+                                    /
+                                    <code>const</code>
+                                    /
+                                    <code>var</code>
+                                    )
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="warning">
+                            <strong>Опасность:</strong>
+                            Случайно пропущенное ключевое слово может создать глобальную переменную (в нестрогом режиме):
+                            <pre><code>function oops() {
+  leaked = 42; // ❌ создаст глобальную leaked (если нет "use strict")
+}</code></pre>
+                            В строгом режиме (
+                            <code>"use strict"</code>
+                            ) это вызовет ошибку — и это хорошо.
+                        </div>
+
+                        <div class="example">
+                            <h4>Мини-шпаргалка</h4>
+                            <pre><code>// Локальная
+function f() {
+  let x = 10;
+}
+
+// Глобальная (в файле)
+let g = 5;
+
+// Затенение
+let value = 1;
+function show() {
+  let value = 2;
+  console.log(value); // 2
+}
+show();
+console.log(value);   // 1</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <!-- Значения по умолчанию -->
+                <section class="section" id="fn-defaults">
+                    <div class="container">
+                        <h2>Параметры по умолчанию</h2>
+                        <p>Если аргумент не передан — можно задать значение по умолчанию.</p>
+
+                        <div class="grid-column-50">
+                            <div class="example">
+                                <h4>ES6 способ:</h4>
+                                <pre><code>function greet(name = "Гость") {
+  console.log("Привет, " + name + "!");
+}
+
+greet();        // Привет, Гость!
+greet("Аня");   // Привет, Аня!</code></pre>
+                            </div>
+                            <div class="example">
+                                <h4>Старый способ:</h4>
+                                <pre><code>function greet(name) {
+  name = name || "Гость";
+  console.log("Привет, " + name + "!");
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <p class="note">
+                            <strong>Лучше</strong>
+                            использовать современный синтаксис
+                            <code>(param = value)</code>
+                            .
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Именование -->
+                <section class="section" id="fn-naming">
+                    <div class="container">
+                        <h2>Именование функций</h2>
+                        <p>Имя функции — глагол + уточнение. Оно должно отвечать на вопрос: «Что делает функция?»</p>
+
+                        <table class="table-note">
+                            <thead>
+                                <tr>
+                                    <th>Префикс</th>
+                                    <th>Смысл</th>
+                                    <th>Примеры</th>
+                                    <th>Что возвращает</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>get</code></td>
+                                    <td>Получить данные</td>
+                                    <td>getUser, getAge</td>
+                                    <td>Значение</td>
+                                </tr>
+                                <tr>
+                                    <td><code>set / update</code></td>
+                                    <td>Изменить данные</td>
+                                    <td>setTheme, updateUser</td>
+                                    <td>Обычно void</td>
+                                </tr>
+                                <tr>
+                                    <td><code>calc</code></td>
+                                    <td>Вычислить</td>
+                                    <td>calcTotal, calcAverage</td>
+                                    <td>Число</td>
+                                </tr>
+                                <tr>
+                                    <td><code>create</code></td>
+                                    <td>Создать что-то</td>
+                                    <td>createUser, createButton</td>
+                                    <td>Объект</td>
+                                </tr>
+                                <tr>
+                                    <td><code>is / has / can</code></td>
+                                    <td>Проверка</td>
+                                    <td>isReady, hasError</td>
+                                    <td>Boolean</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p class="note">
+                            <strong>Неудачные:</strong>
+                            <code>doStuff()</code>
+                            ,
+                            <code>handle()</code>
+                            ,
+                            <code>process()</code>
+                            — слишком общие.
+                            <br />
+                            <strong>Хорошие:</strong>
+                            <code>loadProfile()</code>
+                            ,
+                            <code>filterActiveUsers()</code>
+                            ,
+                            <code>formatDate()</code>
+                            .
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Лучшие практики -->
+                <section class="section" id="fn-good">
+                    <div class="container">
+                        <h2>Лучшие практики</h2>
+
+                        <div class="example">
+                            <h4>Плохой пример (делает слишком много):</h4>
+                            <pre><code>function processUser(user) {
+  if (!user.name || !user.email) {
+    alert("Ошибка");
+    return;
+  }
+  saveToDatabase(user);
+  sendWelcomeEmail(user.email);
+  updateUserList();
+}</code></pre>
+                        </div>
+
+                        <div class="example">
+                            <h4>Лучше разбить:</h4>
+                            <pre><code>function isValidUser(user) {
+  return Boolean(user.name && user.email);
+}
+
+function saveUser(user) {
+  saveToDatabase(user);
+}
+
+function notifyUser(user) {
+  sendWelcomeEmail(user.email);
+}
+
+function registerUser(user) {
+  if (!isValidUser(user)) {
+    throw new Error("Неполные данные");
+  }
+  saveUser(user);
+  notifyUser(user);
+  updateUserList();
+}</code></pre>
+                        </div>
+
+                        <p class="note">
+                            <strong>Почему так лучше?</strong>
+                            <br />
+                            Проще тестировать, легче читать, ниже связанность, выше переиспользование.
+                        </p>
+
+                        <div class="example">
+                            <h4>Функции как «живые комментарии»:</h4>
+                            <pre><code>function showPrimes(limit) {
+  for (let n = 2; n < limit; n++) {
+    if (isPrime(n)) {
+      console.log(n);
+    }
+  }
+}
+
+function isPrime(num) {
+  for (let d = 2; d < num; d++) {
+    if (num % d === 0) return false;
+  }
+  return true;
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Сводка -->
+                <section class="section" id="fn-summary">
+                    <div class="container">
+                        <h2>Сводка</h2>
+
+                        <div class="grid-column-50">
+                            <div class="example">
+                                <h4>Ключевые идеи:</h4>
+                                <ul class="list-ul">
+                                    <li>Функция — переиспользуемый блок кода</li>
+                                    <li>
+                                        Создаётся через
+                                        <code>function имя()</code>
+                                    </li>
+                                    <li>
+                                        Вызывается через
+                                        <code>имя()</code>
+                                    </li>
+                                    <li>Параметры принимают данные</li>
+                                    <li>
+                                        <code>return</code>
+                                        возвращает результат
+                                    </li>
+                                    <li>Локальные переменные живут внутри функции</li>
+                                    <li>Используйте понятные имена</li>
+                                    <li>Одна функция = одно действие</li>
+                                </ul>
+                            </div>
+                            <div class="example">
+                                <h4>Мини-шпаргалка:</h4>
+                                <pre><code>// Объявление
+function add(a, b) {
+  return a + b;
+}
+
+// Вызов
+add(2, 3); // 5
+
+// Параметр по умолчанию
+function greet(name = "Гость") {
+  console.log("Привет, " + name);
+}
+
+// Проверка
+function isAdult(age) {
+  return age >= 18;
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <p class="note">
+                            <strong>Дальше изучай:</strong>
+                            функции-выражения, стрелочные функции, замыкания, рекурсия, области видимости блоков, callback-и, промисы.
+                        </p>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+
+    </body>
+</html>

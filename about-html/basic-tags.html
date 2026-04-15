@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Основные теги HTML</title>
+<meta name="description" content="Основные теги HTML" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <style>
+        .tags-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .tags-list h3 {
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+        .tags-list h4 {
+            font-size: 1.2rem;
+        }
+
+        .tags-list--semantic .tags-list__item {
+            border: 1px solid #878787;
+            border-radius: 20px;
+            padding: 20px;
+        }
+    </style>
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body class="page">
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page__main">
+                <nav class="nav-tabs">
+                    <a href="#html-intro" class="nav-tabs__link active">Введение</a>
+                    <a href="#html-basic" class="nav-tabs__link">Базовые</a>
+                </nav>
+                <!-- введение -->
+                <section class="section" id="html-intro">
+                    <div class="container">
+                        <h1 class="page__title">Базовые теги HTML</h1>
+                        <p class="note">
+                            <strong>Базовые теги HTML</strong>
+                            — это основные строительные блоки веб-страниц, которые определяют структуру и содержание документа. Они позволяют браузеру правильно отображать текст, изображения, ссылки и другие элементы.
+                        </p>
+                        <p>Знание базовых тегов HTML необходимо для создания и редактирования веб-страниц. Эти теги помогают организовать контент, сделать его доступным и понятным для пользователей и поисковых систем.</p>
+
+                        <h4>Пример базовых тегов HTML:</h4>
+                        <div class="code-block">
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+   &lt;meta charset="UTF-8"&gt;
+   &lt;title&gt;Пример страницы&lt;/title&gt;
+   &lt;link rel="stylesheet" href="styles.css"&gt;
+   &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+   &lt;h1&gt;Заголовок страницы&lt;/h1&gt;
+   &lt;p&gt;Это пример параграфа текста.&lt;/p&gt;
+   &lt;a href="https://example.com"&gt;Ссылка на сайт&lt;/a&gt;
+   &lt;img src="image.jpg" alt="Описание изображения"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <button class="copy-btn">Скопировать</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!--Основные теги HTML  -->
+                <section class="section" id="html-basic">
+                    <div class="container">
+                        <h2 class="section__title">Виды базовых тегов HTML</h2>
+                        <ul class="tags-list">
+                            <!-- html -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">&lt;html&gt;</h3>
+                                    <p class="note">
+                                        <b>&lt;html&gt;</b>
+                                        — Корневой элемент любого HTML-документа, который служит контейнером для всего содержимого страницы (включая &lt;head&gt; и &lt;body&gt;).
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <p>
+                                            <b>
+                                                Атрибут
+                                                <code>lang</code>
+                                            </b>
+                                            — указывает основной язык содержимого страницы (например,
+                                            <code>lang="ru"</code>
+                                            для русского). Это важно для доступности, озвучивания текста скринридерами и для поисковых систем.
+                                        </p>
+                                        <p>
+                                            <b>
+                                                Атрибут
+                                                <code>xmlns</code>
+                                            </b>
+                                            (XML namespace) — применяется редко, обычно автоматически добавляется браузером или редакторами. Для обычных HTML-страниц указывать не обязательно.
+                                        </p>
+                                        <p>
+                                            <b>
+                                                Тег
+                                                <code>&lt;html&gt;</code>
+                                            </b>
+                                            всегда единственный и самый верхний в документе. Он не может быть вложен в другие элементы и обязательно содержит внутри себя блоки
+                                            <code>&lt;head&gt;</code>
+                                            и
+                                            <code>&lt;body&gt;</code>
+                                            .
+                                        </p>
+                                        <hr />
+                                        <h4>
+                                            <b>
+                                                Другие полезные атрибуты
+                                                <code>&lt;html&gt;</code>
+                                                :
+                                            </b>
+                                        </h4>
+                                        <ul class="list-ul">
+                                            <li>
+                                                <b><code>dir</code></b>
+                                                — направление текста на странице (
+                                                <code>ltr</code>
+                                                — слева направо,
+                                                <code>rtl</code>
+                                                — справа налево). Например:
+                                                <code>&lt;html dir="rtl"&gt;</code>
+                                            </li>
+                                            <li>
+                                                <b><code>class</code></b>
+                                                — CSS-класс для стилизации всей страницы. Обычно используется редко на корневом элементе:
+                                                <code>&lt;html class="main-html"&gt;</code>
+                                            </li>
+                                            <li>
+                                                <b><code>id</code></b>
+                                                — уникальный идентификатор, редко применяется к тегу
+                                                <code>&lt;html&gt;</code>
+                                                , но может быть полезен для скриптов или ссылок:
+                                                <code>&lt;html id="top"&gt;</code>
+                                            </li>
+                                            <li>
+                                                <b><code>manifest</code></b>
+                                                — путь к файлу-оболочке для офлайн-приложений (устаревший, почти не используется).
+                                            </li>
+                                            <li>
+                                                <b><code>data-*</code></b>
+                                                — пользовательские атрибуты для хранения дополнительных данных, например:
+                                                <code>&lt;html data-theme="dark"&gt;</code>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="note">
+                                        <b>Примечание:</b>
+                                        Тег
+                                        <b>&lt;html&gt;</b>
+                                        должен быть первым элементом в документе и не может быть вложен в другие теги.
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;html lang="ru"&gt;
+  &lt;head&gt;...&lt;/head&gt;
+  &lt;body&gt;...&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- head -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">&lt;head&gt;</h3>
+                                    <p class="note">
+                                        <b>&lt;head&gt;</b>
+                                        — Элемент, содержащий метаданные о документе: заголовок страницы, кодировку, подключаемые стили, скрипты и другую служебную информацию.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <p>
+                                            <b>
+                                                Содержимое
+                                                <code>&lt;head&gt;</code>
+                                            </b>
+                                            не отображается напрямую на странице, но влияет на работу браузера, SEO и внешний вид сайта.
+                                        </p>
+                                        <p>
+                                            <b>
+                                                Основные теги внутри
+                                                <code>&lt;head&gt;</code>
+                                                :
+                                            </b>
+                                        </p>
+                                        <ul class="list-ul">
+                                            <li>
+                                                <b><code>&lt;title&gt;</code></b>
+                                                — задаёт заголовок страницы, который отображается во вкладке браузера и в поисковых системах.
+                                            </li>
+                                            <li>
+                                                <b><code>&lt;meta&gt;</code></b>
+                                                — метаданные: например,
+                                                <code>&lt;meta charset="UTF-8"&gt;</code>
+                                                указывает кодировку,
+                                                <code>&lt;meta name="description" content="..."&gt;</code>
+                                                — описание для SEO.
+                                            </li>
+                                            <li>
+                                                <b><code>&lt;link&gt;</code></b>
+                                                — подключает внешние ресурсы: CSS-файлы, фавиконки, шрифты.
+                                            </li>
+                                            <li>
+                                                <b><code>&lt;style&gt;</code></b>
+                                                — внутренние CSS-стили для страницы.
+                                            </li>
+                                            <li>
+                                                <b><code>&lt;script&gt;</code></b>
+                                                — подключение или размещение JavaScript-кода.
+                                            </li>
+                                            <li>
+                                                <b><code>&lt;base&gt;</code></b>
+                                                — устанавливает базовый путь для относительных ссылок.
+                                            </li>
+                                        </ul>
+                                        <hr />
+                                        <b>
+                                            Атрибуты
+                                            <code>&lt;head&gt;</code>
+                                            :
+                                        </b>
+                                        <ul class="list-ul">
+                                            <li>
+                                                <b><code>profile</code></b>
+                                                — (устарел) мог определять ссылку на профиль метаданных.
+                                            </li>
+                                            <li>
+                                                <b><code>id</code></b>
+                                                — уникальный идентификатор, редко используется на этом элементе.
+                                            </li>
+                                            <li>
+                                                <b><code>class</code></b>
+                                                — CSS-класс, обычно не применяется, но допустим.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="note">
+                                        <b>Примечание:</b>
+                                        Тег
+                                        <b>&lt;head&gt;</b>
+                                        всегда размещается после
+                                        <code>&lt;html&gt;</code>
+                                        и до
+                                        <code>&lt;body&gt;</code>
+                                        . Внутри
+                                        <code>&lt;head&gt;</code>
+                                        нельзя размещать элементы, предназначенные для отображения на странице.
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;head&gt;
+  &lt;title&gt;Документ&lt;/title&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- title -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">&lt;title&gt;</h3>
+                                    <p class="note">
+                                        <b>&lt;title&gt;</b>
+                                        — Тег, который задаёт заголовок страницы. Этот заголовок отображается на вкладке браузера, в поисковых системах и когда добавляете страницу в закладки.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <p>
+                                            <code>&lt;title&gt;</code>
+                                            размещается только внутри
+                                            <code>&lt;head&gt;</code>
+                                            и должен быть уникальным для каждой страницы.
+                                        </p>
+                                        <p>Заголовок помогает пользователю понять, о чём страница, и влияет на SEO.</p>
+                                        <p>
+                                            <b>Примечание:</b>
+                                            Можно использовать любые символы, но не стоит делать заголовок слишком длинным.
+                                        </p>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;title&gt;Моя первая страница&lt;/title&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- body -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">&lt;body&gt;</h3>
+                                    <p class="note">
+                                        <b>&lt;body&gt;</b>
+                                        — Основной контейнер для всего видимого содержимого страницы: текста, картинок, ссылок, списков, форм и других элементов.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <p>
+                                            Внутри
+                                            <code>&lt;body&gt;</code>
+                                            размещаются все элементы, которые пользователь видит и с которыми взаимодействует.
+                                        </p>
+                                        <p>
+                                            <b>
+                                                Атрибуты
+                                                <code>&lt;body&gt;</code>
+                                                :
+                                            </b>
+                                        </p>
+                                        <ul class="list-ul">
+                                            <li>
+                                                <b><code>onload</code></b>
+                                                — запускает JavaScript при загрузке страницы.
+                                            </li>
+                                            <li>
+                                                <b><code>class</code></b>
+                                                — CSS-класс для стилизации.
+                                            </li>
+                                            <li>
+                                                <b><code>id</code></b>
+                                                — уникальный идентификатор.
+                                            </li>
+                                            <li>
+                                                <b><code>style</code></b>
+                                                — встроенные CSS-стили.
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <b>Примечание:</b>
+                                            В документе всегда должен быть только один
+                                            <code>&lt;body&gt;</code>
+                                            .
+                                        </p>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;body&gt;
+  &lt;h2&gt;Заголовок&lt;/h2&gt;
+  &lt;p&gt;Текст параграфа.&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- h1-h6 -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">&lt;h1&gt; - &lt;h6&gt;</h3>
+                                    <p class="note">
+                                        <b>&lt;h1&gt; - &lt;h6&gt;</b>
+                                        — Теги для заголовков различных уровней.
+                                        <code>&lt;h1&gt;</code>
+                                        — главный заголовок страницы,
+                                        <code>&lt;h2&gt;</code>
+                                        — подзаголовок и так далее до
+                                        <code>&lt;h6&gt;</code>
+                                        .
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <p>
+                                            Используйте
+                                            <code>&lt;h1&gt;</code>
+                                            только один раз на странице — это важно для SEO. Остальные заголовки структурируют текст и помогают сделать контент удобным для восприятия.
+                                        </p>
+                                        <ul class="list-ul">
+                                            <li>
+                                                <b><code>class</code></b>
+                                                — CSS-класс для стилизации.
+                                            </li>
+                                            <li>
+                                                <b><code>id</code></b>
+                                                — уникальный идентификатор, например для якорных ссылок.
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <b>Примечание:</b>
+                                            Не пропускайте уровни:
+                                            <code>&lt;h2&gt;</code>
+                                            должен идти после
+                                            <code>&lt;h1&gt;</code>
+                                            и так далее.
+                                        </p>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;h1&gt;Заголовок 1 уровня&lt;/h1&gt;
+&lt;h2&gt;Заголовок 2 уровня&lt;/h2&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- p -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">&lt;p&gt;</h3>
+                                    <p class="note">
+                                        <b>&lt;p&gt;</b>
+                                        — Тег для создания параграфа текста. Каждый
+                                        <code>&lt;p&gt;</code>
+                                        автоматически отделяется от соседних параграфов отступом.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <p>Используйте для обычного текста, описаний, пояснений.</p>
+                                        <ul class="list-ul">
+                                            <li>
+                                                <b><code>class</code></b>
+                                                — CSS-класс для стилизации.
+                                            </li>
+                                            <li>
+                                                <b><code>id</code></b>
+                                                — уникальный идентификатор.
+                                            </li>
+                                            <li>
+                                                <b><code>style</code></b>
+                                                — встроенные CSS-стили.
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <b>Примечание:</b>
+                                            Внутри
+                                            <code>&lt;p&gt;</code>
+                                            нельзя размещать блочные элементы, только строчные (например,
+                                            <code>&lt;a&gt;</code>
+                                            ,
+                                            <code>&lt;span&gt;</code>
+                                            ).
+                                        </p>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;p&gt;Это пример параграфа.&lt;/p&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- ol/ul -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">&lt;ol&gt; и &lt;ul&gt;</h3>
+                                    <p class="note">
+                                        <b>&lt;ol&gt;</b>
+                                        — нумерованный список,
+                                        <b>&lt;ul&gt;</b>
+                                        — маркированный (ненумерованный) список.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <p>
+                                            Каждый элемент списка помещается в тег
+                                            <code>&lt;li&gt;</code>
+                                            . Списки можно вкладывать друг в друга.
+                                        </p>
+                                        <ul class="list-ul">
+                                            <li>
+                                                <b><code>type</code></b>
+                                                — тип маркера (например,
+                                                <code>type="A"</code>
+                                                для
+                                                <code>&lt;ol&gt;</code>
+                                                ).
+                                            </li>
+                                            <li>
+                                                <b><code>start</code></b>
+                                                — начальный номер для
+                                                <code>&lt;ol&gt;</code>
+                                                .
+                                            </li>
+                                            <li>
+                                                <b><code>class</code></b>
+                                                — CSS-класс для стилизации.
+                                            </li>
+                                            <li>
+                                                <b><code>id</code></b>
+                                                — уникальный идентификатор.
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <b>Примечание:</b>
+                                            Для логической структуры используйте списки, а не просто переносы строк.
+                                        </p>
+                                    </div>
+                                    <h4>Примеры:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;ol&gt;
+  &lt;li&gt;Первый элемент&lt;/li&gt;
+  &lt;li&gt;Второй элемент&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Элемент списка&lt;/li&gt;
+  &lt;li&gt;Еще один элемент списка&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- a -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">&lt;a&gt;</h3>
+                                    <p class="note">
+                                        <b>&lt;a&gt;</b>
+                                        — Тег для создания гиперссылок (перехода по адресу или якорю).
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <p>
+                                            Главный атрибут —
+                                            <code>href</code>
+                                            (адрес или якорь). Можно добавить
+                                            <code>target="_blank"</code>
+                                            для открытия ссылки в новой вкладке.
+                                        </p>
+                                        <ul class="list-ul">
+                                            <li>
+                                                <b><code>href</code></b>
+                                                — адрес назначения.
+                                            </li>
+                                            <li>
+                                                <b><code>target</code></b>
+                                                — как открыть ссылку (
+                                                <code>_blank</code>
+                                                ,
+                                                <code>_self</code>
+                                                ).
+                                            </li>
+                                            <li>
+                                                <b><code>rel</code></b>
+                                                — отношения и безопасность (например,
+                                                <code>rel="noopener"</code>
+                                                ).
+                                            </li>
+                                            <li>
+                                                <b><code>class</code></b>
+                                                — CSS-класс для стилизации.
+                                            </li>
+                                            <li>
+                                                <b><code>id</code></b>
+                                                — уникальный идентификатор.
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <b>Примечание:</b>
+                                            Можно использовать для ссылок на внешние, внутренние или якорные адреса.
+                                        </p>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;a href="https://example.com"&gt;Перейти на пример&lt;/a&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- img -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">&lt;img&gt;</h3>
+                                    <p class="note">
+                                        <b>&lt;img&gt;</b>
+                                        — Тег для вставки изображений на страницу.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <p>
+                                            Обязательный атрибут —
+                                            <code>src</code>
+                                            (путь к файлу изображения).
+                                        </p>
+                                        <ul class="list-ul">
+                                            <li>
+                                                <b><code>src</code></b>
+                                                — путь к изображению.
+                                            </li>
+                                            <li>
+                                                <b><code>alt</code></b>
+                                                — текст для описания картинки (важен для доступности).
+                                            </li>
+                                            <li>
+                                                <b><code>width</code></b>
+                                                и
+                                                <b><code>height</code></b>
+                                                — размеры картинки.
+                                            </li>
+                                            <li>
+                                                <b><code>title</code></b>
+                                                — всплывающая подсказка при наведении.
+                                            </li>
+                                            <li>
+                                                <b><code>class</code></b>
+                                                — CSS-класс для стилизации.
+                                            </li>
+                                            <li>
+                                                <b><code>id</code></b>
+                                                — уникальный идентификатор.
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <b>Примечание:</b>
+                                            Тег
+                                            <code>&lt;img&gt;</code>
+                                            — одиночный (нет закрывающего тега). Всегда указывайте
+                                            <code>alt</code>
+                                            для доступности!
+                                        </p>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;img src="image.jpg" alt="Описание изображения"&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+    </body>
+</html>

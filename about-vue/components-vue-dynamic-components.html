@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Динамические компоненты во Vue</title>
+<meta name="description" content="Как использовать динамические компоненты, переключать их через is, передавать props и строить систему вкладок во Vue. Подробные интерактивные примеры." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+<head>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main class="page">
+      <nav class="nav-tabs">
+        <a href="#dynamic-intro">Введение</a>
+        <a href="#dynamic-basic">Базовое переключение</a>
+        <a href="#dynamic-props">Передача props</a>
+        <a href="#dynamic-tabs">Система вкладок</a>
+        <a href="#dynamic-quiz">Упражнения</a>
+      </nav>
+
+      <!-- Введение -->
+      <section class="section" id="dynamic-intro">
+        <div class="container">
+          <h1>Динамические компоненты во Vue</h1>
+          <p class="note">
+            <strong>Динамические компоненты</strong> - это способ менять отображаемый компонент на лету, без
+            сложной логики. Вместо громоздких <code>v-if</code> или <code>v-show</code>, ты можешь просто указать, какой компонент должен быть показан в данный момент.
+            Это особенно полезно для создания вкладок, модальных окон и других интерфейсных элементов, где
+            нужно быстро менять содержимое.
+          </p>
+
+
+          <h4>Основной инструмент:</h4>
+          <ul class="list-ul">
+            <li>
+              Тег
+              <code>&lt;component :is="componentName"&gt;&lt;/component&gt;</code>
+              позволяет "вставлять" нужный компонент в зависимости от значения переменной
+              <code>componentName</code>.
+            </li>
+            <li>
+              Значение
+              <code>componentName</code>
+              может быть строкой с именем зарегистрированного компонента или самим объектом компонента.
+            </li>
+            <li>
+              Можно передавать props и слушать события, как в обычных компонентах.
+            </li>
+          </ul>
+
+        </div>
+      </section>
+
+      <!-- Базовое переключение -->
+      <section class="section" id="dynamic-basic">
+        <div class="container">
+          <h2>Базовое переключение между компонентами</h2>
+          <div class="note">
+            <strong>Базовое переключение между компонентами</strong> - простой пример использования динамических компонентов для
+            переключения между двумя компонентами по нажатию кнопок. Это демонстрирует, как легко можно менять отображаемый
+            компонент без сложной логики.
+          </div>
+          <h4>Как это работает:</h4>
+          <ul class="list-ul">
+            <li>
+              Две кнопки изменяют значение переменной
+              <b>currentComponent</b>
+              .
+            </li>
+            <li>
+              Тег
+              <b>&lt;component :is="currentComponent"&gt;</b>
+              отображает компонент, имя которого хранится в
+              <b>currentComponent</b>
+              .
+            </li>
+            <li>
+              Vue автоматически обновляет отображение при изменении
+              <b>currentComponent</b>
+              .
+            </li>
+          </ul>
+
+          <h4>Пример:</h4>
+
+          <div class="code-block">
+            <pre><code>&lt;div id="app"&gt;
+  &lt;button @click="currentComponent = 'first-component'"&gt;Показать первый&lt;/button&gt;
+  &lt;button @click="currentComponent = 'second-component'"&gt;Показать второй&lt;/button&gt;
+  &lt;component :is="currentComponent"&gt;&lt;/component&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() {
+    return { currentComponent: "first-component" }
+  },
+  components: {
+    "first-component": { template: "&lt;p&gt;📌 Это первый компонент!&lt;/p&gt;" },
+    "second-component": { template: "&lt;p&gt;🔥 А это второй компонент!&lt;/p&gt;" }
+  }
+}).mount("#app");
+&lt;/script&gt;
+                            </code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+
+          <ul class="list-ul">
+            <li>
+              Создаём две кнопки, которые меняют
+              <b>currentComponent</b>
+              при клике.
+            </li>
+            <li>
+              Используем
+              <b>&lt;component :is="currentComponent"&gt;</b>
+              для отображения нужного компонента.
+            </li>
+            <li>
+              Регистрируем два простых компонента с шаблонами.
+            </li>
+          </ul>
+
+          <div class="interactive-demo">
+            <div id="dynamic-basic-demo"></div>
+          </div>
+          <!-- Вывод: -->
+          <p class="note note--info">
+            🚀
+            <strong>Вывод:</strong>
+            Динамические компоненты во Vue позволяют легко переключаться между разными компонентами на основе
+            состояния приложения, делая код чище и проще для понимания. Это мощный инструмент для создания
+            интерактивных интерфейсов. Попробуй изменить пример и добавить свои компоненты!
+          </p>
+        </div>
+      </section>
+
+      <!-- Передача props -->
+      <section class="section" id="dynamic-props">
+        <div class="container">
+          <h2>Передача props в динамический компонент</h2>
+          <div class="note">
+            <strong>Передача props в динамический компонент</strong> - это способ передать данные в компоненты, которые выбираются динамически с помощью
+            тега <code>&lt;component&gt;</code>. Это позволяет создавать более гибкие и переиспользуемые компоненты, которые могут
+            принимать различные входные данные в зависимости от контекста.
+          </div>
+          <h4>Как это работает:</h4>
+          <ul class="list-ul">
+            <li>Используем атрибут <b>:is</b> для выбора компонента.</li>
+            <li>Передаём <b>props</b> так же, как в обычных компонентах.</li>
+            <li>Компоненты принимают <b>props</b> и используют их в своих шаблонах.</li>
+          </ul>
+          <h4>Пример:</h4>
+
+          <div class="code-block">
+            <pre><code>&lt;div id="app"&gt;
+  &lt;button @click="currentComponent = 'hello-component'"&gt;Привет&lt;/button&gt;
+  &lt;button @click="currentComponent = 'bye-component'"&gt;Пока&lt;/button&gt;
+  &lt;component :is="currentComponent" :message="customMessage"&gt;&lt;/component&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() {
+    return {
+      currentComponent: "hello-component",
+      customMessage: "Передано через prop!"
+    }
+  },
+  components: {
+    "hello-component": {
+      props: ["message"],
+      template: `&lt;p&gt;👋 {{ message }}&lt;/p&gt;`
+    },
+    "bye-component": {
+      props: ["message"],
+      template: `&lt;p&gt;👋 Пока! {{ message }}&lt;/p&gt;`
+    }
+  }
+}).mount("#app");
+&lt;/script&gt;</code></pre>
+
+          </div>
+          <h4>Объяснение кода:</h4>
+          <ul class="list-ul">
+            <li>
+              Две кнопки меняют значение
+              <b>currentComponent</b>
+              для переключения между компонентами.
+            </li>
+            <li>
+              Тег
+              <b>&lt;component :is="currentComponent" :message="customMessage"&gt;</b>
+              передаёт prop
+              <b>message</b>
+              в выбранный компонент.
+            </li>
+            <li>
+              Оба компонента принимают prop
+              <b>message</b>
+              и отображают его в своём шаблоне.
+            </li>
+          </ul>
+          <div class="interactive-demo">
+            <div id="dynamic-props-demo"></div>
+          </div>
+
+          <!-- Вывод: -->
+          <p class="note note--info">🚀<strong> Вывод:</strong> Передача props в динамический компонент позволяет гибко управлять данными, передаваемыми в компоненты, которые выбираются динамически. Это делает код более читаемым и переиспользуемым.
+          </p>
+        </div>
+      </section>
+
+      <!-- Система вкладок -->
+      <section class="section" id="dynamic-tabs">
+        <div class="container">
+          <h2>Пример: система вкладок (Tabs)</h2>
+          <div class="note">
+            <strong>Система вкладок</strong> - это интерфейсный элемент, который позволяет пользователям переключаться между разными
+            разделами контента, не покидая текущую страницу. Во Vue.js динамические компоненты идеально подходят для реализации
+            такой системы, так как они позволяют легко менять отображаемый контент на основе выбранной вкладки.
+          </div>
+          <h4>Пример:</h4>
+
+          <div class="code-block">
+            <pre><code>&lt;div id="app"&gt;
+  &lt;button @click="activeTab = 'tab-1'"&gt;📝 Описание&lt;/button&gt;
+  &lt;button @click="activeTab = 'tab-2'"&gt;📊 Характеристики&lt;/button&gt;
+  &lt;button @click="activeTab = 'tab-3'"&gt;🗣 Отзывы&lt;/button&gt;
+  &lt;component :is="activeTab"&gt;&lt;/component&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() {
+    return { activeTab: "tab-1" }
+  },
+  components: {
+    "tab-1": { template: "&lt;p&gt;📝 Это описание продукта.&lt;/p&gt;" },
+    "tab-2": { template: "&lt;p&gt;📊 Здесь характеристики.&lt;/p&gt;" },
+    "tab-3": { template: "&lt;p&gt;🗣 Здесь будут отзывы клиентов.&lt;/p&gt;" }
+  }
+}).mount("#app");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h4>Объяснение кода:</h4>
+          <ul class="list-ul">
+            <li>Три кнопки изменяют значение <b>activeTab</b> для переключения между вкладками.</li>
+            <li>Тег <b>&lt;component :is="activeTab"&gt;</b> отображает компонент, соответствующий выбранной вкладке.</li>
+            <li>Каждая вкладка зарегистрирована как отдельный компонент с собственным шаблоном.</li>
+          </ul>
+          <div class="interactive-demo">
+            <div id="dynamic-tabs-demo"></div>
+          </div>
+
+          <div class="note note--info">
+            🚀
+            <strong>Вывод:</strong>
+            Динамические компоненты во Vue позволяют легко создавать системы вкладок, делая интерфейс более интерактивным и удобным для пользователей. Попробуй расширить пример, добавив больше вкладок или изменив их содержимое!
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Упражнения -->
+      <section class="section" id="dynamic-quiz">
+        <div class="container">
+          <h2>Упражнения: проверь себя!</h2>
+          <div class="note">
+            <strong>Вопрос 1:</strong>
+            <br />
+            Какой текст увидит пользователь сразу после загрузки страницы?
+          </div>
+          <div class="code-block">
+            <pre><code>&lt;div id="app"&gt;
+  &lt;button @click="currentComponent = 'big-cat'"&gt;Показать Большого кота&lt;/button&gt;
+  &lt;button @click="currentComponent = 'tiny-dog'"&gt;Показать Маленькую собаку&lt;/button&gt;
+  &lt;component :is="currentComponent" :message="'Лови привет!'"&gt;&lt;/component&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() {
+    return { currentComponent: "big-cat" }; // По умолчанию показывается "big-cat"
+  },
+  components: {
+    "big-cat": {
+      template: "&lt;h2&gt;🐱 {{ message }}&lt;/h2&gt;",
+      props: ["message"]
+    },
+    "tiny-dog": {
+      template: "&lt;p&gt;🐶 {{ message }}&lt;/p&gt;",
+      props: ["message"]
+    }
+  }
+}).mount("#app");
+&lt;/script&gt;</code></pre>
+          </div>
+
+          <div class="interactive-demo">
+              <div id="dynamic-quiz-demo"></div>
+            </div>
+
+          <div class="note note--info">
+            <b>Ответ:</b>
+            <span style="font-weight: bold">🐱 Лови привет!</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+  </div>
+
+  <script>
+    // Базовый пример динамического компонента
+    Vue.createApp({
+      data() {
+        return {
+          currentComponent: "first-component"
+        };
+      },
+      components: {
+        "first-component": {
+          template: "<p>📌 Это первый компонент!</p>"
+        },
+        "second-component": {
+          template: "<p>🔥 А это второй компонент!</p>"
+        },
+      },
+      template: `
+                  <div>
+                    <button @click="currentComponent = 'first-component'">Показать первый</button>
+                    <button @click="currentComponent = 'second-component'">Показать второй</button>
+                    <component :is="currentComponent"></component>
+                  </div>
+                `,
+    }).mount("#dynamic-basic-demo");
+
+    // Передача props в динамический компонент
+    Vue.createApp({
+      data() {
+        return {
+          currentComponent: "hello-component",
+          customMessage: "Передано через prop!",
+        };
+      },
+      components: {
+        "hello-component": {
+          props: ["message"],
+          template: `<p>👋 {{ message }}</p>`,
+        },
+        "bye-component": {
+          props: ["message"],
+          template: `<p>👋 Пока! {{ message }}</p>`,
+        },
+      },
+      template: `
+                  <div>
+                    <button @click="currentComponent = 'hello-component'">Привет</button>
+                    <button @click="currentComponent = 'bye-component'">Пока</button>
+                    <component :is="currentComponent" :message="customMessage"></component>
+                  </div>
+                `,
+    }).mount("#dynamic-props-demo");
+
+    // Система вкладок
+    Vue.createApp({
+      data() {
+        return {
+          activeTab: "tab-1"
+        };
+      },
+      components: {
+        "tab-1": {
+          template: "<p>📝 Это описание продукта.</p>"
+        },
+        "tab-2": {
+          template: "<p>📊 Здесь характеристики.</p>"
+        },
+        "tab-3": {
+          template: "<p>🗣 Здесь будут отзывы клиентов.</p>"
+        },
+      },
+      template: `
+                  <div>
+                    <button @click="activeTab = 'tab-1'">📝 Описание</button>
+                    <button @click="activeTab = 'tab-2'">📊 Характеристики</button>
+                    <button @click="activeTab = 'tab-3'">🗣 Отзывы</button>
+                    <component :is="activeTab"></component>
+                  </div>
+                `,
+    }).mount("#dynamic-tabs-demo");
+
+    // Вопрос-упражнение (big-cat/tiny-dog)
+    Vue.createApp({
+      data() {
+        return {
+          currentComponent: "big-cat"
+        };
+      },
+      components: {
+        "big-cat": {
+          template: "<h2>🐱 {{ message }}</h2>",
+          props: ["message"],
+        },
+        "tiny-dog": {
+          template: "<p>🐶 {{ message }}</p>",
+          props: ["message"],
+        },
+      },
+      template: `
+                  <div>
+                    <button @click="currentComponent = 'big-cat'">Показать Большого кота</button>
+                    <button @click="currentComponent = 'tiny-dog'">Показать Маленькую собаку</button>
+                    <component :is="currentComponent" :message="'Лови привет!'"></component>
+                  </div>
+                `,
+    }).mount("#dynamic-quiz-demo");
+  </script>
+</body>
+
+</html>

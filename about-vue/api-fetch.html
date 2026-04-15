@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Работа с Fetch API: запросы, ошибки и практика</title>
+<meta name="description" content="Как использовать Fetch API для работы с внешними данными: GET, POST, PUT, DELETE, обработка ответов и ошибок — всё на примерах и для практики!" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+<script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+<link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+<body>
+  <div class="wrapper">
+    <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main class="page">
+      <nav class="nav-tabs">
+        <a href="#intro">Введение</a>
+        <a href="#fetch-basics">Как работает Fetch API</a>
+        <a href="#get">GET запросы</a>
+        <a href="#post">POST запросы</a>
+        <a href="#put">PUT запросы</a>
+        <a href="#delete">DELETE запросы</a>
+        <a href="#response-errors">Обработка ответов и ошибок</a>
+        <a href="#comparison">Сравнение методов</a>
+        <a href="#full-post-example">Пример полного POST запроса</a>
+      </nav>
+
+      <!-- Введение -->
+      <section id="intro" class="section">
+        <div class="container">
+          <h1>Работа с Fetch API</h1>
+          <p class="note">
+            <strong>Fetch API</strong> — (Fetch - перевод "получить") это встроенный инструмент в JavaScript, с помощью которого ты можешь отправлять HTTP-запросы на сервер, а также получать и отправлять данные ("по сети"). <br> Он заменяет старый XMLHttpRequest ( XMLHttpRequest - "объект для запросов по XML" , устаревший метод для работы с сетью в JavaScript) и делает работу с сетью проще и удобнее благодаря использованию промисов (Promises - "обещания", современный способ работы с асинхронным кодом в JavaScript).
+          </p>
+          <p>
+            Fetch API делает работу с данными простой: ты можешь без лишних библиотек получать, изменять или удалять информацию на сервере.
+          </p>
+          <h4>С помощью Fetch API ты можешь:</h4>
+          <ul class="list-ul">
+            <li>🔄 Получать данные для профиля, чата или списка товаров</li>
+            <li>📝 Отправлять новую информацию (регистрация, заказ, комментарий)</li>
+            <li>📦 Менять или удалять объекты на сервере</li>
+            <li>🛠️ Обрабатывать ответы и ошибки для стабильной работы приложения</li>
+
+          </ul>
+          <p class="note note--info">
+            <strong>Fetch API</strong> — основной способ общаться с сервером в современных front-end приложениях!
+          </p>
+        </div>
+      </section>
+
+
+
+      <!-- Как работает Fetch API -->
+      <section id="fetch-basics" class="section">
+        <div class="container">
+          <h2>🌐 Как работает Fetch API?</h2>
+          <p class="note">
+            <strong>Fetch API</strong> — это метод JavaScript, который возвращает <b>promise</b> (обещание) в ответ на запрос, чтобы обработать данные или ошибки.
+          </p>
+          <h4>Как работает Fetch API?</h4>
+          <ol class="list-ol">
+            <li>Отправляешь запрос через <code>fetch(url)</code></li>
+            <li>Получаешь ответ <code>promise</code>, из которого можно сделать JSON</li>
+            <li>В зависимости от ответа сервера обновляешь интерфейс приложения</li>
+          </ol>
+          <h4>Пример простого GET-запроса:</h4>
+          <div class="code-block">
+            <pre><code>fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data)) // Выводим данные в консоль
+  .catch(error => console.error('Ошибка:', error));
+</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code>fetch('URL')</code> — отправляет запрос на указанный URL</li>
+            <li><code>fetch</code> — это функция, которая возвращает <code>promise</code></li>
+            <li><code>promise</code> — это обещание, что в будущем будет результат (успех или ошибка)</li>
+            <li><code>где здесь promise</code> — это результат вызова <code>fetch()</code></li>
+            <li><code>.then(response => response.json())</code> — преобразует ответ в JSON</li>
+            <li><code>.then</code> — это метод для обработки успешного ответа</li>
+            <li><code>.then(data => ...)</code> — работает с полученными данными</li>
+            <li><code>.catch(error => ...)</code> — обрабатывает ошибки, если что-то пошло не так</li>
+          </ul>
+          <p class="note note--info">
+            ️<strong>Совет:</strong> Всегда обрабатывай ошибки с помощью <code>catch()</code> для надёжной работы приложения!
+          </p>
+
+        </div>
+      </section>
+
+      <!-- GET запросы -->
+      <section id="get" class="section">
+        <div class="container">
+          <h2>🔎 GET запрос </h2>
+
+          <p class="note">
+            <strong>GET</strong> — это метод <b>HTTP-запроса</b>, который используется для <b>получения</b> данных с сервера. Когда ты делаешь GET-запрос, ты запрашиваешь информацию, не изменяя её на сервере. <br> Это самый распространённый тип запроса, который используется для загрузки страниц, профилей пользователей, списков товаров и многого другого.
+            <br> GET-запросы обычно не содержат тела запроса (body), так как они предназначены только для получения данных.
+            <br> Испоьзуется по умолчанию, если не указан другой метод.
+          </p>
+          <h4>Где используется GET?</h4>
+          <ul class="list-ul">
+            <li>Загрузка профиля пользователя</li>
+            <li>Получение списка товаров в интернет-магазине</li>
+            <li>Загрузка комментариев к статье</li>
+            <li>Получение данных для отображения на странице</li>
+          </ul>
+          <h4>Пример использования GET-запроса с Fetch API:</h4>
+          <div class="code-block">
+            <pre><code >fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data)) // Выводим данные в консоль
+  .catch(error => console.error('Ошибка:', error));
+</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code>fetch('URL')</code> — отправляет GET-запрос на указанный URL</li>
+            <li><code>response.json()</code> — преобразует ответ в формат JSON</li>
+            <li><code>data</code> — содержит полученные данные с сервера</li>
+            <li><code>console.log(data)</code> — выводит данные в консоль для проверки</li>
+            <li><code>catch(error)</code> — обрабатывает возможные ошибки при запросе</li>
+          </ul>
+          <p class="note note--info">
+            ️<strong>Совет:</strong> GET-запросы не должны изменять данные на сервере — они только получают информацию!
+          </p>
+        </div>
+      </section>
+
+      <!-- POST запросы -->
+      <section id="post" class="section">
+        <div class="container">
+          <h2>🔎 POST запросы</h2>
+
+          <p class="note">
+            <strong>POST</strong> — это метод <b>HTTP-запроса</b>, который используется для <b>отправки</b> данных на сервер. В отличие от GET-запросов, которые только получают информацию, <b>POST-запросы</b> позволяют создавать новые записи или изменять существующие данные на сервере. <br> Обычно POST-запросы используются при отправке форм, регистрации пользователей, создании заказов и других действиях, которые требуют передачи данных на сервер.
+          </p>
+
+          <h4>Где используется POST?</h4>
+          <ul class="list-ul">
+            <li>Регистрация нового пользователя</li>
+            <li>Добавление комментария к статье</li>
+            <li>Создание нового заказа в интернет-магазине</li>
+            <li>Отправка формы обратной связи</li>
+          </ul>
+
+
+          <h4>Пример POST запроса с Fetch API:</h4>
+          <div class="code-block">
+            <pre><code>fetch('https://api.example.com/data', {
+  method: 'POST', // Указываем, что это POST-запрос
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ name: 'John', age: 30 }) // Отправляем данные в формате JSON
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Ошибка:', error));
+</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code>method: 'POST'</code> — указывает, что это POST-запрос</li>
+            <li><code>headers</code> — задаёт заголовки запроса (например, тип контента)</li>
+            <li><code>body: JSON.stringify(...)</code> — преобразует объект в строку JSON для отправки на сервер</li>
+            <li>Остальная часть кода аналогична GET-запросу</li>
+          </ul>
+          <p class="note note--info">
+            ️<strong>Совет:</strong> Всегда проверяй, что данные отправляются в правильном формате (обычно JSON) при использовании POST-запросов!
+          </p>
+          <h4>Возможные параметры в POST запросах:</h4>
+          <ul class="list-ul">
+            <li><code>method</code> — указывает метод запроса (в данном случае 'POST')</li>
+            <li><code>headers</code> — задаёт заголовки запроса, например, тип контента</li>
+            <li><code>body</code> — содержит данные, которые отправляются на сервер (обычно в формате JSON)</li>
+          </ul>
+
+        </div>
+      </section>
+
+      <!-- PUT  запросы -->
+      <section id="put" class="section">
+        <div class="container">
+          <h2>🔄 PUT запросы</h2>
+          <p class="note">
+            <strong>PUT</strong> — это метод <b>HTTP-запроса</b>, который используется для <b>обновления</b> существующих данных на сервере. В отличие от POST-запросов, которые создают новые записи, <b>PUT-запросы</b> заменяют все данные указанного ресурса новыми данными. <br> Обычно PUT-запросы используются при изменении информации о пользователях, обновлении заказов и других действиях, которые требуют замены существующих данных на сервере.
+          </p>
+          <h4>Где используется PUT?</h4>
+          <ul class="list-ul">
+            <li>Обновление профиля пользователя</li>
+            <li>Изменение информации о заказе</li>
+            <li>Редактирование комментария</li>
+            <li>Обновление настроек приложения</li>
+          </ul>
+          <h4>Пример PUT запроса с Fetch API:</h4>
+          <div class="code-block">
+            <pre><code >fetch('https://api.example.com/user/1', {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ name: 'Alice', age: 25 })
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Ошибка:', error));
+</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code>method: 'PUT'</code> — указывает, что это PUT-запрос</li>
+            <li><code>headers</code> — задаёт заголовки запроса (например, тип контента)</li>
+            <li><code>body: JSON.stringify(...)</code> — преобразует объект в строку JSON для отправки на сервер</li>
+            <li>Остальная часть кода аналогична GET и POST-запросам</li>
+          </ul>
+          <p class="note note--info">
+            ️<strong>Совет:</strong> Используй PUT-запросы, когда нужно полностью заменить существующие данные на сервере!
+          </p>
+          <h4>Возможные параметры в PUT запросах:</h4>
+          <ul class="list-ul">
+            <li><code>method</code> — указывает метод запроса (в данном случае 'PUT')</li>
+            <li><code>headers</code> — задаёт заголовки запроса, например, тип контента</li>
+            <li><code>body</code> — содержит данные, которые отправляются на сервер (обычно в формате JSON)</li>
+          </ul>
+
+        </div>
+      </section>
+
+      <!-- DELETE запросы -->
+      <section id="delete" class="section">
+        <div class="container">
+          <h2>🔄 DELETE запросы</h2>
+          <p class="note">
+            <strong>DELETE</strong> — это метод <b>HTTP-запроса</b>, который используется для <b>удаления</b> данных с сервера. В отличие от GET, POST и PUT, DELETE-запросы не возвращают данные, а просто удаляют указанный ресурс.
+          </p>
+          <h4>Где используется DELETE?</h4>
+          <ul class="list-ul">
+            <li>Удаление пользователя</li>
+            <li>Удаление комментария</li>
+            <li>Удаление заказа</li>
+            <li>Удаление файла или изображения</li>
+          </ul>
+
+          <h4>Пример DELETE запроса с Fetch API:</h4>
+          <div class="code-block">
+            <pre><code >fetch('https://api.example.com/user/1', {
+  method: 'DELETE'
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Ошибка:', error));
+</code></pre>
+          </div>
+
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code>method: 'DELETE'</code> — указывает, что это DELETE-запрос</li>
+            <li>Остальная часть кода аналогична GET, POST и PUT-запросам</li>
+          </ul>
+          <p class="note note--info">
+            ️<strong>Совет:</strong> Будь осторожен с DELETE-запросами — они удаляют данные без возможности восстановления!
+          </p>
+          <h4>Возможные параметры в DELETE запросах:</h4>
+          <ul class="list-ul">
+            <li><code>method</code> — указывает метод запроса (в данном случае 'DELETE')</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Ответы и обработка ошибок -->
+      <section id="response-errors" class="section">
+        <div class="container">
+          <h2>🛠 Обработка ответов и ошибок</h2>
+          <p class="note">
+            <strong>Обработка ответов и ошибок</strong> — важный аспект работы с Fetch API. Даже если запрос выполнен успешно, сервер может вернуть ошибку (например, 404 или 500). Поэтому важно проверять статус ответа и обрабатывать ошибки корректно. <br> Это помогает создавать надёжные приложения, которые могут справляться с различными ситуациями.
+          </p>
+          <h4>Для обработки ответов и ошибок с Fetch API, можно использовать следующие подходы:</h4>
+          <ol class="list-ol">
+            <li>Проверка статуса ответа с помощью <code>response.ok</code></li>
+            <li>Обработка ошибок с помощью <code>catch()</code></li>
+            <li>Логирование ошибок для отладки</li>
+            <li>Отображение сообщений пользователю в случае ошибок</li>
+            <li>Повторные попытки запросов при временных ошибках</li>
+          </ol>
+
+          <h4>Чтобы обработать ошибки, нужно:</h4>
+          <ul class="list-ul">
+            <li>Проверить, успешен ли ответ с помощью <code>response.ok</code></li>
+            <li>Если ответ не успешен, выбросить ошибку с помощью <code>throw new Error()</code> <br><b>throw new Error()</b> - это способ выбросить ошибку в JavaScript, переводиться как "выбросить ошибку"</li>
+            <li>Использовать <code>catch()</code> для обработки любых ошибок (сетевых и наших)</li>
+          </ul>
+
+          <h4>Варианты ошибок:</h4>
+          <ul class="list-ul">
+            <li>Сетевые ошибки (например, отсутствие интернета)</li>
+            <li>Ошибки сервера (например, 500 Internal Server Error)</li>
+            <li>Ошибки клиента (например, 404 Not Found)</li>
+          </ul>
+          <h4>Пример обработки ответов и ошибок с Fetch API:</h4>
+          <div class="code-block">
+            <pre><code >fetch(url)
+  .then(response => {
+    if (!response.ok) { // Проверяем, успешен ли запрос
+      throw new Error(`Ошибка: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch(error => console.error('Что-то пошло не так:', error));
+</code></pre>
+          </div>
+          <ul class="list-ul">
+            <li><b>response.ok</b> — true, если HTTP-код 200-299</li>
+            <li><b>throw new Error()</b> — выбрасывает ошибку, если запрос неудачен</li>
+            <li>catch() — ловит любые ошибки (сетевые и наши)</li>
+          </ul>
+          <p class="note note--info">
+            <strong>Совет:</strong> Всегда обрабатывай ошибки для создания надёжных приложений, которые могут справляться с различными ситуациями!
+          </p>
+        </div>
+      </section>
+
+      <!-- Сравнение методов  -->
+      <section class="section" id="comparison">
+        <div class="container">
+          <h2>🔍 Сравнение методов</h2>
+          <p>
+            Вот краткое сравнение основных методов HTTP-запросов, которые ты можешь использовать с Fetch API:
+
+          </p>
+          <table class="table-note">
+            <thead>
+              <tr>
+                <th style="width: 10%;">Метод</th>
+                <th style="width: 25%;">Описание</th>
+                <th style="width: 30%;">Когда использовать</th>
+                <th style="width: 30%;">Пример кода на Fetch API</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>GET</b></td>
+                <td>Получение данных с сервера</td>
+                <td>
+                  <ul class="list-ul">
+                    <li>Загрузка профиля пользователя</li>
+                    <li>Получение списка товаров</li>
+                    <li>Загрузка комментариев</li>
+                  </ul>
+                </td>
+                <td>
+                  <div class="code-block">
+                    <pre><code>fetch('https://api.example.com/items')
+  .then(response => response.json())
+  .then(data => console.log(data));
+</code></pre>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><b>POST</b></td>
+                <td>Отправка новых данных на сервер</td>
+                <td>
+                  <ul class="list-ul">
+                    <li>Регистрация</li>
+                    <li>Создание заказов</li>
+                    <li>Отправка форм</li>
+                  </ul>
+                </td>
+                <td>
+                  <div class="code-block">
+                    <pre><code >fetch('https://api.example.com/items', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'Item', price: 100 })
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+</code></pre>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><b>PUT</b></td>
+                <td>Обновление существующих данных на сервере</td>
+                <td>
+                  <ul class="list-ul">
+                    <li>Обновление профиля</li>
+                    <li>Изменение заказов</li>
+                    <li>Редактирование комментариев</li>
+                  </ul>
+                </td>
+                <td>
+                  <div class="code-block">
+                    <pre><code>fetch('https://api.example.com/items/1', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'Updated Item', price: 120 })
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+</code></pre>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><b>DELETE</b></td>
+                <td>Удаление данных с сервера</td>
+                <td>
+                  <ul class="list-ul">
+                    <li>Удаление пользователя</li>
+                    <li>Удаление комментариев</li>
+                    <li>Удаление заказов</li>
+                  </ul>
+                </td>
+                <td>
+                  <div class="code-block">
+                    <pre><code >fetch('https://api.example.com/items/1', {
+  method: 'DELETE'
+})
+  .then(response => response.json())
+  .then(data => console.log(data));
+</code></pre>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <ul class="list-ul">
+            <li><b>fetch</b> - это встроенный метод JavaScript для выполнения HTTP-запросов к серверу. Используется для всех типов HTTP-запросов (GET, POST, PUT, DELETE).</li>
+            <li><b>По умолчанию</b> используется метод GET, если не указано иное.</li>
+            <li><b>fetch('url')</b> - это основной способ вызова API с помощью Fetch API. Внутри указывается URL, к которому нужно выполнить запрос.</li>
+            <li><b>fetch('url', {...})</b> - расширенный вызов, где можно указать дополнительные параметры, такие как метод запроса, заголовки и тело запроса (body).</li>
+            <li><b>method</b> — указывает метод запроса (для POST, PUT, DELETE, GET)</li>
+            <li><b>headers</b> — задаёт заголовки запроса, например, тип контента, для POST и PUT запросов (для DELETE и GET
+              запросов обычно не нужен так как они не отправляют тело запроса)</li>
+            <li><b>body</b> — содержит данные, которые отправляются на сервер (обычно в формате JSON), для POST и PUT запросов(для DELETE и GET запросов обычно не нужен так как они не отправляют тело запроса)</li>
+            <li><b>response.json()</b> — преобразует ответ сервера из формата JSON в объект JavaScript. Используется для всех типов запросов, когда ожидается ответ в формате JSON.</li>
+            <li><b>.then(data => console.log(data))</b> — обрабатывает полученные данные после успешного запроса. Используется для всех типов запросов.</li>
+
+          </ul>
+        </div>
+      </section>
+
+          <!-- Пример полного запроса POST с отработкой ошибок (реальный сервис) -->
+      <section class="section" id="full-post-example">
+        <div class="container">
+          <h2>Пример полного запроса POST с отработкой ошибок (реальный сервис)</h2>
+          <p>
+            Для демонстрации мы используем бесплатный сервис <a href="https://jsonplaceholder.typicode.com/" target="_blank">JSONPlaceholder</a>, который отлично подходит для тренировок с запросами.
+          </p>
+          <div class="code-block">
+            <pre><code >const resultDiv = document.getElementById('fetch-post-result');
+resultDiv.textContent = 'Выполнение запроса...';
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    title: 'Hello World',
+    body: 'Текст сообщения',
+    userId: 1
+  })
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Ошибка: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    resultDiv.innerHTML = "<b>Ответ сервера:</b><br><pre style='white-space:pre-wrap;word-break:break-all;background:#9d9d9d;padding:1em 0.5em;margin:0;border-radius:4px;'>" +
+      JSON.stringify(data, null, 2) + "</pre>";
+  })
+  .catch(error => {
+    resultDiv.innerHTML = "<span style='color:crimson;'><b>Что-то пошло не так:</b> " + error.message + "</span>";
+  });
+</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code>https://jsonplaceholder.typicode.com/posts</code> — адрес тестового API для добавления поста</li>
+            <li>Перед выполнением запроса выводится текст <b>"Выполнение запроса..."</b> ниже кнопки</li>
+            <li><code>method: 'POST'</code> — указывает, что это POST-запрос</li>
+            <li><code>headers</code> — задаёт необходимые заголовки запроса</li>
+            <li><code>body: JSON.stringify(...)</code> — отправляем данные в формате JSON</li>
+            <li><code>if (!response.ok) { ... }</code> — проверяем, что сервер вернул успешный ответ</li>
+            <li><code>throw new Error(...)</code> — выбрасываем ошибку, если ответ не успешный</li>
+            <li><b>Результат (успех или ошибка) выводится в тот же блок под кнопкой</b></li>
+          </ul>
+
+          <div class="interactive-demo">
+            <h4>Попробуй сам!</h4>
+            <p>Нажми кнопку ниже, чтобы выполнить запрос и увидеть ответ сервера ниже.</p>
+            <button id="fetch-post-btn" class="btn btn--primary">Выполнить POST запрос</button>
+            <div id="fetch-post-result" style="margin-top:1.2em;"></div>
+            <script>
+              document.getElementById('fetch-post-btn').addEventListener('click', () => {
+                const resultDiv = document.getElementById('fetch-post-result');
+                resultDiv.textContent = 'Выполнение запроса...';
+                fetch('https://jsonplaceholder.typicode.com/posts', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    title: 'Hello World',
+                    body: 'Текст сообщения',
+                    userId: 1
+                  })
+                })
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error(`Ошибка: ${response.status}`);
+                  }
+                  return response.json();
+                })
+                .then(data => {
+                  resultDiv.innerHTML = "<b>Ответ сервера:</b><br><pre style='white-space:pre-wrap;word-break:break-all;background:#9d9d9d;padding:1em 0.5em;margin:0;border-radius:4px;'>" +
+                    JSON.stringify(data, null, 2) + "</pre>";
+                })
+                .catch(error => {
+                  resultDiv.innerHTML = "<span style='color:crimson;'><b>Что-то пошло не так:</b> " + error.message + "</span>";
+                });
+              });
+            </script>
+          </div>
+
+          <p class="note note--info">
+            <b>Совет:</b> Можешь скопировать пример и попробовать его прямо сейчас в консоли браузера — сервер всегда вернёт созданный тестовый пост!
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+  </div>
+  
+
+</body>
+
+</html>

@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Установка React через CDN, Vite и Create React App</title>
+<meta name="description" content="Инструкция по быстрому старту работы с React: подключение через CDN, создание проекта через Vite и Create React App, сравнение способов." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+<script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+<link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+<body>
+  <div class="wrapper">
+    <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main class="page">
+      <nav class="nav-tabs">
+        <a href="#intro">Введение</a>
+        <a href="#installations-cdn">Установка через CDN</a>
+        <a href="#installations-vite">Установка через Vite</a>
+        <a href="#installations-create-react-app">Установка через Create React App</a>
+        <a href="#installations-comparison">Сравнение Vite и Create React App</a>
+        <a href="#practice">Практика</a>
+        <a href="#tips">Советы</a>
+        <a href="#best-practices">Лучшие практики</a>
+      </nav>
+
+      <!-- Введение -->
+      <section class="section" id="intro">
+        <div class="container">
+          <div class="intro-code-block">
+            <h1>Установка React</h1>
+            <p class="note">
+              <strong>React</strong>
+              — библиотека для создания пользовательских интерфейсов. Использует синтаксис JSX, работает на основе виртуального DOM и компонентного подхода. Каждый компонент — это функция, возвращающая JSX-разметку.
+            </p>
+          </div>
+          <h3>Основные понятия</h3>
+          <ul class="list-ul">
+            <li><b>React</b> — библиотека для создания пользовательских интерфейсов.</li>
+            <li><b>Пользовательский интерфейс</b> — всё, что видит и с чем взаимодействует пользователь.</li>
+            <li><b>JSX</b> (JavaScript XML) — синтаксис для разметки в JavaScript.</li>
+            <li><b>Виртуальное дерево DOM</b> — абстракция для эффективного обновления интерфейса.</li>
+            <li><b>Дерево DOM</b> — структура HTML-документа в виде узлов.</li>
+            <li><b>Компонентный подход</b> — интерфейс строится из небольших переиспользуемых компонентов.</li>
+            <li><b>Компонент</b> — функция, возвращающая JSX. Может принимать входные данные (props) и управлять своим состоянием.</li>
+          </ul>
+          <h3>Способы установки</h3>
+          <ul class="list-ul">
+            <li><b>CDN</b> — быстрое подключение через теги <code>&lt;script&gt;</code> в HTML (для изучения, прототипов).</li>
+            <li><b>Vite</b> — современный быстрый инструмент сборки, стандарт для новых проектов React.</li>
+            <li><b>Create React App</b> — классический способ для сложных или старых проектов.</li>
+          </ul>
+          <p class="note note--info">
+            <strong>CDN-способ</strong> подходит для учебных или маленьких проектов.<br>
+            Для современных и крупных приложений используйте <strong>Vite</strong>.<br>
+            <strong>Create React App</strong> — для поддержки старых проектов.
+          </p>
+        </div>
+      </section>
+
+      <!-- Установка React через CDN -->
+      <section class="section" id="installations-cdn">
+        <div class="container">
+          <h2>Установка React через CDN</h2>
+          <p class="note">
+            <strong>CDN</strong> — для прототипов, тестирования и маленьких учебных проектов.
+          </p>
+          <h4>Подключение</h4>
+          <div class="code-block">
+            <pre><code>&lt;script src="https://unpkg.com/react@18/umd/react.development.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/babel-standalone@6/babel.min.js"&gt;&lt;/script&gt;</code></pre>
+          </div>
+          <h4>Пример HTML-страницы с React через CDN</h4>
+          <div class="code-block">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;React CDN&lt;/title&gt;
+    &lt;script src="https://unpkg.com/react@18/umd/react.development.js"&gt;&lt;/script&gt;
+    &lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"&gt;&lt;/script&gt;
+    &lt;script src="https://unpkg.com/babel-standalone@6/babel.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+    &lt;script type="text/babel"&gt;
+      function App() {
+        const [message, setMessage] = React.useState("Привет, React!");
+        return (
+          &lt;div&gt;
+            &lt;h1&gt;{message}&lt;/h1&gt;
+            &lt;button onClick={() =&gt; setMessage("Вы только что нажали кнопку!")}&gt;Изменить сообщение&lt;/button&gt;
+          &lt;/div&gt;
+        );
+      }
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(&lt;App /&gt;);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Установка React через Vite -->
+      <section class="section" id="installations-vite">
+        <div class="container">
+          <h2>
+            Установка React через Vite
+            <span style="color: #2db300; font-weight: normal">
+              (рекомендуется для новых проектов)
+            </span>
+          </h2>
+          <p class="note">
+            <strong>Vite</strong> — современный стандарт для быстрой и удобной разработки на React.<br>
+            Поддерживает горячую перезагрузку, минимальную структуру, мгновенный старт.<br>
+            <b>Рекомендуется для всех новых проектов!</b>
+          </p>
+          <h4>Шаги установки (2025, актуально):</h4>
+          <ol class="list-ol">
+
+            <li>Убедитесь, что установлены <b>Node.js</b> и <b>npm</b> (<code>node -v</code> и <code>npm -v</code>).</li>
+
+            <li>
+              <p> Откройте терминал и выполните команду:</p>
+              <div class="code-block">
+                <pre><code>npm create vite@latest my-app</code></pre>
+              </div>
+            </li>
+
+            <li>
+              <p>Выберите стрелками <b>React</b> и <b>JavaScript</b> (или <b>TypeScript</b> по желанию).</p>
+            </li>
+            <li>
+              <p>Выберите
+            </li>
+            <li>
+              <p>Для Yarn: <code>yarn create vite my-app</code></p>
+            </li>
+
+
+
+            <li>
+              <p>Перейдите в папку проекта:</p>
+              <div class="code-block">
+                <pre><code>cd my-app</code></pre>
+              </div>
+            </li>
+            <li>
+              <p>Установите зависимости:</p>
+              <div class="code-block">
+                <pre><code>npm install</code></pre>
+              </div>
+            </li>
+            <li>
+              <p>Запустите проект в режиме разработки:</p>
+              <div class="code-block">
+                <pre><code>npm run dev</code></pre>
+              </div>
+            </li>
+          </ol>
+          <p> <b>Проект откроется по адресу <code>http://localhost:5173</code></b></p>
+
+          <h4>Пример структуры проекта Vite + React</h4>
+          <div class="code-block">
+            <pre><code>
+my-app/
+├─ src/
+│  ├─ App.jsx
+│  ├─ main.jsx
+│  └─ ...
+├─ index.html
+├─ package.json
+└─ vite.config.js
+</code></pre>
+          </div>
+              <h5>Объяснение:</h5>
+              <ul class="list-ul">
+                <li><code>src/</code> — папка для исходного кода, содержит компоненты и точки входа.</li>
+                <li><code>index.html</code> — шаблон HTML, в который Vite вставляет скомпилированные скрипты.</li>
+                <li><code>package.json</code> — файл с зависимостями и скриптами проекта.</li>
+                <li><code>vite.config.js</code> — конфигурация Vite (необязательно, только для кастомизации).</li>
+              </ul>
+
+
+
+
+
+          <h4>Пример простого компонента</h4>
+          <div class="code-block">
+            <pre><code>import React from "react";
+
+function App() {
+  return (
+    &lt;h1&gt;Привет, React!&lt;/h1&gt;
+  );
+}
+
+export default App;
+</code></pre>
+          </div>
+          <div class="note note--info">
+            <b>Преимущества Vite:</b> мгновенный запуск, быстрая горячая перезагрузка, гибкая настройка, современная архитектура.<br>
+            <b>Документация:</b> <a href="https://vitejs.dev/guide/" target="_blank">vitejs.dev/guide/</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Установка React через Create React App -->
+      <section class="section" id="installations-create-react-app">
+        <div class="container">
+          <h2>Установка React через Create React App</h2>
+          <p class="note">
+            <strong>Create React App</strong>
+            — классический способ для старых/поддерживаемых проектов.<br>
+            Сейчас для новых проектов рекомендуется <b>Vite</b>. <br> Create React App был признан устаревшим. Используйте его только для поддержки старого кода или если нужен максимально быстрый старт без сложной настройки.
+          </p>
+          <h4>Шаги установки</h4>
+          <ol class="list-ol">
+            <li>
+              <p>Создание нового проекта:</p>
+              <div class="code-block">
+                <pre><code>npx create-react-app my-react-app</code></pre>
+              </div>
+            </li>
+            <li>
+              <p>Перейдите в папку проекта:</p>
+              <div class="code-block">
+                <pre><code>cd my-react-app</code></pre>
+              </div>
+            </li>
+            <li>
+              <p>Запустите сервер разработки:</p>
+              <div class="code-block">
+                <pre><code>npm start</code></pre>
+              </div>
+            </li>
+          </ol>
+          <p> <b>Проект откроется по адресу <code>http://localhost:3000</code></b></p>
+          <h4>Пример структуры проекта Create React App</h4>
+          <div class="code-block">
+            <pre><code>my-react-app/
+├─ node_modules/
+├─ public/
+├─ src/
+│  ├─ App.jsx
+│  ├─ index.js
+│  └─ ...
+├─ package.json
+├─ package.json-lock.json
+├─ README.md
+└─ ...</code></pre>
+          </div>
+              <h5>Объяснение:</h5>
+              <ul class="list-ul">
+                <li><code>node_modules/</code> — папка с установленными зависимостями.</li>
+                <li><code>public/</code> — статические файлы, доступные по URL.</li>
+                <li><code>src/</code> — папка для исходного кода, содержит компоненты и точки входа.</li>
+                <li><code>package-lock.json</code> — фиксирует версии зависимостей (необязательно для понимания).</li>
+                <li><code>package.json</code> — файл с зависимостями и скриптами проекта.</li>
+                <li><code>README.md</code> — документация проекта.</li>
+              </ul>
+          <h4>Пример простого компонента</h4>
+          <div class="code-block">
+            <pre><code>import React from "react";
+function App() {
+  return (
+    &lt;h1&gt;Привет, React!&lt;/h1&gt;
+  );
+}
+export default App;
+</code></pre>
+
+          </div>
+          <div class="note note--info">
+            <b>Преимущества Create React App:</b> быстрый старт, много готовых настроек, поддержка старого кода.<br>
+            <b>Недостатки:</b> медленнее Vite, сложная настройка, устаревший инструмент.<br>
+            <b>Документация:</b> <a href="https://create-react-app.dev/docs/getting-started/" target="_blank">create-react-app.dev/docs</a>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Сравнение Vite и Create React App -->
+      <section class="section" id="installations-comparison">
+        <div class="container">
+          <h2>Сравнение Vite и Create React App</h2>
+          <table class="table-note">
+            <thead>
+              <tr>
+                <th>Критерий</th>
+                <th>Vite</th>
+                <th>Create React App (CRA)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Команда установки</td>
+                <td><code>npm create vite@latest my-app</code></td>
+                <td><code>npx create-react-app my-app</code></td>
+              </tr>
+              <tr>
+                <td>Время установки</td>
+                <td>Очень быстро (секунды)</td>
+                <td>Дольше (минуты)</td>
+              </tr>
+              <tr>
+                <td>Старт разработки</td>
+                <td>
+                  <code>cd my-app</code><br>
+                  <code>npm install</code><br>
+                  <code>npm run dev</code>
+                </td>
+                <td>
+                  <code>cd my-app</code><br>
+                  <code>npm start</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Горячая перезагрузка</td>
+                <td>Мгновенная, без перезагрузки страницы</td>
+                <td>Медленнее, часто перезагружает страницу</td>
+              </tr>
+              <tr>
+                <td>Базовая структура проекта</td>
+                <td>Минимум файлов, только самое необходимое</td>
+                <td>Много файлов и настроек «из коробки»</td>
+              </tr>
+              <tr>
+                <td>Структура проекта</td>
+                <td>Гибкая, можно организовать по своему усмотрению</td>
+                <td>Стандартная, рекомендуется придерживаться</td>
+              </tr>
+              <tr>
+                <td>Гибкость конфигурации</td>
+                <td>Легко настраивается (vite.config.js)</td>
+                <td>Сложно, требуется «eject» для кастомизации</td>
+              </tr>
+              <tr>
+                <td>Скорость сборки</td>
+                <td>Очень высокая (ESBuild/Vite)</td>
+                <td>Медленнее (Webpack)</td>
+              </tr>
+              <tr>
+                <td>Совместимость с modern JS</td>
+                <td>Отличная (ESM, современный синтаксис)</td>
+                <td>Требуется настройка для новых возможностей</td>
+              </tr>
+              <tr>
+                <td>Поддержка</td>
+                <td>Современный стандарт, быстро развивается</td>
+                <td>Официально поддерживается, но развивается медленнее</td>
+              </tr>
+              <tr>
+                <td>Документация</td>
+                <td><a href="https://vitejs.dev/guide/">vitejs.dev/guide</a></td>
+                <td><a href="https://create-react-app.dev/docs/getting-started/">create-react-app.dev/docs</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="note note--info" style="margin-top: 1em">
+            <b>Вывод:</b><br>
+            <b>Vite</b> — лучший выбор для современных проектов.<br>
+            <b>CRA</b> — только если нужен максимально быстрый старт без сложной настройки или для поддержки старого кода.
+          </div>
+        </div>
+      </section>
+
+      <!-- Фреймворки на базе React -->
+      <section class="section" id="react-frameworks">
+        <div class="container">
+          <h2>Фреймворки на базе React</h2>
+          <p class="note">
+            На базе React построены популярные фреймворки для создания сложных приложений:
+          </p>
+          <ul class="list-ul">
+            <li><b>Next.js</b> — для серверного рендеринга и статической генерации сайтов.</li>
+            <li><b>React Router (v7)</b> — для маршрутизации в одностраничных приложениях.</li>
+            <li><b>Expo (для нативных приложений)
+              </b> — для разработки мобильных приложений на React Native.</li>
+            <li><b>TanStack Start (Beta)</b> — для управления данными и кэшированием в React-приложениях.</li>
+            <li><b>RedwoodJS</b> — для создания full-stack приложений на React с интеграцией бэкенда.</li>
+          </ul>
+          <p>Эти фреймворки нужно устанавливать после создания базового React-приложения через Vite или CRA, в зависимости от требований проекта.</p>
+          <p>То есть сначала устанавливается Vite, а затем уже фреймворки на их основе.</p>
+          <div class="note note--info">
+            Эти фреймворки предоставляют готовые решения для маршрутизации, управления данными, оптимизации производительности и других задач, упрощая разработку сложных приложений на React.
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Практика -->
+      <section class="section" id="practice">
+        <div class="container">
+          <h2>Практика: минимальное React-приложение через CDN</h2>
+          <ul class="list-ul">
+            <li>Создайте HTML-файл и вставьте туда пример ��ода из раздела CDN.</li>
+            <li>Откройте файл в браузере.</li>
+            <li>Вы увидите заголовок и кнопку. При нажатии на кнопку текст изменится.</li>
+          </ul>
+          <div class="code-block">
+            <pre><code>&lt;div id="root"&gt;&lt;/div&gt;
+&lt;script type="text/babel"&gt;
+  function App() {
+    const [message, setMessage] = React.useState("Привет, React!");
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;{message}&lt;/h1&gt;
+        &lt;button onClick={() =&gt; setMessage("Вы только что нажали кнопку!")}&gt;
+          Изменить сообщение
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(&lt;App /&gt;);
+&lt;/script&gt;
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Советы -->
+      <section class="section" id="tips">
+        <div class="container">
+          <h2>Советы и типичные ошибки</h2>
+          <ul class="list-ul">
+            <li>Для production-проектов используйте <b>Vite</b>.</li>
+            <li>Проверяйте, чтобы Node.js и npm были актуальными (Node.js 18+, npm 9+).</li>
+            <li>Не храните весь код в одном файле — используйте структуру папок.</li>
+            <li>Для экспериментов и обучения CDN идеально подойдёт.</li>
+          </ul>
+          <div class="note note--info">
+            <strong>Частая ошибка:</strong> использовать CDN для серьёзных проектов. Это может привести к проблемам с производительностью, безопасностью и поддержкой. Для реальных приложений всегда выбирайте <strong>Vite</strong> или <strong>CRA</strong>.
+          </div>
+        </div>
+      </section>
+
+      <!-- Лучшие практики -->
+      <section class="section" id="best-practices">
+        <div class="container">
+          <h2>Лучшие практики</h2>
+          <ul class="list-ul">
+            <li>Делите интерфейс на небольшие компоненты.</li>
+            <li>Используйте props и state для управления данными.</li>
+            <li>Соблюдайте структуру проекта: <code>src/</code> для компонентов и страниц.</li>
+            <li>Следите за обновлениями React и экосистемы.</li>
+            <li>Используйте Vite для современных проектов.</li>
+          </ul>
+          <div class="note note--info">
+            <b>Вывод:</b>
+            Начинайте знакомство с React через CDN, но для серьёзной разработки переходите на Vite — это быстро, удобно и современно!
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+  </div>
+  
+
+</body>
+
+</html>

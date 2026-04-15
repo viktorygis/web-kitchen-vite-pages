@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Методы, computed и watch во Vue</title>
+<meta name="description" content="Как создавать методы, вычисляемые свойства и наблюдатели во Vue. Практика и примеры." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+<head>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main class="page">
+      <nav class="nav-tabs">
+        <a href="#intro">Введение</a>
+        <a href="#methods">Методы</a>
+        <a href="#parameters">Параметры и this</a>
+        <a href="#computed">computed</a>
+        <a href="#watch">watch</a>
+        <a href="#practice">Практика</a>
+        <a href="#examples">Примеры</a>
+      </nav>
+
+      <!-- Введение -->
+      <section class="section" id="intro">
+        <div class="container">
+          <h1>methods, computed и watch во Vue</h1>
+          <p class="note">
+            <strong>methods</strong>
+            — обычные функции для обработки событий.
+            <br />
+            <strong>computed</strong>
+            — вычисляемые свойства, зависящие от данных и кешируемые.
+            <br />
+            <strong>watch</strong>
+            — наблюдатели за изменением данных для выполнения побочных эффектов.
+            <br />
+            Все три используются внутри Vue-компонентов для управления логикой приложения.
+          </p>
+
+          <div class="cards cards--3" style="margin: 20px 0">
+            <!-- methods -->
+            <div class="card">
+              <div class="card__title">methods</div>
+              <p>
+                Определяются в объекте
+                <code>methods</code>
+                . Обычно используются для обработки событий (например,
+                <code>@click</code>
+                ). Не кешируются.
+              </p>
+
+              <div class="card__desc">
+                <ul>
+                  <li>Обычные функции</li>
+                  <li>Используются для обработки событий</li>
+                  <li>Не кешируются</li>
+                </ul>
+              </div>
+              <!-- синтаксис -->
+              <pre><code>methods: {
+   myMethod() {
+      // код метода
+   }
+}</code></pre>
+            </div>
+            <!-- computed -->
+            <div class="card">
+              <div class="card__title">computed</div>
+              <p>
+                Определяются в объекте
+                <code>computed</code>
+                . Пересчитываются только при изменении зависимостей (например,
+                <code>data()</code>
+                ) и кешируются.
+              </p>
+
+              <div class="card__desc">
+                <ul>
+                  <li>Геттеры (и сеттеры)</li>
+                  <li>Используются для вычислений на основе данных</li>
+                  <li>Кешируются</li>
+                </ul>
+              </div>
+              <!-- синтаксис -->
+              <pre><code>computed: {
+ myComputed() {
+  // код вычисляемого свойства
+ }
+}
+</code></pre>
+            </div>
+
+            <!-- watch -->
+            <div class="card">
+              <div class="card__title">watch</div>
+              <p>
+                Определяются в объекте
+                <code>watch</code>
+                . Следят за изменением переменной и запускают функцию, например, при изменении
+                <code>data()</code>
+                .
+              </p>
+
+              <div class="card__desc">
+                <ul>
+                  <li>Функции-обработчики</li>
+                  <li>Используются для асинхронных действий и побочных эффектов</li>
+                  <li>Не кешируются</li>
+                </ul>
+              </div>
+              <!-- синтаксис -->
+
+              <pre><code>watch: {
+ myVar(newValue, oldValue) {
+  // код обработчика
+ }
+}
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Методы -->
+      <section class="section" id="methods">
+        <div class="container">
+          <h2>Методы в Vue</h2>
+          <p class="note">
+            <strong>methods</strong> — это функции, определённые внутри объекта
+            <code>methods</code>
+            в компоненте Vue. Они обычно используются для обработки событий, таких как клики по кнопкам, изменения ввода и другие взаимодействия пользователя.
+          </p>
+          <h4>Где используются методы:</h4>
+          <ul class="list-ul">
+            <li>Обработчики событий (например, <code>@click</code>, <code>@input</code>)</li>
+            <li>Логика, связанная с действиями пользователя</li>
+            <li>Манипуляции с данными компонента</li>
+          </ul>
+
+          <h4>Как использовать методы:</h4>
+          <p>
+            Методы определяются в объекте <code>methods</code> компонента Vue. Они могут быть вызваны из шаблона с помощью директивы <code>@click</code>, <code>@input</code> и других.
+          </p>
+
+
+          <h4>Пример 1:</h4>
+          <p class="note note--info">
+            Создадим простой счётчик с кнопкой для увеличения значения.
+          </p>
+          <div class="interactive-demo">
+            <div id="counter-demo">
+              <p>Счётчик: {{ count }}</p>
+              <button @click="increaseCount">Увеличить</button>
+            </div>
+          </div>
+          <div class="code-block">
+            <pre><code>&lt;div id="counter-demo"&gt;
+  &lt;p&gt;Счётчик: {{ count }}&lt;/p&gt;
+  &lt;button @click="increaseCount"&gt;Увеличить&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() {
+    return { count: 0 }
+  },
+  methods: {
+    increaseCount() {
+      this.count++;
+    }
+  }
+}).mount("#counter-demo");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><code>data()</code> возвращает объект с переменной <code>count</code>, инициализированной нулём.</li>
+            <li>В объекте <code>methods</code> определён метод <code>increaseCount</code>, который увеличивает значение <code>count</code> на 1.</li>
+            <li>В шаблоне кнопка привязана к методу через директиву <code>@click</code>.</li>
+          </ul>
+          <h4>Пример 2: </h4>
+          <p class="note note--info">
+            Расширенный счётчик с увеличением, уменьшением и сбросом значения.
+          </p>
+
+          <div class="interactive-demo">
+            <div id="counter-full">
+              <p>Счётчик: {{ count }}</p>
+              <div class="demo-container">
+                <button @click="increase">+</button>
+                <button @click="decrease">-</button>
+                <button @click="reset">Сброс</button>
+              </div>
+            </div>
+          </div>
+          <div class="code-block">
+            <pre><code>&lt;div id="counter-full"&gt;
+  &lt;p&gt;Счётчик: {{ count }}&lt;/p&gt;
+  &lt;button @click="increase"&gt;+&lt;/button&gt;
+  &lt;button @click="decrease"&gt;-&lt;/button&gt;
+  &lt;button @click="reset"&gt;Сброс&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() { return { count: 0 } },
+  methods: {
+    increase() { this.count++; },
+    decrease() { this.count--; },
+    reset() { this.count = 0; }
+  }
+}).mount("#counter-full");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Метод <code>increase</code> увеличивает счётчик на 1.</li>
+            <li>Метод <code>decrease</code> уменьшает счётчик на 1.</li>
+            <li>Метод <code>reset</code> сбрасывает счётчик в 0.</li>
+          </ul>
+
+
+
+
+
+        </div>
+      </section>
+
+      <!-- Параметры и this -->
+      <section class="section" id="parameters">
+        <div class="container">
+          <h2>Передача параметров и работа с this</h2>
+          <p class="note">
+            Методы могут принимать <strong>параметры</strong>, которые передаются при вызове из шаблона. Внутри методов
+            <code>this</code>
+            ссылается на экземпляр Vue-компонента, позволяя получать доступ к данным и другим методам.
+          </p>
+          <h4>Пример 1:</h4>
+          <p class="note note--info">Создадим счётчик с кнопками, увеличивающими значение на разное количество.</p>
+          <div class="interactive-demo">
+            <div id="counter-step">
+              <p>Счётчик: {{ count }}</p>
+              <div class="demo-container">
+                <button @click="increase(1)">+1</button>
+                <button @click="increase(5)">+5</button>
+                <button @click="increase(10)">+10</button>
+              </div>
+            </div>
+          </div>
+          <div class="code-block">
+            <pre><code>&lt;div id="counter-step"&gt;
+  &lt;p&gt;Счётчик: {{ count }}&lt;/p&gt;
+  &lt;button @click="increase(1)"&gt;+1&lt;/button&gt;
+  &lt;button @click="increase(5)"&gt;+5&lt;/button&gt;
+  &lt;button @click="increase(10)"&gt;+10&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() { return { count: 0 } },
+  methods: {
+    increase(value) { this.count += value }
+  }
+}).mount("#counter-step");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Метод <code>increase</code> принимает параметр <code>value</code>, который указывает, на сколько увеличить счётчик.</li>
+            <li>В шаблоне кнопки вызывают метод с разными аргументами: 1, 5 и 10.</li>
+            <li>Внутри метода используется <code>this.count</code> для доступа к переменной счётчика и её обновления.</li>
+          </ul>
+
+
+
+          <h4>Пример 2:</h4>
+          <p class="note note--info">Создадим метод для форматирования имени с заглавной буквы. </p>
+
+          <div class="interactive-demo">
+            <div id="name-demo">
+              <input v-model="name" placeholder="Введите имя" />
+              <p>Имя: {{ formatName(name) }}</p>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <pre><code>&lt;div id="name-demo"&gt;
+  &lt;input v-model="name" placeholder="Введите имя"&gt;
+  &lt;p&gt;Имя: {{ formatName(name) }}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() { return { name: "алиса" } },
+  methods: {
+    formatName(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+  }
+}).mount("#name-demo");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Метод <code>formatName</code> принимает строку <code>str</code> и возвращает её с заглавной первой буквой.</li>
+            <li>В шаблоне метод вызывается с текущим значением из поля ввода <code>name</code>.</li>
+          </ul>
+
+
+          <h4>Пример 3:</h4>
+          <p class="note note--info">Создадим метод для преобразования текста в нижний регистр.</p>
+          <div class="interactive-demo">
+            <div id="lowercase-demo">
+              <input v-model="text" placeholder="Введите текст" />
+              <p>Результат: {{ toLowerCase(text) }}</p>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <pre><code>&lt;div id="lowercase-demo"&gt;
+  &lt;input v-model="text" placeholder="Введите текст"&gt;
+  &lt;p&gt;Результат: {{ toLowerCase(text) }}&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() { return { text: "" } },
+  methods: {
+    toLowerCase(str) { return str.toLowerCase(); }
+  }
+}).mount("#lowercase-demo");
+&lt;/script&gt;</code></pre>
+          </div>
+
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Метод <code>toLowerCase</code> принимает строку <code>str</code> и возвращает её в нижнем регистре с помощью встроенного метода JavaScript <code>toLowerCase()</code>.</li>
+            <li>В шаблоне метод вызывается с текущим значением из поля ввода <code>text</code>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- computed -->
+      <section class="section" id="computed">
+        <div class="container">
+          <h2>computed: вычисляемые свойства</h2>
+          <p class="note"><strong>computed</strong> определяются в объекте <code>computed</code>. Пересчитываются только при изменении зависимостей (например, <code>data()</code>) и кешируются.</p>
+          <h4>Что нужно знать о computed:</h4>
+          <ul class="list-ul">
+            <li>Используются для вычислений на основе данных компонента.</li>
+            <li>Пересчитываются только при изменении зависимостей.</li>
+            <li>Кешируются для оптимизации производительности.</li>
+          </ul>
+          <p class="note note--info">В отличие от методов, которые выполняются при каждом вызове, вычисляемые свойства кешируются до тех пор, пока не изменятся их зависимости. Это делает их идеальными для сложных вычислений, которые не нужно выполнять каждый раз при рендеринге.</p>
+
+
+          <h4>Пример:</h4>
+          <p>Создадим вычисляемое свойство, которое возвращает удвоенное значение счётчика.</p>
+
+          <div class="interactive-demo">
+            <div id="computed-demo">
+              <h4>Исходное значение: {{ computedCount }}</h4>
+              <h4>Удвоенное (computed): {{ doubleCount }}</h4>
+              <button @click="computedCount++">Увеличить</button>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <pre><code>&lt;div id="computed-demo"&gt;
+  &lt;h4&gt;Исходное значение: {{ computedCount }}&lt;/h4&gt;
+  &lt;h4&gt;Удвоенное (computed): {{ doubleCount }}&lt;/h4&gt;
+  &lt;button @click="computedCount++"&gt;Увеличить&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() { return { computedCount: 5 } },
+  computed: {
+    doubleCount() { return this.computedCount * 2 }
+  }
+}).mount("#computed-demo");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>В объекте <code>data()</code> определена переменная <code>computedCount</code>, инициализированная значением 5.</li>
+            <li>В объекте <code>computed</code> определено вычисляемое свойство <code>doubleCount</code>, которое возвращает удвоенное значение <code>computedCount</code>.</li>
+            <li>В шаблоне отображаются оба значения, и кнопка увеличивает <code>computedCount</code> на 1 при каждом клике.</li>
+          </ul>
+          <p class="note note--info">
+            🚀
+            <strong>computed</strong> идеально подходят для производительных вычислений, которые зависят от реактивных данных.
+          </p>
+
+        </div>
+      </section>
+
+      <!-- watch -->
+      <section class="section" id="watch">
+        <div class="container">
+          <h2>watch: наблюдатель</h2>
+          <p class="note"><strong>watch</strong> определяются в объекте <code>watch</code>. Следят за изменением переменной и запускают функцию, например, при изменении <code>data()</code>.</p>
+          <h4>Что нужно знать о watch:</h4>
+          <ul class="list-ul">
+            <li>Используются для асинхронных действий и побочных эффектов.</li>
+            <li>Следят за изменением реактивных данных.</li>
+            <li>Не кешируются.</li>
+          </ul>
+          <p class="note note--info">
+            В отличие от
+            <code>computed</code>
+            , которые предназначены для вычислений на основе данных, наблюдатели
+            <code>watch</code>
+            используются для выполнения действий в ответ на изменения данных, таких как запросы к API или обновление других частей состояния.
+          </p>
+
+          <h4>Пример:</h4>
+          <p>Создадим наблюдатель, который будет логировать изменения счётчика в консоль.</p>
+          <div class="interactive-demo">
+            <div id="watch-demo">
+              <h4>Счётчик: {{ scoring }}</h4>
+              <button @click="scoring++">Увеличить</button>
+            </div>
+          </div>
+          <div class="code-block">
+            <pre><code>&lt;div id="watch-demo"&gt;
+  &lt;h4&gt;Счётчик: {{ scoring }}&lt;/h4&gt;
+  &lt;button @click="scoring++"&gt;Увеличить&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;
+Vue.createApp({
+  data() { return { scoring: 0 } },
+  watch: {
+    scoring(newValue, oldValue) {
+      console.log(`Счётчик изменился с ${oldValue} на ${newValue}`);
+    }
+  }
+}).mount("#watch-demo");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>В объекте <code>data()</code> определена переменная <code>scoring</code>, инициализированная значением 0.</li>
+            <li>В объекте <code>watch</code> определён наблюдатель для переменной <code>scoring</code>, который логирует в консоль старое и новое значение при каждом изменении.</li>
+            <li>В шаблоне отображается текущее значение счётчика, и кнопка увеличивает его на 1 при каждом клике.</li>
+          </ul>
+          <p class="note note--info">
+            🚀
+            <strong>watch</strong>
+            подходит для асинхронных действий и побочных эффектов.
+            <br />
+            Например, запрос к API при изменении значения.
+          </p>
+
+
+        </div>
+      </section>
+
+      <!-- Практика -->
+      <section class="section" id="practice">
+        <div class="container">
+          <h2>Практика</h2>
+          <h3>Создание простого калькулятора с computed и watch</h3>
+          <p class="note">
+            Создадим простой калькулятор, который будет использовать
+            <code>computed</code>
+            для вычисления удвоенного, утроенного значения и квадратного корня из введённого числа. Также добавим
+            <code>watch</code>
+            , чтобы сбрасывать значение, если оно становится отрицательным.
+          </p>
+
+          <div class="interactive-demo">
+            <div id="calc-demo">
+              <input v-model.number="num" type="number" placeholder="Введите число" />
+              <div>
+                <p>Удвоенное: <b>{{ double }}</b></p>
+                <p>Утроенное: <b>{{ triple }}</b></p>
+                <p>Квадратный корень: <b>{{ sqrt }}</b></p>
+                <p v-if="num < 0"><b>Число отрицательное!</b></p>
+              </div>
+            </div>
+
+          </div>
+
+          <pre><code>&lt;div id="calc-demo"&gt;
+  &lt;input v-model.number="num" type="number" placeholder="Введите число"&gt;
+  &lt;p&gt;Удвоенное: {{ double }}&lt;/p&gt;
+  &lt;p&gt;Утроенное: {{ triple }}&lt;/p&gt;
+  &lt;p&gt;Квадратный корень: {{ sqrt }}&lt;/p&gt;
+  &lt;p v-if="num &lt; 0"&gt;Число отрицательное!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() { return { num: 0 } },
+  computed: {
+    double() { return this.num * 2 },
+    triple() { return this.num * 3 },
+    sqrt() { return Math.sqrt(Math.abs(this.num)) }
+  },
+  watch: {
+    num(newVal) {
+      if (newVal < 0) {
+        this.num = 0;
+      }
+    }
+  }
+}).mount("#calc-demo");
+&lt;/script&gt;</code></pre>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>В объекте <code>data()</code> определена переменная <code>num</code>, инициализированная значением 0.</li>
+            <li>В объекте <code>computed</code> определены три вычисляемых свойства: <code>double</code>, <code>triple</code> и <code>sqrt</code>, которые возвращают удвоенное, утроенное значение и квадратный корень из абсолютного значения <code>num</code> соответственно.</li>
+            <li>В объекте <code>watch</code> определён наблюдатель для переменной <code>num</code>, который сбрасывает значение на 0, если оно становится отрицательным.</li>
+            <li>В шаблоне отображаются результаты вычислений, а также предупреждение, если введённое число отрицательное.</li>
+          </ul>
+
+
+        </div>
+      </section>
+
+      <!-- Примеры -->
+      <section class="section" id="examples">
+        <div class="container">
+          <h2>Реальные примеры</h2>
+          <p> Реальные примеры использования методов, computed и watch во Vue для решения различных задач.</p>
+
+          <!-- Пример 1 -->
+          <h3>Пример 1. Список с обработкой строк</h3>
+          <p class="note note--info">
+            Создадим метод для форматирования строк в списке. Здесь импользуется метод для преобразования первой буквы каждого элемента списка в заглавную.
+          </p>
+
+          <div class="interactive-demo">
+            <div id="str-demo">
+              <ul>
+                <li v-for="item in items" :key="item">{{ capitalize(item) }}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="code-block">
+            <pre><code>&lt;ul&gt;
+  &lt;li v-for="item in items" :key="item"&gt;{{ capitalize(item) }}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+Vue.createApp({
+  data() {
+    return {
+      items: ["яблоко", "банан", "вишня"]
+    };
+  },
+  methods: {
+    capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+  }
+}).mount("#str-demo");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Метод <code>capitalize</code> принимает строку и возвращает её с заглавной первой буквой.</li>
+            <li>В шаблоне метод вызывается для каждого элемента списка <code>items</code>, форматируя его перед отображением.</li>
+          </ul>
+
+
+
+
+
+          <!-- Пример 2 -->
+          <h3>Пример 2. Фильтр с computed</h3>
+          <p class="note note--info">
+            Создадим вычисляемое свойство для фильтрации списка на основе поискового запроса.
+          </p>
+
+          <div class="interactive-demo">
+            <div id="filter-demo">
+              <input v-model="search" placeholder="Поиск" />
+              <ul>
+                <li v-for="item in filtered" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <pre><code>&lt;div id="filter-demo"&gt;
+  &lt;input v-model="search" placeholder="Поиск"&gt;
+  &lt;ul&gt;
+    &lt;li v-for="item in filtered" :key="item"&gt;{{ item }}&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;script&gt;
+Vue.createApp({
+  data() {
+    return {
+      search: "",
+      items: ["яблоко", "банан", "вишня", "апельсин", "груша"]
+    };
+  },
+  computed: {
+    filtered() {
+      return this.items.filter(item =>
+        item.toLowerCase().includes(this.search.toLowerCase())
+      );
+    }
+  }
+}).mount("#filter-demo");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>Вычисляемое свойство <code>filtered</code> возвращает отфильтрованный список элементов, содержащих строку из переменной <code>search</code>.</li>
+            <li>В шаблоне отображается только те элементы, которые соответствуют поисковому запросу.</li>
+          </ul>
+
+          <!-- Пример 3 -->
+          <h3>Пример 3. Watch для контроля состояния</h3>
+          <p class="note note--info">
+            Создадим наблюдатель, который будет сбрасывать значение баллов, если оно становится отрицательным.
+          </p>
+
+          <div class="interactive-demo">
+            <div id="watch-example">
+              <input v-model.number="score" type="number" placeholder="Баллы" />
+              <p>Баллы: {{ score }}</p>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <pre><code>
+&lt;div id="watch-example"&gt;
+  &lt;input v-model.number="score" type="number" placeholder="Баллы"&gt;
+  &lt;p&gt;Баллы: {{ score }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+Vue.createApp({
+  data() {
+    return {
+      score: 0
+    };
+  },
+  watch: {
+    score(newVal) {
+      if (newVal < 0) {
+        this.score = 0;
+      }
+    }
+  }
+}).mount("#watch-example");
+&lt;/script&gt;</code></pre>
+
+            <h5>Объяснение кода:</h5>
+            <ul class="list-ul">
+              <li>Наблюдатель для переменной <code>score</code> сбрасывает её значение на 0, если оно становится отрицательным.</li>
+              <li>В шаблоне отображается текущее значение баллов, и пользователь может вводить число через поле ввода.</li>
+            </ul>
+
+          </div>
+      </section>
+    </main>
+    <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+  </div>
+
+  <script>
+    // Первый простой счетчик
+    Vue.createApp({
+      data() {
+        return {
+          count: 0
+        };
+      },
+      methods: {
+        increaseCount() {
+          this.count++;
+        },
+      },
+    }).mount("#counter-demo");
+
+    // Расширенный счетчик
+    Vue.createApp({
+      data() {
+        return {
+          count: 0
+        };
+      },
+      methods: {
+        increase() {
+          this.count++;
+        },
+        decrease() {
+          this.count--;
+        },
+        reset() {
+          this.count = 0;
+        },
+      },
+    }).mount("#counter-full");
+
+    // Передача параметра
+    Vue.createApp({
+      data() {
+        return {
+          count: 0
+        };
+      },
+      methods: {
+        increase(value) {
+          this.count += value;
+        },
+      },
+    }).mount("#counter-step");
+
+    // Форматирование имени
+    Vue.createApp({
+      data() {
+        return {
+          name: "алиса"
+        };
+      },
+      methods: {
+        formatName(str) {
+          return str.charAt(0).toUpperCase() + str.slice(1);
+        },
+      },
+    }).mount("#name-demo");
+
+    // Преобразование в нижний регистр
+    Vue.createApp({
+      data() {
+        return {
+          text: ""
+        };
+      },
+      methods: {
+        toLowerCase(str) {
+          return str.toLowerCase();
+        },
+      },
+    }).mount("#lowercase-demo");
+
+    // computed demo
+    Vue.createApp({
+      data() {
+        return {
+          computedCount: 5
+        };
+      },
+      computed: {
+        doubleCount() {
+          return this.computedCount * 2;
+        },
+      },
+    }).mount("#computed-demo");
+
+    // watch demo
+    Vue.createApp({
+      data() {
+        return {
+          scoring: 0
+        };
+      },
+      watch: {
+        scoring(newValue, oldValue) {
+          console.log(`Счётчик изменился с ${oldValue} на ${newValue}`);
+        },
+      },
+    }).mount("#watch-demo");
+
+    // Практика: калькулятор
+    Vue.createApp({
+      data() {
+        return {
+          num: 0
+        }
+      },
+      computed: {
+        double() {
+          return this.num * 2
+        },
+        triple() {
+          return this.num * 3
+        },
+        sqrt() {
+          return Math.sqrt(Math.abs(this.num))
+        }
+      },
+      watch: {
+        num(newVal) {
+          if (newVal < 0) {
+            this.num = 0;
+          }
+        }
+      }
+    }).mount("#calc-demo");
+
+    // Пример 1: список с обработкой строк
+    Vue.createApp({
+      data() {
+        return {
+          items: ["яблоко", "банан", "вишня"]
+        };
+      },
+      methods: {
+        capitalize(str) {
+          return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+      }
+    }).mount("#str-demo");
+
+    // Пример 2: фильтр с computed
+    Vue.createApp({
+      data() {
+        return {
+          search: "",
+          items: ["яблоко", "банан", "вишня", "апельсин", "груша"]
+        };
+      },
+      computed: {
+        filtered() {
+          return this.items.filter(item =>
+            item.toLowerCase().includes(this.search.toLowerCase())
+          );
+        }
+      }
+    }).mount("#filter-demo");
+
+    // Пример 3: watch для контроля состояния
+    Vue.createApp({
+      data() {
+        return {
+          score: 0
+        };
+      },
+      watch: {
+        score(newVal) {
+          if (newVal < 0) {
+            this.score = 0;
+          }
+        }
+      }
+    }).mount("#watch-example");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Хранение состояния маршрутов: query и hash в Vue Router</title>
+<meta name="description" content="Изучаем, как хранить состояние маршрутов с помощью query и hash в Vue Router." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <nav class="nav-tabs">
+                    <a href="#intro">Введение</a>
+                    <a href="#query">Query</a>
+                    <a href="#hash">Hash</a>
+                    <a href="#combined">Query + Hash</a>
+                    <a href="#practice">Практика</a>
+                    <a href="#faq">Вопросы/Ошибки</a>
+                </nav>
+
+                <!-- Введение -->
+                <section class="section" id="intro">
+                    <div class="container">
+                        <h1>
+                            Хранение состояния маршрутов: query и hash в Vue
+                            Router
+                        </h1>
+                        <p class="note">
+                            <strong>Состояние маршрута</strong>
+                            — это параметры, которые сохраняются в адресной
+                            строке (URL) и позволяют
+                            <b>
+                                не терять фильтры, сортировку и позицию на
+                                странице
+                            </b>
+                            даже после обновления!
+                            <br />
+                            Это важно для поиска, фильтрации товаров в магазине,
+                            сортировки, перехода к нужному блоку и удобства
+                            пользователя.
+                        </p>
+                        <h4>Что изучаем?</h4>
+                        <ul class="list-ul">
+                            <li>
+                                Как использовать
+                                <b>query</b>
+                                для передачи параметров в URL
+                            </li>
+                            <li>
+                                Что такое
+                                <b>hash</b>
+                                и зачем он нужен
+                            </li>
+                            <li>Как программно менять query и hash</li>
+                            <li>Можно ли их комбинировать?</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Query -->
+                <section class="section" id="query">
+                    <div class="container">
+                        <h2>
+                            Передача параметров через
+                            <code>query</code>
+                        </h2>
+                        <p class="note">
+                            <b>Query-параметры</b>
+                            идут после
+                            <code>?</code>
+                            в URL и позволяют фильтровать или искать данные.
+                            <br />
+                            Они сохраняются даже после перезагрузки страницы!
+                        </p>
+                        <h4>Пример:</h4>
+                        <div class="code-block">
+                            <pre><code class="language-html">&lt;router-link :to="{ path: '/products', query: { category: 'laptops' } }"&gt;📱 Фильтр: Ноутбуки&lt;/router-link&gt;</code></pre>
+                        </div>
+                        <p>
+                            Итоговый URL:
+                            <code>/products?category=laptops</code>
+                        </p>
+                        <h4>Как получить query в компоненте?</h4>
+                        <div class="code-block">
+                            <pre><code >this.$route.query.category // "laptops"</code></pre>
+                        </div>
+                        <p>
+                            Можно передавать сразу несколько параметров:
+                            <code>/search?keyword=Vue&amp;sort=popular</code>
+                        </p>
+                        <h4>Программно изменить query:</h4>
+                        <div class="code-block">
+                            <pre><code >this.$router.push({ path: "/products", query: { category: "phones" } });</code></pre>
+                        </div>
+                        <p class="note note--info">
+                            <b>Query</b>
+                            сохраняется в истории и после обновления страницы.
+                            <br />
+                            Для удаления query передай пустой объект:
+                        </p>
+                        <div class="code-block">
+                            <pre><code >this.$router.push({ path: "/products", query: {} });</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hash -->
+                <section class="section" id="hash">
+                    <div class="container">
+                        <h2>
+                            Якорь (
+                            <code>hash</code>
+                            ) в маршруте
+                        </h2>
+                        <p class="note">
+                            <b>Hash</b>
+                            — всё, что после
+                            <code>#</code>
+                            в URL.
+                            <br />
+                            Используется для прокрутки к нужному элементу на
+                            странице (например,
+                            <code>#features</code>
+                            или
+                            <code>#reviews</code>
+                            ).
+                        </p>
+                        <h4>Как добавить hash в ссылку:</h4>
+                        <div class="code-block">
+                            <pre><code class="language-html">&lt;router-link :to="{ path: '/docs', hash: '#installation' }"&gt;Перейти к установке&lt;/router-link&gt;</code></pre>
+                        </div>
+                        <h4>Программно перейти к якорю:</h4>
+                        <div class="code-block">
+                            <pre><code >this.$router.push({ path: "/about", hash: "#features" });</code></pre>
+                        </div>
+                        <h4>Как узнать hash в компоненте?</h4>
+                        <div class="code-block">
+                            <pre><code >this.$route.hash // Например: "#setup"</code></pre>
+                        </div>
+                        <p class="note note--info">
+                            <b>Hash</b>
+                            работает только внутри одной страницы и не
+                            переключает маршрут.
+                            <br />
+                            Если нет нужного id в разметке, hash не сработает.
+                        </p>
+                        <h4>
+                            Пример кнопки для перехода к блоку с id="features":
+                        </h4>
+                        <div class="code-block">
+                            <pre><code class="language-html">&lt;button @click="goToFeatures"&gt;🔗 Перейти к функциям&lt;/button&gt;
+
+&lt;script&gt;
+export default {
+  methods: {
+    goToFeatures() {
+      this.$router.push({ path: "/about", hash: "#features" });
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Query + Hash одновременно -->
+                <section class="section" id="combined">
+                    <div class="container">
+                        <h2>Комбинируем query и hash</h2>
+                        <p>Можно передать и фильтр, и якорь одновременно:</p>
+                        <div class="code-block">
+                            <pre><code >this.$router.push({ path: "/products", query: { category: "phones" }, hash: "#filters" });
+// URL: /products?category=phones#filters
+</code></pre>
+                        </div>
+                        <ul class="list-ul">
+                            <li>
+                                Query сохраняется даже после перезагрузки 🔄
+                            </li>
+                            <li>
+                                Hash просто прокручивает страницу к нужному
+                                элементу
+                            </li>
+                        </ul>
+                        <h4>
+                            Что произойдет при перезагрузке
+                            <code>/products?category=phones#reviews</code>
+                            ?
+                        </h4>
+                        <div class="note note--info">
+                            <b>Параметры</b>
+                            и
+                            <b>якорь</b>
+                            останутся в адресе.
+                            <br />
+                            После загрузки страницы фильтр будет активен, а
+                            страница прокрутится к блоку с id="reviews".
+                        </div>
+                        <h4>Порядок обработки:</h4>
+                        <ul>
+                            <li>
+                                Vue Router сначала разбирает
+                                <b>path</b>
+                            </li>
+                            <li>
+                                Затем применяет
+                                <b>query</b>
+                            </li>
+                            <li>
+                                В конце переходит к
+                                <b>hash</b>
+                                (якорю), если он есть
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Практика -->
+                <section class="section" id="practice">
+                    <div class="container">
+                        <h2>Практика: работа с query и hash</h2>
+                        <ul>
+                            <li>
+                                Сделай ссылку, которая фильтрует товары по
+                                категории
+                                <b>ноутбуки</b>
+                            </li>
+                            <li>
+                                Сделай кнопку, которая по клику прокручивает
+                                страницу к блоку с id="features"
+                            </li>
+                            <li>
+                                Сделай ссылку, которая фильтрует по цене и сразу
+                                прокручивает к блоку с фильтрами
+                            </li>
+                        </ul>
+                        <div class="practice-demo example">
+                            <div id="vue-state-demo"></div>
+                        </div>
+                        <h4>App.vue</h4>
+                        <div class="code-block">
+                            <pre><code class="language-html">&lt;!-- App.vue --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;router-link :to="{ path: '/products', query: { category: 'laptops' } }"&gt;Ноутбуки&lt;/router-link&gt;
+    &lt;button @click="goToFeatures"&gt;К функциям&lt;/button&gt;
+    &lt;router-link :to="{ path: '/products', query: { sort: 'price' }, hash: '#filters' }"&gt;Сортировать и к фильтрам&lt;/router-link&gt;
+    &lt;router-view/&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  methods: {
+    goToFeatures() {
+      this.$router.push({ path: "/about", hash: "#features" });
+    }
+  }
+}
+&lt;/script&gt;</code></pre>
+                        </div>
+                        <h4>Компонент с query/hash</h4>
+                        <div class="code-block">
+                            <pre><code class="language-html">&lt;!-- DemoQueryHash.vue --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h2&gt;Текущий query:&lt;/h2&gt;
+    &lt;pre&gt;{{ $route.query }}&lt;/pre&gt;
+    &lt;h2&gt;Текущий hash:&lt;/h2&gt;
+    &lt;pre&gt;{{ $route.hash }}&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ и ошибки -->
+                <section class="section" id="faq">
+                    <div class="container">
+                        <h2>Частые ошибки и вопросы</h2>
+                        <ul class="list-ul">
+                            <li>
+                                <strong>Ошибка:</strong>
+                                <code>this.router.push(...)</code>
+                                — забыли
+                                <b>$</b>
+                                перед router!
+                            </li>
+                            <li>
+                                <strong>Ошибка:</strong>
+                                не передали
+                                <code>query</code>
+                                или
+                                <code>hash</code>
+                                как объект!
+                            </li>
+                            <li>
+                                <strong>Вопрос:</strong>
+                                Как одновременно передать query и hash?
+                                <br />
+                                <code>
+                                    this.$router.push({ path: "/products",
+                                    query: { sort: "price" }, hash: "#filters"
+                                    })
+                                </code>
+                            </li>
+                            <li>
+                                <strong>Вопрос:</strong>
+                                Почему параметры и hash не исчезают после
+                                обновления?
+                                <br />
+                                — Они хранятся в адресе и восстанавливаются при
+                                загрузке страницы.
+                            </li>
+                        </ul>
+                        <div class="note note--info">
+                            <b>
+                                Query и hash — твой инструмент для удобной и
+                                "живой" навигации!
+                            </b>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+        <script>
+            // Демонстрация для секции "Практика"
+            const DemoQueryHash = {
+                template: `
+                  <div>
+                    <h2>Текущий query:</h2>
+                    <pre>{{ $route.query }}</pre>
+                    <h2>Текущий hash:</h2>
+                    <pre>{{ $route.hash }}</pre>
+                  </div>
+                `,
+            };
+            const Features = {
+                template:
+                    "<div><h2 id='features'>✨ Блок функций (id='features')</h2></div>",
+            };
+            const Products = {
+                template: "<div><h2>🛒 Товары</h2><DemoQueryHash /></div>",
+                components: { DemoQueryHash },
+            };
+            const About = {
+                template:
+                    "<div><h2>О компании</h2><div id='features'>✨ Блок функций (id='features')</div></div>",
+            };
+            const routes = [
+                { path: "/products", component: Products },
+                { path: "/about", component: About },
+                { path: "/", component: DemoQueryHash },
+            ];
+            const router = VueRouter.createRouter({
+                history: VueRouter.createWebHistory(),
+                routes,
+            });
+            Vue.createApp({
+                methods: {
+                    goToFeatures() {
+                        this.$router.push({
+                            path: "/about",
+                            hash: "#features",
+                        });
+                    },
+                },
+                template: `<div>
+                    <router-link :to="{ path: '/products', query: { category: 'laptops' } }">Ноутбуки</router-link>
+                    <button @click="goToFeatures">К функциям</button>
+                    <router-link :to="{ path: '/products', query: { sort: 'price' }, hash: '#filters' }">Сортировать и к фильтрам</router-link>
+                    <router-view></router-view>
+                </div>`,
+            })
+                .use(router)
+                .mount("#vue-state-demo");
+        </script>
+        <style>
+            #vue-state-demo {
+                margin: 16px 0;
+            }
+            #vue-state-demo button {
+                margin-right: 14px;
+                padding: 7px 18px;
+                background: #3366d4;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                font-weight: 500;
+                cursor: pointer;
+            }
+            #vue-state-demo button:hover {
+                background: #2854a9;
+            }
+            #vue-state-demo a {
+                margin-right: 14px;
+                color: #3366d4;
+                text-decoration: none;
+                font-weight: 500;
+            }
+            #vue-state-demo a.router-link-exact-active {
+                color: #fff;
+                background: #3366d4;
+                border-radius: 5px;
+                padding: 5px 14px;
+            }
+        </style>
+    </body>
+</html>

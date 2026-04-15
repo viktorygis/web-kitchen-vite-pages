@@ -1,0 +1,1031 @@
+<!-- Шаблон страницы о селекторах CSS с каскадностью и наследованием -->
+
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Селекторы, каскадность и наследование в CSS</title>
+<meta name="description" content="Обзор основных CSS-селекторов, каскадности, специфичности и наследования. Примеры, таблицы и лучшие практики." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <nav class="nav-tabs">
+                    <a href="#intro">Введение</a>
+                    <a href="#descendant-selectors">Селекторы потомков</a>
+                    <a href="#child-selectors">Селекторы дочерних элементов</a>
+                    <a href="#group-selectors">Селекторы одного уровня</a>
+                    <a href="#attribute-selectors">Селекторы одного уровня</a>
+                    <a href="#summary-table">Таблица селекторов</a>
+                    <a href="#specificity-inheritance">Каскадность и наследование</a>
+                    <a href="#best-practices">Рекомендации</a>
+                </nav>
+
+                <!-- Введение -->
+                <section class="section" id="intro">
+                    <div class="container">
+                        <h1>Селекторы в CSS, каскадность и наследование</h1>
+                        <p class="note">
+                            <strong>Селекторы</strong>
+                            позволяют выбирать HTML-элементы для применения к ним стилей.
+                            <br />
+                            Корректное использование селекторов, понимание каскадности, наследования и специфичности — залог чистого и поддерживаемого CSS.
+                        </p>
+                        <ul class="list-ul">
+                            <li>
+                                <strong>Каскадность</strong>
+                                — механизм, определяющий, какие стили применяются к элементу, если для него задано несколько правил.
+                            </li>
+                            <li>
+                                <strong>Наследование</strong>
+                                — возможность дочерних элементов получать стили от родителя автоматически.
+                            </li>
+                            <li>
+                                <strong>Специфичность</strong>
+                                — система "весов", определяющая приоритет селекторов.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 1. Селекторы потомков -->
+                <section class="section" id="descendant-selectors">
+                    <div class="container">
+                        <h2>Селекторы потомков</h2>
+                        <p class="note">Позволяют стилизовать все элементы-потомки, находящиеся внутри указанного родителя, независимо от глубины вложенности.</p>
+                        <h4>Синтаксис:</h4>
+                        <div class="grid-column-50">
+                            <pre><code>родитель потомок {
+/* стили применяются ко всем потомкам */
+}</code></pre>
+                            <pre><code>.container p {
+   color: blue;
+   font-size: 16px;
+}</code></pre>
+                        </div>
+
+                        <h4>Пример:</h4>
+                        <div class="grid-column-50">
+                            <pre><code>//HTML
+&lt;div class="container"&gt;
+  &lt;p&gt;Параграф внутри контейнера&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p&gt;Параграф внутри вложенного div&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+//CSS
+.container p {
+  color: blue;
+  font-size: 16px;
+}</code></pre>
+
+                            <div class="example">
+                                <p>Оба параграфа будут синими размером 16px, так как являются потомками</p>
+                                <div class="box" style="color: blue; font-size: 16px; border: 2px solid #ffe8e8; border-radius: 20px; padding: 20px">
+                                    <p>Параграф внутри контейнера</p>
+                                    <div>
+                                        <p>Параграф внутри вложенного div</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Селекторы дочерних элементов -->
+                <section class="section" id="child-selectors">
+                    <div class="container">
+                        <h2>Селекторы дочерних элементов</h2>
+                        <p class="note">Позволяют стилизовать только непосредственных (прямых) детей указанного родителя — удобно для точечной стилизации.</p>
+
+                        <h3>Синтаксис</h3>
+                        <pre><code>родитель &gt; потомок {
+  /* стили только для прямых потомков */
+}</code></pre>
+
+                        <h3>Пример</h3>
+                        <pre><code>div &gt; p {
+  color: red;
+}</code></pre>
+                        <p>
+                            Стиль применится только к
+                            <code>&lt;p&gt;</code>
+                            , которые являются прямыми дочерними элементами
+                            <code>&lt;div&gt;</code>
+                            .
+                        </p>
+
+                        <hr />
+
+                        <h3>
+                            Меню: прямые элементы списка внутри
+                            <code>&lt;ul class="menu"&gt;</code>
+                        </h3>
+                        <pre><code>ul.menu &gt; li {
+  /* ваши стили */
+}</code></pre>
+                        <ul>
+                            <li>
+                                <strong>ul.menu</strong>
+                                — выбирает элемент
+                                <code>&lt;ul&gt;</code>
+                                с классом
+                                <code>menu</code>
+                                .
+                            </li>
+                            <li>
+                                <strong>&gt;</strong>
+                                — селектор прямого потомка: берет только первый уровень вложенности.
+                            </li>
+                            <li>
+                                <strong>li</strong>
+                                — указывает, что стилизуем элементы списка.
+                            </li>
+                        </ul>
+
+                        <h4>Чем отличается от селектора потомка (пробел)</h4>
+                        <pre><code>/* Любой уровень вложенности (затронет и подменю) */
+ul.menu li { color: red; }
+
+/* Только пункты верхнего уровня */
+ul.menu &gt; li { color: red; }</code></pre>
+
+                        <h4>Специфичность и пробелы</h4>
+                        <ul>
+                            <li>
+                                Специфичность
+                                <code>ul.menu &gt; li</code>
+                                складывается как: 1 класс + 2 тега.
+                            </li>
+                            <li>
+                                Пробелы вокруг
+                                <code>&gt;</code>
+                                не влияют:
+                                <code>ul.menu&gt;li</code>
+                                и
+                                <code>ul.menu &gt; li</code>
+                                эквивалентны.
+                            </li>
+                            <li>Поддерживается всеми современными браузерами (CSS2.1+).</li>
+                        </ul>
+
+                        <h4>Полезные паттерны</h4>
+                        <pre><code>/* Пункты верхнего уровня */
+ul.menu &gt; li { padding: 0.5rem 0.75rem; }
+
+/* Ссылки верхнего уровня */
+ul.menu &gt; li &gt; a { text-decoration: none; display: block; }
+
+/* Стилизовать всех прямых детей независимо от типа */
+ul.menu &gt; * { margin-right: 12px; }
+
+/* Псевдоклассы */
+ul.menu &gt; li:not(:last-child) { margin-right: 12px; }
+ul.menu &gt; li:nth-child(even) { background: #f6f6f6; }
+
+/* Контекстная привязка */
+nav &gt; ul.menu &gt; li &gt; a { color: #222; }
+
+/* Современный пример с :has() */
+ul.menu:has(&gt; li.active) { border-color: #0b79d0; }</code></pre>
+
+                        <h4>Типичные ошибки</h4>
+                        <ul>
+                            <li>
+                                Использование
+                                <code>ul.menu li</code>
+                                вместо
+                                <code>ul.menu &gt; li</code>
+                                — затронет и подменю.
+                            </li>
+                            <li>Ожидание, что выберутся текстовые узлы — CSS выбирает только элементы.</li>
+                            <li>
+                                Неверная структура списка: внутри
+                                <code>&lt;ul&gt;</code>
+                                допустимы только
+                                <code>&lt;li&gt;</code>
+                                как прямые дети.
+                            </li>
+                        </ul>
+
+                        <h4>Мини‑пример оформления меню с подменю</h4>
+                        <pre><code>&lt;!-- HTML --&gt;
+&lt;ul class="menu"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Главная&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Блог&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;Услуги&lt;/a&gt;
+    &lt;ul class="submenu"&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Аудит&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Консалтинг&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+/* CSS */
+ul.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+ul.menu &gt; li {
+  position: relative;
+  margin-right: 16px;
+}
+ul.menu &gt; li &gt; a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+ul.menu &gt; li.active &gt; a {
+  font-weight: 700;
+  color: #0b79d0;
+}
+ul.menu &gt; li &gt; .submenu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+ul.menu &gt; li:hover &gt; .submenu {
+  display: block;
+}</code></pre>
+
+                        <h4>Краткие рекомендации</h4>
+                        <ul>
+                            <li>
+                                Для точечной стилизации верхнего уровня — используйте
+                                <code>&gt;</code>
+                                .
+                            </li>
+                            <li>
+                                Для вложенных уровней добавляйте следующий
+                                <code>&gt;</code>
+                                :
+                                <code>ul.menu &gt; li &gt; ul &gt; li</code>
+                                .
+                            </li>
+                            <li>
+                                Чтобы применить стиль ко всем прямым детям любого типа — используйте
+                                <code>&gt; *</code>
+                                .
+                            </li>
+                            <li>
+                                Ограничивайте область более конкретным контекстом (например,
+                                <code>nav &gt; ul.menu &gt; li</code>
+                                ).
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 3. Селекторы элементов одного уровня -->
+                <section class="section" id="group-selectors">
+                    <div class="container">
+                        <h2>Селекторы одного уровня (Групповые селекторы)</h2>
+                        <p class="note">Позволяют выбирать несколько типов элементов или классов одновременно — удобно для применения одинаковых стилей к разным элементам.</p>
+                        <h4>Синтаксис:</h4>
+                        <pre><code>селектор1, селектор2 {
+  /* стили применяются ко всем выбранным элементам */
+}</code></pre>
+                        <h4>Пример:</h4>
+                        <pre><code>div, p {
+  color: green;
+}</code></pre>
+                        <p>
+                            Все элементы
+                            <code>&lt;div&gt;</code>
+                            и
+                            <code>&lt;p&gt;</code>
+                            на странице будут зелёного цвета.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 3. Атрибутные селекторы: работа с data-атрибутами -->
+                <section class="section" id="attribute-selectors">
+                    <div class="container">
+                        <h2>Атрибутные селекторы в CSS: работа с data-атрибутами</h2>
+                        <p class="note">
+                            Позволяют выбирать и стилизовать элементы по наличию или значению атрибутов, в том числе пользовательских
+                            <code>data-*</code>
+                            -атрибутов.
+                        </p>
+
+                        <h4>Синтаксис:</h4>
+                        <pre><code>[атрибут] { /* стили для элементов с этим атрибутом */ }
+[атрибут="значение"] { /* стили для определённого значения атрибута */ }
+[атрибут^="начало"] { /* значение начинается с ... */ }
+[атрибут$="конец"] { /* значение заканчивается на ... */ }
+[атрибут*="часть"] { /* значение содержит ... */ }
+</code></pre>
+
+                        <h4>Примеры:</h4>
+                        <pre><code>&lt;div data-role="header"&gt;Заголовок&lt;/div&gt;
+&lt;span data-role="button"&gt;Кнопка&lt;/span&gt;
+&lt;li data-type="main-item"&gt;Пункт меню&lt;/li&gt;
+</code></pre>
+
+                        <pre><code>/* Все элементы с data-role */
+[data-role] { background: #f8f8f8; }
+
+/* Только элементы c data-role="button" */
+[data-role="button"] { color: #2196f3; }
+
+/* Элементы, где data-type начинается с "main" */
+[data-type^="main"] { font-weight: bold; }
+
+/* Элементы, где data-role содержит "head" */
+[data-role*="head"] { text-transform: uppercase; }
+</code></pre>
+
+                        <h4>Когда использовать:</h4>
+                        <ul class="list-ul" style="margin-bottom: 20px">
+                            <li>Для стилизации элементов без лишних классов.</li>
+                            <li>
+                                Для динамических интерфейсов с уникальными
+                                <code>data-*</code>
+                                -метками.
+                            </li>
+                            <li>
+                                В связке с JavaScript, когда элементы помечаются
+                                <code>data-</code>
+                                атрибутами.
+                            </li>
+                        </ul>
+                        <p class="note note--info">
+                            <strong>Итого:</strong>
+                            Атрибутные селекторы — мощный инструмент для гибкой стилизации элементов на основе наличия и значения атрибутов, особенно когда используются кастомные
+                            <code>data-*</code>
+                            атрибуты.
+                        </p>
+                    </div>
+                </section>
+                <!-- 4. Сводная таблица с примерами селекторов -->
+                <section class="section" id="summary-table">
+                    <div class="container">
+                        <h2>Таблица распространённых селекторов</h2>
+                        <table class="spec-table">
+                            <tr>
+                                <th>Селектор</th>
+                                <th>Описание</th>
+                                <th>Пример</th>
+                            </tr>
+                            <tr>
+                                <td>родитель потомок</td>
+                                <td>Выбирает всех потомков</td>
+                                <td><code>.container p { color: blue; }</code></td>
+                            </tr>
+                            <tr>
+                                <td>родитель &gt; потомок</td>
+                                <td>Только прямые потомки</td>
+                                <td><code>div &gt; p { color: red; }</code></td>
+                            </tr>
+                            <tr>
+                                <td>селектор1, селектор2</td>
+                                <td>Групповой выбор элементов</td>
+                                <td><code>div, p { color: green; }</code></td>
+                            </tr>
+                            <tr>
+                                <td>h1 + div</td>
+                                <td>
+                                    Выбирает
+                                    <code>div</code>
+                                    , идущий сразу после
+                                    <code>h1</code>
+                                </td>
+                                <td><code>h1 + div { background: lightblue; }</code></td>
+                            </tr>
+                            <tr>
+                                <td>*</td>
+                                <td>Выбирает все элементы</td>
+                                <td><code>* { margin: 0; padding: 0; }</code></td>
+                            </tr>
+                            <tr>
+                                <td>.class</td>
+                                <td>По классу</td>
+                                <td><code>.menu { ... }</code></td>
+                            </tr>
+                            <tr>
+                                <td>#id</td>
+                                <td>По идентификатору</td>
+                                <td><code>#header { ... }</code></td>
+                            </tr>
+                            <tr>
+                                <td>[attr]</td>
+                                <td>По наличию атрибута</td>
+                                <td><code>input[required] { border: red; }</code></td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 5. Каскадность, наследование и специфичность -->
+                <section class="section" id="specificity-inheritance">
+                    <div class="container">
+                        <h2>Каскадность, наследование и специфичность</h2>
+                        <ul>
+                            <li>
+                                <strong>Каскадность</strong>
+                                — если к одному элементу применяются разные стили, то будут работать те, которые "победят" по каскадным правилам: источник (user-agent, пользовательские, авторские), специфичность, порядок в коде.
+                            </li>
+                            <li>
+                                <strong>Специфичность</strong>
+                                — чем "точнее" селектор, тем выше его приоритет.
+                                <ul>
+                                    <li>
+                                        Пример:
+                                        <code>h1</code>
+                                        (0,0,0,1),
+                                        <code>.container h1</code>
+                                        (0,0,1,1),
+                                        <code>#main h1</code>
+                                        (0,1,0,1)
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Наследование</strong>
+                                — некоторые свойства (например,
+                                <code>color</code>
+                                ,
+                                <code>font-family</code>
+                                ) наследуются потомками автоматически, другие (например,
+                                <code>margin</code>
+                                ,
+                                <code>padding</code>
+                                ) — нет.
+                            </li>
+                        </ul>
+
+                        <h4>Пример специфичности:</h4>
+                        <pre><code>/* У h1 будет синий цвет, потому что второй селектор специфичнее */
+h1 {
+  color: red;
+}
+.container h1 {
+  color: blue;
+}</code></pre>
+
+                        <h4>Пример наследования:</h4>
+                        <pre><code>.parent {
+  color: purple;
+}
+.parent span {
+  /* color: purple; — наследуется от .parent */
+}</code></pre>
+                    </div>
+                </section>
+
+                <!-- 6. Лучшие практики -->
+                <section class="section" id="best-practices">
+                    <div class="container">
+                        <h2>Лучшие практики работы с селекторами</h2>
+                        <ul>
+                            <li>Избегайте длинных цепочек селекторов (более 3 уровней) — это усложняет поддержку и снижает производительность.</li>
+                            <li>Используйте классы для точного таргетинга, а не идентификаторы или теги.</li>
+                            <li>Давайте классам "говорящие" имена, отражающие назначение, а не внешний вид.</li>
+                            <li>Используйте групповые селекторы для минимизации повторов кода.</li>
+                            <li>
+                                Помните: универсальный селектор
+                                <code>*</code>
+                                очень затратен по производительности — используйте его с осторожностью.
+                            </li>
+                            <li>
+                                Для переопределения стилей используйте специфичность, а не
+                                <code>!important</code>
+                                , если это возможно.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+
+        <style>
+            .example-box {
+                background-color: #f8f9fa;
+                border-left: 4px solid #3498db;
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+                border-radius: 0 8px 8px 0;
+            }
+
+            .spec-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 1.5rem 0;
+                font-size: 1rem;
+            }
+
+            .spec-table th,
+            .spec-table td {
+                border: 1px solid #dee2e6;
+                padding: 0.75rem;
+                text-align: left;
+            }
+
+            .spec-table th {
+                background-color: #e9ecef;
+                font-weight: 600;
+            }
+
+            .spec-table tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+
+            @media (max-width: 768px) {
+                .spec-table,
+                .spec-table th,
+                .spec-table td {
+                    font-size: 0.9rem;
+                }
+            }
+        </style>
+    </body>
+</html>

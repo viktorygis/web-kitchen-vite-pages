@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Каскадность и Наследование в CSS</title>
+<meta name="description" content="Обзор каскадности и наследования в CSS" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <style>
+        /* Мини‑стили для наглядности демо */
+        #collapsing-margin .demo-wrap {
+            margin: 12px 0 18px;
+        }
+        #collapsing-margin .demo-box {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            padding: 10px;
+        }
+        #collapsing-margin .demo-parent {
+            background: #eef2ff;
+            /* без padding/border/overflow ⇒ возможен коллапс с первым/последним ребёнком */
+        }
+        #collapsing-margin .demo-child {
+            background: #e3f2fd;
+            padding: 8px;
+        }
+        #collapsing-margin .demo-child.alt {
+            background: #bbdefb;
+        }
+        #collapsing-margin .tag {
+            display: inline-block;
+            font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        #collapsing-margin .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 8px 0;
+        }
+        #collapsing-margin .controls button {
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            background: #fff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #collapsing-margin .controls button.active {
+            background: #e0f2fe;
+            border-color: #38bdf8;
+        }
+        #collapsing-margin .legend {
+            font-size: 13px;
+            color: #475569;
+            margin-top: 6px;
+        }
+        #collapsing-margin .grid-column-100 pre {
+            margin: 8px 0;
+        }
+        #collapsing-margin code.k {
+            background: #f3f4f6;
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+        /* Вспомогательные классы, переключаемые кнопками */
+        .bfc--flow-root {
+            display: flow-root;
+        }
+        .bfc--overflow-hidden {
+            overflow: hidden;
+        }
+        .bfc--padding-1 {
+            padding-top: 1px;
+        }
+        .bfc--border-1 {
+            border-top: 1px solid transparent;
+        }
+    </style>
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <div class="nav-tabs">
+                    <a href="#spacing-intro">Отступы</a>
+                    <a href="#spacing-margin">margin</a>
+                    <a href="#collapsing-margin">collapsing-margin</a>
+                    <a href="#spacing-padding">padding</a>
+                    <a href="#spacing-examples">Примеры</a>
+                </div>
+
+                <!-- Введение: Что такое отступы -->
+                <section class="section" id="spacing-intro">
+                    <div class="container">
+                        <h2>Что такое отступы в CSS?</h2>
+                        <p class="note">
+                            В CSS есть два вида отступов —
+                            <b>margin</b>
+                            и
+                            <b>padding</b>
+                            . Они помогают управлять пространством вокруг и внутри элементов, делая макет аккуратным и удобным для восприятия.
+                        </p>
+                        <p>
+                            <b>margin</b>
+                            — создаёт пространство
+                            <b>вокруг</b>
+                            элемента.
+                            <br />
+                        </p>
+                        <p>
+                            <b>padding</b>
+                            — создаёт пространство
+                            <b>внутри</b>
+                            элемента между содержимым и границей.
+                            <br />
+                        </p>
+                        <p>
+                            <span style="color: #2ecc71">
+                                Используя
+                                <b>margin</b>
+                                и
+                                <b>padding</b>
+                                , ты словно работаешь дизайнером интерьера: всё становится гармонично и удобно!
+                            </span>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Секция: margin -->
+                <section class="section" id="spacing-margin">
+                    <div class="container">
+                        <h2>margin — внешний отступ</h2>
+                        <p class="note">
+                            <b>margin</b>
+                            — это личное пространство элемента.
+                            <br />
+                            Оно создаёт
+                            <b>внешние</b>
+                            отступы, то есть расстояние между элементом и его соседями.
+                        </p>
+                        <p>С помощью margin можно:</p>
+                        <ul class="list-ul">
+                            <li>Отделять элементы друг от друга</li>
+                            <li>
+                                Центрировать элементы:
+                                <code>margin: 0 auto;</code>
+                            </li>
+                            <li>
+                                Настраивать отступы отдельно для каждой стороны:
+                                <code>margin-top</code>
+                                ,
+                                <code>margin-right</code>
+                                ,
+                                <code>margin-bottom</code>
+                                ,
+                                <code>margin-left</code>
+                            </li>
+                            <li>Задавать отрицательные значения для сдвига элементов</li>
+                            <li>
+                                Использовать сокращённую запись:
+                                <code>margin: 10px 20px 30px 40px;</code>
+                            </li>
+                        </ul>
+                        <h4>Пример внешнего отступа (margin):</h4>
+                        <p>
+                            Каждому блоку задан
+                            <code>margin: 10px;</code>
+                            . Между ними появляется пространство.
+                        </p>
+                        <div class="grid-column-100">
+                            <pre><code>
+&lt;div style="margin: 10px; background-color: lightblue"&gt;Я люблю воздух вокруг!&lt;/div&gt;
+&lt;div style="margin: 10px; background-color: lightgreen"&gt;И я тоже!&lt;/div&gt;
+</code></pre>
+
+                            <div class="example">
+                                <div style="margin: 10px; background-color: lightblue">Я люблю воздух вокруг!</div>
+                                <div style="margin: 10px; background-color: lightgreen">И я тоже!</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Секция: collapsing-margin -->
+                <section class="section" id="collapsing-margin">
+                    <div class="container">
+                        <h2>Margin collapsing (схлопывание margin)</h2>
+
+                        <p class="note">Когда два вертикальных margin соприкасаются, они объединяются в один, равный наибольшему (или сумме с учётом знаков, если есть отрицательные). Явление происходит у блочных элементов в нормальном потоке (block formatting context).</p>
+
+                        <h3>Когда марджины схлопываются</h3>
+                        <ul class="list-ul">
+                            <li>Смежные вертикальные отступы соседних блоков: нижний margin предыдущего и верхний следующего.</li>
+                            <li>Между родителем и его первым ребёнком: верхний margin первого ребёнка со «верхом» родителя.</li>
+                            <li>Между родителем и его последним ребёнком: нижний margin последнего ребёнка с «низом» родителя.</li>
+                            <li>В «пустых» блоках без border/padding/внутреннего контента — верхний и нижний margin самого блока схлопываются.</li>
+                        </ul>
+
+                        <p class="legend">Если среди участвующих есть отрицательные margin, результат — алгебраическая сумма: max(положительные) + (самый «большой по модулю» отрицательный).</p>
+
+                        <h4>Пример: соседние блоки</h4>
+                        <p>Фактическое расстояние между блоками — 30px (из 30px и 20px берётся наибольший).</p>
+                        <div class="grid-column-100">
+                            <pre><code>&lt;div style="margin-bottom: 30px; background: #e3f2fd; padding: 10px"&gt;Элемент 1 (mb: 30px)&lt;/div&gt;
+&lt;div style="margin-top: 20px; background: #bbdefb; padding: 10px"&gt;Элемент 2 (mt: 20px)&lt;/div&gt;</code></pre>
+
+                            <div class="example demo-wrap">
+                                <div style="margin-bottom: 30px; background: #e3f2fd; padding: 10px">Элемент 1 (margin-bottom: 30px)</div>
+                                <div style="margin-top: 20px; background: #bbdefb; padding: 10px">Элемент 2 (margin-top: 20px)</div>
+                            </div>
+                        </div>
+
+                        <h4>Пример: родитель и первый ребёнок</h4>
+                        <p class="legend">
+                            У родителя нет
+                            <code class="k">padding</code>
+                            /
+                            <code class="k">border</code>
+                            /
+                            <code class="k">overflow</code>
+                            , поэтому
+                            <b>margin-top ребёнка «выпрыгивает» наверх родителя</b>
+                            .
+                        </p>
+                        <div class="demo-wrap">
+                            <div class="demo-box">
+                                <div id="parent-demo" class="demo-parent">
+                                    <div class="demo-child" style="margin-top: 24px">Ребёнок 1 (margin-top: 24px)</div>
+                                    <div class="demo-child alt" style="margin-top: 12px">Ребёнок 2 (margin-top: 12px)</div>
+                                </div>
+                            </div>
+                            <div class="controls">
+                                <span class="tag">Переключить предотвращение схлопывания:</span>
+                                <button data-toggle="flow-root">display: flow-root</button>
+                                <button data-toggle="overflow">overflow: hidden</button>
+                                <button data-toggle="padding">padding-top: 1px</button>
+                                <button data-toggle="border">border-top: 1px transparent</button>
+                                <button data-toggle="reset" class="active">reset</button>
+                            </div>
+                            <p class="legend" id="current-mode">Текущий режим: без предотвращения (коллапс включён)</p>
+                        </div>
+
+                        <h3>Как надёжно избежать схлопывания?</h3>
+                        <ul class="list-ul">
+                            <li>
+                                <b>Рекомендуется:</b>
+                                <code class="k">display: flow-root;</code>
+                                у родителя — создаёт новый BFC, не меняя поток.
+                                <pre><code>.parent { display: flow-root; }</code></pre>
+                            </li>
+                            <li>
+                                <code class="k">overflow: hidden|auto|clip;</code>
+                                — тоже создаёт BFC, но:
+                                <ul>
+                                    <li>
+                                        <i>hidden/clip</i>
+                                        могут обрезать содержание;
+                                    </li>
+                                    <li>
+                                        <i>auto</i>
+                                        может показать полосы прокрутки.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code class="k">padding-top</code>
+                                или
+                                <code class="k">border-top</code>
+                                у родителя — простые, но добавляют визуальное пространство.
+                            </li>
+                            <li>
+                                <code class="k">display: flex</code>
+                                или
+                                <code class="k">grid</code>
+                                у родителя — предотвращают коллапс, но меняют модель раскладки детей.
+                            </li>
+                        </ul>
+
+                        <h4>Где коллапса нет по определению</h4>
+                        <ul class="list-ul">
+                            <li>У flex‑ и grid‑элементов (дети flex/grid и их соседи не схлопывают марджины вертикально).</li>
+                            <li>
+                                У абсолютно позиционированных элементов (
+                                <code class="k">position: absolute/fixed</code>
+                                ).
+                            </li>
+                            <li>
+                                У плавающих элементов (
+                                <code class="k">float</code>
+                                ) и их потомков снаружи — margins не схлопываются через float.
+                            </li>
+                            <li>По горизонтали марджины никогда не схлопываются, только по вертикали в нормальном блоковом контексте.</li>
+                        </ul>
+
+                        <h4>Типичные заблуждения</h4>
+                        <ul class="list-ul">
+                            <li>
+                                <code class="k">position: relative</code>
+                                ,
+                                <code class="k">outline</code>
+                                ,
+                                <code class="k">background</code>
+                                ,
+                                <code class="k">transform</code>
+                                ,
+                                <code class="k">box-shadow</code>
+                                —
+                                <b>не</b>
+                                влияют на схлопывание.
+                            </li>
+                            <li>
+                                «Сброшу на
+                                <code class="k">margin-top: 0</code>
+                                у первого ребёнка» — это работает локально, но не объясняет и не решает саму причину коллапса.
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Секция: padding -->
+                <section class="section" id="spacing-padding">
+                    <div class="container">
+                        <h2>padding — внутренний отступ</h2>
+                        <p class="note">
+                            <b>padding</b>
+                            — это как уютная подушка внутри твоего элемента.
+                            <br />
+                            Оно создаёт
+                            <b>внутренние</b>
+                            отступы между содержимым элемента и его границами.
+                        </p>
+                        <p>С помощью padding можно:</p>
+                        <ul class="list-ul">
+                            <li>Добавлять пространство между текстом и краями блока</li>
+                            <li>Создавать "воздух" внутри кнопок и карточек</li>
+                            <li>
+                                Настраивать внутренние отступы отдельно для каждой стороны:
+                                <code>padding-top</code>
+                                ,
+                                <code>padding-right</code>
+                                ,
+                                <code>padding-bottom</code>
+                                ,
+                                <code>padding-left</code>
+                            </li>
+                            <li>
+                                Использовать сокращённую запись:
+                                <code>padding: 15px 30px;</code>
+                            </li>
+                        </ul>
+
+                        <h4>Пример внутреннего отступа (padding):</h4>
+                        <div class="grid-column-100">
+                            <pre><code>
+&lt;div style="padding: 15px; border: 2px solid black; background: #f5f5f5; display: inline-block"&gt;
+  Текст внутри блока
+&lt;/div&gt;
+      </code></pre>
+                            <div class="example">
+                                <div style="padding: 15px; border: 2px solid black; background: #f5f5f5; display: inline-block">Текст внутри блока</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Секция: Примеры использования margin и padding -->
+                <section class="section" id="spacing-examples">
+                    <div class="container">
+                        <h2>Примеры применения margin и padding</h2>
+
+                        <div class="example-box">
+                            <h4>Настройка отступов для каждой стороны</h4>
+                            <div class="grid-column-50">
+                                <pre><code>
+div {
+  margin-top: 20px;    /* Отступ сверху */
+  margin-bottom: 10px; /* Отступ снизу */
+  padding-right: 10px; /* Внутренний отступ справа */
+}
+        </code></pre>
+                                <div class="example">
+                                    <div style="margin-top: 20px; margin-bottom: 10px; padding-right: 10px; background: #e3f2fd; border: 1px solid #bbb">Пример блока с индивидуальными отступами (margin и padding)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>Сокращённая запись отступов</h4>
+                            <div class="grid-column-50">
+                                <pre><code>
+div {
+  margin: 10px 20px 30px 40px; /* верх, право, низ, лево */
+  padding: 15px;               /* все стороны = 15px */
+}
+        </code></pre>
+                                <div class="example">
+                                    <div style="margin: 10px 20px 30px 40px; padding: 15px; background: #f5f5f5; border: 1px solid #bbb">
+                                        Пример блока с сокращённой записью
+                                        <br />
+                                        (margin: 10px 20px 30px 40px; padding: 15px)
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+                            <p>
+                                <b>margin: 10px 20px;</b>
+                                — верх/низ = 10px, право/лево = 20px
+                            </p>
+                            <p>
+                                <b>margin: 10px;</b>
+                                — все стороны = 10px
+                            </p>
+                            <p><span style="color: #3498db">CSS читает значения по часовой стрелке, начиная с верхней стороны.</span></p>
+                        </div>
+
+                        <div class="example-box">
+                            <h4>Памятка</h4>
+                            <ul class="list-ul">
+                                <li>
+                                    <strong>margin</strong>
+                                    — для пространства вокруг элемента. 🏞️
+                                </li>
+                                <li>
+                                    <strong>padding</strong>
+                                    — для пространства внутри элемента. 🛏️
+                                </li>
+                                <li>
+                                    ✂️
+                                    <strong>Сокращённая запись</strong>
+                                    — твой лучший друг, если нужно писать меньше, а делать больше.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+        <script>
+            (function () {
+                const parent = document.getElementById("parent-demo");
+                const buttons = document.querySelectorAll("#collapsing-margin .controls button");
+                const label = document.getElementById("current-mode");
+
+                function setMode(mode) {
+                    parent.classList.remove("bfc--flow-root", "bfc--overflow-hidden", "bfc--padding-1", "bfc--border-1");
+                    buttons.forEach((b) => b.classList.remove("active"));
+
+                    switch (mode) {
+                        case "flow-root":
+                            parent.classList.add("bfc--flow-root");
+                            label.textContent = "Текущий режим: display: flow-root (создаёт BFC, коллапс предотвращён)";
+                            break;
+                        case "overflow":
+                            parent.classList.add("bfc--overflow-hidden");
+                            label.textContent = "Текущий режим: overflow: hidden (BFC, возможна обрезка содержимого)";
+                            break;
+                        case "padding":
+                            parent.classList.add("bfc--padding-1");
+                            label.textContent = "Текущий режим: padding-top: 1px (добавляет 1px пространства, коллапс предотвращён)";
+                            break;
+                        case "border":
+                            parent.classList.add("bfc--border-1");
+                            label.textContent = "Текущий режим: border-top: 1px transparent (визуально незаметно, но предотвращает коллапс)";
+                            break;
+                        default:
+                            label.textContent = "Текущий режим: без предотвращения (коллапс включён)";
+                    }
+
+                    // отметить активную кнопку
+                    const btn = document.querySelector(`#collapsing-margin .controls button[data-toggle="${mode}"]`) || document.querySelector('#collapsing-margin .controls button[data-toggle="reset"]');
+                    if (btn) btn.classList.add("active");
+                }
+
+                document.querySelector("#collapsing-margin .controls").addEventListener("click", (e) => {
+                    const btn = e.target.closest("button[data-toggle]");
+                    if (!btn) return;
+                    setMode(btn.dataset.toggle);
+                });
+
+                // Инициализация
+                setMode("reset");
+            })();
+        </script>
+    </body>
+</html>

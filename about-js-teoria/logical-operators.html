@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Логические операторы в JavaScript</title>
+<meta name="description" content="Подробный разбор логических операторов в JavaScript: ||, ||=, &&, &&=, !, двойное !!, порядок выполнения, практические шаблоны и ловушки." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+            <main class="page">
+                <!-- Локальное меню по секциям страницы -->
+                <nav class="nav-tabs" id="page-nav">
+                    <ul>
+                        <li><a href="#intro">Введение</a></li>
+                        <li><a href="#or">|| (ИЛИ)</a></li>
+                        <li><a href="#or-assignment">||= (присваивание ИЛИ)</a></li>
+                        <li><a href="#and">&amp;&amp; (И)</a></li>
+                        <li><a href="#and-assignment">&amp;&amp;= (присваивание И)</a></li>
+                        <li><a href="#not">! (НЕ)</a></li>
+                        <li><a href="#double-not">!! (двойное НЕ)</a></li>
+                        <li><a href="#precedence">Приоритет</a></li>
+                        <li><a href="#summary-table">Сводная таблица</a></li>
+                        <li><a href="#patterns">Практика использования</a></li>
+                        <li><a href="#pitfalls">Ловушки</a></li>
+                        <li><a href="#practice">Тренажёр</a></li>
+                    </ul>
+                </nav>
+
+                <!-- ВВЕДЕНИЕ -->
+                <section class="section" id="intro" class="topic-section">
+                    <div class="container">
+                        <h1>Логические операторы в JavaScript</h1>
+                        <p class="note">
+                            Логические операторы позволяют комбинировать условия, возвращать значения выражений и управлять потоком исполнения. В JavaScript операторы
+                            <code>||</code>
+                            и
+                            <code>&amp;&amp;</code>
+                            возвращают один из операндов (а не просто
+                            <code>true/false</code>
+                            ) и используют механизм «сокращённого вычисления».
+                        </p>
+                        <div class="note-block">
+                            <h4>Основные логические операторы:</h4>
+                            <ul class="list-ul">
+                                <li>
+                                    <code>||</code>
+                                    — логическое ИЛИ
+                                </li>
+                                <li>
+                                    <code>&amp;&amp;</code>
+                                    — логическое И
+                                </li>
+                                <li>
+                                    <code>!</code>
+                                    — логическое НЕ
+                                </li>
+                                <li>
+                                    <code>||=</code>
+                                    ,
+                                    <code>&amp;&amp;=</code>
+                                    — логические операторы присваивания
+                                </li>
+                                <li>
+                                    <code>!!</code>
+                                    — идиома приведения к булевому типу
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="note-block warning">
+                            <strong>Отдельно:</strong>
+                            оператор нулевого слияния
+                            <code>??</code>
+                            и логическое присваивание
+                            <code>??=</code>
+                            разбираются на другой странице.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- || -->
+                <section class="section" id="or" class="topic-section">
+                    <div class="container">
+                        <h2>
+                            <code>||</code>
+                            — логическое ИЛИ
+                        </h2>
+                        <p class="note">
+                            Возвращает первый «истинный» (truthy) операнд или последний, если все оказались «ложными» (falsy). Истинность определяется приведением к логическому типу:
+                            <code>Boolean(операнд)</code>
+                            .
+                        </p>
+                        <div class="note-block">
+                            <h4>Алгоритм:</h4>
+                            <ol class="list-ol">
+                                <li>Читает операнды слева направо</li>
+                                <li>Преобразует текущий операнд к логическому значению</li>
+                                <li>Если он truthy — немедленно возвращает исходное значение</li>
+                                <li>Если все falsy — возвращает последний операнд</li>
+                            </ol>
+                        </div>
+                        <h4>Простые примеры:</h4>
+                        <pre><code>console.log(true  || true);   // true
+console.log(false || true);   // true
+console.log(false || false);  // false
+
+console.log(1 || 0);          // 1 (первый truthy)
+console.log(null || 0 || "A"); // "A"
+console.log(null || undefined || 0); // 0 (все falsy)</code></pre>
+
+                        <div class="note-block">
+                            <h4>Поиск первого содержательного значения:</h4>
+                            <pre><code>const firstName = "";
+const lastName  = "";
+const nickName  = "Суперкодер";
+
+const userLabel = firstName || lastName || nickName || "Аноним";
+console.log(userLabel); // "Суперкодер"</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ||= -->
+                <section class="section" id="or-assignment" class="topic-section">
+                    <div class="container">
+                        <h2>
+                            <code>||=</code>
+                            — логическое присваивание ИЛИ
+                        </h2>
+                        <p class="note">
+                            Сокращённая запись:
+                            <code>a ||= b</code>
+                            эквивалентна
+                            <code>if (!a) a = b;</code>
+                            (но с тонкостью: проверяется truthy/falsy).
+                        </p>
+                        <div class="note-block">
+                            <h4>Примеры:</h4>
+                            <pre><code>let configTitle = "";
+configTitle ||= "Заголовок по умолчанию";
+console.log(configTitle); // "Заголовок по умолчанию"
+
+let port = 0;
+port ||= 3000;
+console.log(port); // 3000 (потому что 0 - falsy)</code></pre>
+                        </div>
+                        <div class="warning">
+                            <strong>Осторожно:</strong>
+                            Значение
+                            <code>0</code>
+                            или пустая строка
+                            <code>""</code>
+                            могут быть значимыми. Оператор
+                            <code>||=</code>
+                            их перезапишет. Для «только null/undefined» используйте
+                            <code>??=</code>
+                            .
+                        </div>
+                    </div>
+                </section>
+
+                <!-- && -->
+                <section class="section" id="and" class="topic-section">
+                    <div class="container">
+                        <h2>
+                            <code>&amp;&amp;</code>
+                            — логическое И
+                        </h2>
+                        <p class="note">Возвращает первый «ложный» (falsy) операнд или последний, если все были truthy. Используется для условного выполнения/доступа.</p>
+                        <div class="note-block">
+                            <h4>Алгоритм:</h4>
+                            <ol class="list-ol">
+                                <li>Идёт слева направо</li>
+                                <li>Преобразует операнд к логическому</li>
+                                <li>Если операнд falsy — возвращает его исходное значение</li>
+                                <li>Если все truthy — возвращает последний</li>
+                            </ol>
+                        </div>
+                        <h4>Примеры:</h4>
+                        <pre><code>console.log(true  && true);   // true
+console.log(false && true);   // false
+console.log(1 && 0);          // 0 (первый falsy)
+console.log(1 && 2 && 3);     // 3 (все truthy)
+console.log(null && "текст"); // null</code></pre>
+
+                        <div class="note-block">
+                            <h4>Условное выполнение:</h4>
+                            <pre><code>isLoggedIn && showDashboard();
+// Аналогично:
+if (isLoggedIn) showDashboard();</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- &&= -->
+                <section class="section" id="and-assignment" class="topic-section">
+                    <div class="container">
+                        <h2>
+                            <code>&amp;&amp;=</code>
+                            — логическое присваивание И
+                        </h2>
+                        <p class="note">
+                            <code>a &amp;&amp;= b</code>
+                            эквивалентно
+                            <code>if (a) a = b;</code>
+                            (проверяется truthy).
+                        </p>
+                        <div class="note-block">
+                            <h4>Пример:</h4>
+                            <pre><code>let message = "Привет";
+message &&= message + ", пользователь!";
+console.log(message); // "Привет, пользователь!"
+
+let counter = 0;
+counter &&= 10;
+console.log(counter); // 0 (не изменился, т.к. 0 falsy)</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ! -->
+                <section class="section" id="not" class="topic-section">
+                    <div class="container">
+                        <h2>
+                            <code>!</code>
+                            — логическое НЕ
+                        </h2>
+                        <p class="note">Инвертирует булево значение. Сначала приводит операнд к логическому, затем возвращает противоположное.</p>
+                        <h4>Примеры:</h4>
+                        <pre><code>console.log(!true);     // false
+console.log(!0);        // true
+console.log(!"");       // true
+console.log(!"abc");    // false
+console.log(!null);     // true</code></pre>
+                        <div class="warning">
+                            <strong>Приоритет:</strong>
+                            У оператора
+                            <code>!</code>
+                            приоритет выше, чем у
+                            <code>&amp;&amp;</code>
+                            и
+                            <code>||</code>
+                            , поэтому он выполняется раньше.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- !! -->
+                <section class="section" id="double-not" class="topic-section">
+                    <div class="container">
+                        <h2>
+                            <code>!!</code>
+                            — двойное НЕ (приведение к Boolean)
+                        </h2>
+                        <p class="note">
+                            Идиома для явного получения булева значения:
+                            <code>!!value</code>
+                            равнозначно
+                            <code>Boolean(value)</code>
+                            .
+                        </p>
+                        <h4>Примеры:</h4>
+                        <pre><code>console.log(!!"текст");  // true
+console.log(!!"");       // false
+console.log(!!0);        // false
+console.log(!!1);        // true
+console.log(!!null);     // false
+console.log(Boolean("текст")); // true</code></pre>
+                    </div>
+                </section>
+
+                <!-- PRIORITY -->
+                <section class="section" id="precedence" class="topic-section">
+                    <div class="container">
+                        <h2>Приоритет и порядок вычисления</h2>
+                        <p class="note">
+                            Приоритет (от более высокого к низкому):
+                            <code>!</code>
+                            →
+                            <code>&amp;&amp;</code>
+                            →
+                            <code>||</code>
+                            . Скобки всегда можно (и нужно для читаемости) использовать для явного порядка.
+                        </p>
+                        <div class="note-block">
+                            <h4>Пример:</h4>
+                            <pre><code>console.log(!true || false); // false, т.к. !true -> false, false || false -> false
+console.log(true && false || true); // (true && false) -> false; false || true -> true
+console.log(true && (false || true)); // (false || true) -> true; true && true -> true</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SUMMARY TABLE -->
+                <section class="section" id="summary-table" class="topic-section">
+                    <div class="container">
+                        <h2>Сводная таблица</h2>
+                        <table class="table-note">
+                            <thead>
+                                <tr>
+                                    <th>Оператор</th>
+                                    <th>Название</th>
+                                    <th>Синтаксис</th>
+                                    <th>Возвращает</th>
+                                    <th>Комментарий</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>||</code></td>
+                                    <td>ИЛИ</td>
+                                    <td><code>a || b</code></td>
+                                    <td>Первый truthy или последний</td>
+                                    <td>Используется для подстановки значения по умолчанию</td>
+                                </tr>
+                                <tr>
+                                    <td><code>||=</code></td>
+                                    <td>Присв. ИЛИ</td>
+                                    <td><code>a ||= b</code></td>
+                                    <td>
+                                        Новое значение
+                                        <code>a</code>
+                                    </td>
+                                    <td>
+                                        Присваивает, если
+                                        <code>a</code>
+                                        falsy
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>&amp;&amp;</code></td>
+                                    <td>И</td>
+                                    <td><code>a && b</code></td>
+                                    <td>Первый falsy или последний</td>
+                                    <td>Условное выполнение</td>
+                                </tr>
+                                <tr>
+                                    <td><code>&amp;&amp;=</code></td>
+                                    <td>Присв. И</td>
+                                    <td><code>a &&= b</code></td>
+                                    <td>
+                                        Новое значение
+                                        <code>a</code>
+                                    </td>
+                                    <td>
+                                        Присваивает, если
+                                        <code>a</code>
+                                        truthy
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>!</code></td>
+                                    <td>НЕ</td>
+                                    <td><code>!a</code></td>
+                                    <td>
+                                        <code>true</code>
+                                        /
+                                        <code>false</code>
+                                    </td>
+                                    <td>Инвертирует логическое значение</td>
+                                </tr>
+                                <tr>
+                                    <td><code>!!</code></td>
+                                    <td>Двойное НЕ</td>
+                                    <td><code>!!a</code></td>
+                                    <td>
+                                        <code>true</code>
+                                        /
+                                        <code>false</code>
+                                    </td>
+                                    <td>Приведение к Boolean</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- PATTERNS -->
+                <section class="section" id="patterns" class="topic-section">
+                    <div class="container">
+                        <h2>Практические шаблоны использования</h2>
+
+                        <div class="note-block">
+                            <h4>1. Значение по умолчанию</h4>
+                            <pre><code>function greet(name) {
+  name = name || "Гость"; // Если name falsy
+  console.log("Привет,", name);
+}</code></pre>
+                        </div>
+
+                        <div class="note-block">
+                            <h4>2. Безопасный доступ (до появления optional chaining)</h4>
+                            <pre><code>user && user.profile && user.profile.avatar && show(user.profile.avatar);</code></pre>
+                        </div>
+
+                        <div class="note-block">
+                            <h4>3. Короткое выполнение вместо if</h4>
+                            <pre><code>isAdmin && grantAccess(); // if (isAdmin) grantAccess();</code></pre>
+                        </div>
+
+                        <div class="note-block">
+                            <h4>4. Условное логирование</h4>
+                            <pre><code>DEBUG && console.log("STATE =", state);</code></pre>
+                        </div>
+
+                        <div class="note-block">
+                            <h4>5. Инициализация (но аккуратно с 0 и "")</h4>
+                            <pre><code>let timeout = passedTimeout || 500; // 0 потеряется</code></pre>
+                        </div>
+
+                        <div class="warning">
+                            Для «только null/undefined» используйте
+                            <code>??</code>
+                            и
+                            <code>??=</code>
+                            , чтобы не терять допустимые значения
+                            <code>0</code>
+                            ,
+                            <code>""</code>
+                            .
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PITFALLS -->
+                <section class="section" id="pitfalls" class="topic-section">
+                    <div class="container">
+                        <h2>Ловушки и рекомендации</h2>
+                        <div class="note-block warning">
+                            <ul class="list-ul">
+                                <li>
+                                    <strong>Falsy значения:</strong>
+                                    <code>0</code>
+                                    ,
+                                    <code>""</code>
+                                    ,
+                                    <code>null</code>
+                                    ,
+                                    <code>undefined</code>
+                                    ,
+                                    <code>NaN</code>
+                                    ,
+                                    <code>false</code>
+                                    .
+                                </li>
+                                <li>
+                                    <code>a ||= b</code>
+                                    перезапишет
+                                    <code>0</code>
+                                    и
+                                    <code>""</code>
+                                    , даже если это желаемые значения.
+                                </li>
+                                <li>
+                                    Смешивать побочные эффекты в условиях (
+                                    <code>a() &amp;&amp; b()</code>
+                                    ) — снижает читаемость.
+                                </li>
+                                <li>
+                                    Скобки повышают ясность: не бойтесь писать
+                                    <code>(cond1 &amp;&amp; cond2) || fallback</code>
+                                    .
+                                </li>
+                                <li>
+                                    Для доступа к свойствам лучше использовать
+                                    <code>?.</code>
+                                    (optional chaining), чем длинные цепочки
+                                    <code>&amp;&amp;</code>
+                                    .
+                                </li>
+                                <li>
+                                    Двойное отрицание
+                                    <code>!!</code>
+                                    — идиома, но не злоупотребляйте; иногда
+                                    <code>Boolean(value)</code>
+                                    читабельнее.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PRACTICE -->
+                <section class="section" id="practice" class="topic-section">
+                    <div class="container">
+                        <h2>Тренажёр</h2>
+                        <p>Нажмите на кнопку или введите собственное выражение для вычисления.</p>
+
+                        <div class="practice-buttons">
+                            <button type="button" data-expr="1 || 0">1 || 0</button>
+                            <button type="button" data-expr="0 || 'fallback'">0 || 'fallback'</button>
+                            <button type="button" data-expr="'A' && 'B'">'A' && 'B'</button>
+                            <button type="button" data-expr="null && 5">null && 5</button>
+                            <button type="button" data-expr="!!'abc'">!!'abc'</button>
+                            <button type="button" data-expr="0 && 10">0 && 10</button>
+                            <button type="button" data-expr="0 || 10">0 || 10</button>
+                            <button type="button" data-expr="false || 0 || '' || 'X'">false || 0 || '' || 'X'</button>
+                        </div>
+
+                        <form id="expr-form" class="expr-form" onsubmit="return false;">
+                            <label>
+                                Выражение:
+                                <input type="text" id="expr-input" value="1 || 0" autocomplete="off" />
+                            </label>
+                            <button type="button" id="run-expr">Выполнить</button>
+                        </form>
+                        <pre><code id="expr-output">// Результат появится здесь</code></pre>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+
+
+        <script>
+            // Подсветка активной секции при скролле
+            (function initSectionHighlight() {
+                const nav = document.getElementById("page-nav");
+                if (!nav) return;
+                const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+                const map = new Map(links.map((a) => [a.getAttribute("href").slice(1), a]));
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                links.forEach((l) => l.classList.remove("active"));
+                                const link = map.get(entry.target.id);
+                                if (link) link.classList.add("active");
+                            }
+                        });
+                    },
+                    { root: null, rootMargin: "0px 0px -65% 0px", threshold: 0 }
+                );
+                document.querySelectorAll(".topic-section").forEach((sec) => observer.observe(sec));
+            })();
+
+            // Плавная прокрутка
+            document.getElementById("page-nav")?.addEventListener("click", (e) => {
+                const a = e.target.closest('a[href^="#"]');
+                if (!a) return;
+                e.preventDefault();
+                const id = a.getAttribute("href").slice(1);
+                const target = document.getElementById(id);
+                if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+
+            // Выполнение выражений из тренажёра
+            function runExpression(expr) {
+                const output = document.getElementById("expr-output");
+                try {
+                    // eslint-disable-next-line no-eval
+                    const result = eval(expr);
+                    output.textContent = `> ${expr}\n= ${String(result)} (тип: ${typeof result})`;
+                } catch (e) {
+                    output.textContent = `> ${expr}\n! Ошибка: ${e.message}`;
+                }
+            }
+
+            document.addEventListener("click", (e) => {
+                const btn = e.target.closest("[data-expr]");
+                if (!btn) return;
+                runExpression(btn.getAttribute("data-expr"));
+            });
+
+            document.getElementById("run-expr")?.addEventListener("click", () => {
+                const input = document.getElementById("expr-input");
+                runExpression(input.value);
+            });
+        </script>
+    </body>
+</html>

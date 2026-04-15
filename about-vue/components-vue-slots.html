@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Слоты во Vue</title>
+<meta name="description" content="Как использовать базовые, именованные слоты и fallback-содержимое во Vue. Практические примеры с пояснениями." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+<head>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main class="page">
+      <nav class="nav-tabs">
+        <a href="#slots-intro">Введение в слоты</a>
+        <a href="#slots-basic">Базовые слоты</a>
+        <a href="#slots-named">Именованные слоты</a>
+        <a href="#slots-fallback">Резервное содержимое</a>
+        <a href="#slots-multiple">Множественные слоты</a>
+      </nav>
+
+      <!-- Введение -->
+      <section class="section" id="slots-intro">
+        <div class="container">
+          <h1>Слоты во Vue</h1>
+          <p class="note">
+            <strong>Slots</strong> - это мощный механизм во Vue, позволяющий создавать гибкие и переиспользуемые компоненты.
+            С помощью слотов вы можете передавать контент из родительского компонента в дочерний, делая компоненты более универсальными.
+          </p>
+          <h4>Виды слотов:</h4>
+          <ul class="list-ul">
+            <li><strong>Базовые слоты</strong> - для передачи простого контента.</li>
+            <li><strong>Именованные слоты</strong> - для передачи контента в определённые "кармашки".</li>
+            <li><strong>Резервное содержимое (Fallback Content)</strong> - для отображения контента по умолчанию, если родитель ничего не передал.</li>
+          </ul>
+          <p class="note note--info"> 🚀 Слоты делают ваши компоненты более гибкими и позволяют легко изменять их содержимое без необходимости модифицировать сам компонент.</p>
+
+        </div>
+      </section>
+
+      <!-- Базовые слоты -->
+      <section class="section" id="slots-basic">
+        <div class="container">
+          <h2>Базовые слоты</h2>
+          <div class="note">
+            <strong>Базовые слоты</strong> - это простой способ передать контент из родительского компонента в дочерний.
+            Они позволяют вставлять произвольный HTML или другие компоненты внутрь компонента-обёртки.
+          </div>
+
+          <h4>Как использовать базовые слоты:</h4>
+          <ul class="list-ul">
+            <li>В дочернем компоненте используйте тег <code>&lt;slot&gt;&lt;/slot&gt;</code> в том месте, где хотите вставить контент из родителя.</li>
+            <li>В родительском компоненте просто поместите нужный контент между тегами дочернего компонента.</li>
+          </ul>
+
+          <h4>Пример базового слота:</h4>
+          <div class="code-block">
+            <pre><code>&lt;!-- Родительский компонент --&gt;
+&lt;div id="app"&gt;
+  &lt;container-component&gt;
+    &lt;p&gt;Содержимое, которое можно менять без проблем! 😊&lt;/p&gt;
+  &lt;/container-component&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({})
+  .component("container-component", {
+    template: `
+      &lt;div style="border:2px dashed #42b983;padding:10px;"&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+      &lt;/div&gt;
+    `
+  })
+  .mount("#app");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><b>&lt;container-component&gt;</b> - это дочерний компонент, который будет содержать слот.</li>
+            <li>Внутри <b>&lt;container-component&gt;</b> в шаблоне используется тег <code>&lt;slot&gt;&lt;/slot&gt;</code>, который обозначает место для вставки контента из родителя.</li>
+            <li>В родительском компоненте между тегами <b>&lt;container-component&gt;</b> и <b>&lt;/container-component&gt;</b> помещается параграф с текстом. Этот текст будет вставлен в место слота внутри дочернего компонента.</li>
+
+
+          </ul>
+
+          <div class="interactive-demo">
+            <div id="slots-basic-demo"></div>
+          </div>
+
+          <!-- Вывод: -->
+          <p class="note note--info">
+            🚀
+            <strong>Базовые слоты</strong> позволяют легко вставлять динамический контент в компоненты, делая их более гибкими и переиспользуемыми!
+          </p>
+        </div>
+      </section>
+
+      <!-- Именованные слоты -->
+      <section class="section" id="slots-named">
+        <div class="container">
+          <h2>Именованные слоты</h2>
+          <div class="note">
+            <strong>Именованные слоты</strong> - это расширение базовых слотов, позволяющее создавать несколько слотов внутри одного компонента.
+            Каждый слот имеет своё имя, что позволяет передавать контент в определённые "кармашки" компонента.
+          </div>
+
+
+          <h4>Как использовать именованные слоты:</h4>
+          <ul class="list-ul">
+            <li>В дочернем компоненте используйте тег <code>&lt;slot name="имя_слота"&gt;&lt;/slot&gt;</code> для каждого именованного слота.</li>
+            <li>В родительском компоненте используйте тег <code>&lt;template #имя_слота&gt;...&lt;/template&gt;</code> для передачи контента в соответствующий слот.</li>
+          </ul>
+          <h4>Виды именованных слотов:</h4>
+          <ul class="list-ul">
+            <li><strong>Обычные именованные слоты</strong> - позволяют передавать контент в определённые зоны компонента.</li>
+            <li><strong>Дефолтный слот</strong> - используется для контента, не попавшего ни в один именованный слот.</li>
+          </ul>
+
+
+
+          <h4>Пример именованных слотов:</h4>
+
+          <div class="code-block">
+            <pre><code>&lt;!-- multi-slot-card - Родительский компонент --&gt;
+&lt;multi-slot-card&gt;
+  &lt;!-- Передача контента в именованные слоты --&gt;
+  &lt;!-- #header - слот для заголовка --&gt;
+  &lt;template #header&gt;
+    &lt;h2&gt;Заголовок 🌟&lt;/h2&gt;
+  &lt;/template&gt;
+
+  &lt;!-- #footer - слот для футера --&gt;
+  &lt;template #footer&gt;
+    &lt;small&gt;Футер&lt;/small&gt;
+  &lt;/template&gt;
+
+  &lt;p&gt;Основной текст карточки.&lt;/p&gt;
+&lt;/multi-slot-card&gt;
+
+&lt;!-- multi-slot-card.vue - Дочерний компонент --&gt;
+&lt;template&gt;
+  &lt;!-- Компонент с несколькими именованными слотами --&gt;
+  &lt;div class="card"&gt;
+  &lt;!-- Именованный слот для заголовка --&gt;
+    &lt;slot name="header"&gt;&lt;/slot&gt;
+    &lt;!-- Дефолтный слот --&gt;
+    &lt;slot&gt;По умолчанию, если ничего не пришло&lt;/slot&gt;
+    &lt;!-- Именованный слот для футера --&gt;
+    &lt;slot name="footer"&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li><b>&lt;multi-slot-card&gt;</b> - это дочерний компонент с несколькими именованными слотами.</li>
+            <li>В шаблоне дочернего компонента используются три слота: <code>&lt;slot name="header"&gt;</code>, <code>&lt;slot&gt;</code> (дефолтный слот) и <code>&lt;slot name="footer"&gt;</code>.</li>
+            <li>В родительском компоненте используются теги <code>&lt;template #header&gt;</code> и <code>&lt;template #footer&gt;</code> для передачи контента в соответствующие слоты.</li>
+            <li>Контент, не попавший ни в один именованный слот, будет вставлен в дефолтный слот.</li>
+          </ul>
+
+          <div class="interactive-demo">
+            <div id="slots-named-demo"></div>
+          </div>
+
+          <p class="note note--info">
+            🚀
+            <strong>Именованные слоты</strong> позволяют создавать сложные и гибкие компоненты с несколькими зонами для динамического контента!
+          </p>
+        </div>
+      </section>
+
+      <!-- Резервное содержимое -->
+      <section class="section" id="slots-fallback">
+        <div class="container">
+          <h2>Резервное содержимое </h2>
+          <div class="note">
+            <strong>Резервное содержимое</strong> - (Fallback Content - перевод "запасной контент") это контент, который отображается внутри слота, если родительский компонент не передал никакого контента.
+            Это полезно для обеспечения базового отображения компонента, когда нет данных от родителя.
+          </div>
+          <h4>Как использовать резервное содержимое:</h4>
+          <ul class="list-ul">
+            <li>В дочернем компоненте внутри тега <code>&lt;slot&gt;&lt;/slot&gt;</code> добавьте HTML-контент, который должен отображаться по умолчанию.</li>
+            <li>Если родительский компонент не передаст контент, будет отображено резервное содержимое.</li>
+          </ul>
+          <h4>Пример резервного содержимого:</h4>
+
+
+          <div class="code-block">
+            <pre><code>&lt;!-- Родительский компонент --&gt;
+&lt;div id="app"&gt;
+  &lt;!-- Нет переданного контента --&gt;
+  &lt;container-component&gt;&lt;/container-component&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Vue.createApp({})
+  .component("container-component", {
+    template: `
+      &lt;div style="border:2px dashed #42b983; padding:10px;"&gt;
+       &lt;!-- Резервное содержимое слота --&gt;
+        &lt;slot&gt;Тут пока пусто 👀&lt;/slot&gt;
+      &lt;/div&gt;
+    `
+  })
+  .mount("#app");
+&lt;/script&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>В дочернем компоненте <b>&lt;container-component&gt;</b> внутри тега <code>&lt;slot&gt;&lt;/slot&gt;</code> добавлено резервное содержимое: <code>Тут пока пусто 👀</code>.</li>
+          </ul>
+
+          <div class="interactive-demo">
+            <div id="slots-fallback-demo"></div>
+          </div>
+
+          <p class="note note--info">
+            🚀
+            <strong>Резервное содержимое</strong> обеспечивает базовое отображение компонента, когда родитель не передал контент, улучшая пользовательский опыт!
+          </p>
+        </div>
+      </section>
+
+      <!-- Множественные слоты -->
+      <section class="section" id="slots-multiple">
+        <div class="container">
+          <h2>Множественные слоты: комплексные компоненты</h2>
+          <div class="note"><strong>Множественные слоты</strong> - это использование нескольких слотов внутри одного компонента для создания более сложных и гибких интерфейсов.
+            Это особенно полезно для компонентов, которые требуют различных областей контента, таких как карточки, модальные окна и панели. </div>
+          <h4>Как использовать множественные слоты:</h4>
+          <ul class="list-ul">
+            <li>В дочернем компоненте определите несколько слотов с разными именами с помощью тега <code>&lt;slot name="имя_слота"&gt;&lt;/slot&gt;</code>.</li>
+            <li>В родительском компоненте используйте теги <code>&lt;template #имя_слота&gt;...&lt;/template&gt;</code> для передачи контента в соответствующие слоты.</li>
+          </ul>
+          <h4>Пример множественных слотов:</h4>
+
+
+          <div class="code-block">
+            <pre><code>&lt;multi-slot-card&gt;
+  &lt;template #header&gt;
+    &lt;h2&gt;Заголовок 🌟&lt;/h2&gt;
+  &lt;/template&gt;
+  &lt;p&gt;Основной текст карточки.&lt;/p&gt;
+  &lt;template #footer&gt;
+    &lt;small&gt;Футер&lt;/small&gt;
+  &lt;/template&gt;
+&lt;/multi-slot-card&gt;
+
+&lt;!-- multi-slot-card.vue --&gt;
+&lt;template&gt;
+  &lt;div class="card"&gt;
+    &lt;slot name="header"&gt;&lt;/slot&gt;
+    &lt;slot&gt;По умолчанию, если ничего не пришло&lt;/slot&gt;
+    &lt;slot name="footer"&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+          </div>
+          <h5>Объяснение кода:</h5>
+          <ul class="list-ul">
+            <li>В дочернем компоненте <b>&lt;multi-slot-card&gt;</b> определены три слота: <code>&lt;slot name="header"&gt;</code>, <code>&lt;slot&gt;</code> (дефолтный слот) и <code>&lt;slot name="footer"&gt;</code>.</li>
+            <li>В родительском компоненте используются теги <code>&lt;template #header&gt;</code> и <code>&lt;template #footer&gt;</code> для передачи контента в соответствующие слоты.</li>
+            <li>Контент, не попавший ни в один именованный слот, будет вставлен в дефолтный слот.</li>
+          </ul>
+
+
+
+          <div class="interactive-demo">
+            <div id="slots-multiple-demo"></div>
+          </div>
+
+          <div class="note note--info">
+            🚀
+            <strong>Множественные слоты</strong> позволяют создавать сложные и гибкие компоненты с несколькими зонами для динамического контента, улучшая структуру и переиспользуемость кода!
+          </div>
+
+        </div>
+      </section>
+
+
+
+    </main>
+    <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+  </div>
+
+  <script>
+    // Базовый слот
+    Vue.createApp({
+        template: `
+                  <container-component>
+                    <p>Содержимое, которое можно менять без проблем! 😊</p>
+                  </container-component>
+                `,
+      })
+      .component("container-component", {
+        template: `
+                  <div style="border:2px dashed #42b983; padding:10px;">
+                    <slot></slot>
+                  </div>
+                `,
+      })
+      .mount("#slots-basic-demo");
+
+    // Именованный слот
+    Vue.createApp({
+        template: `
+                  <multi-slot-card>
+                    <template #header>
+                      <h2>Заголовок 🌟</h2>
+                    </template>
+                    <template #footer>
+                      <small>Футер</small>
+                    </template>
+                    <p>Основной текст карточки.</p>
+                  </multi-slot-card>
+                `,
+      })
+      .component("multi-slot-card", {
+        template: `
+                  <div class="card">
+                    <slot name="header"></slot>
+                    <slot>По умолчанию, если ничего не пришло</slot>
+                    <slot name="footer"></slot>
+                  </div>
+                `,
+      })
+      .mount("#slots-named-demo");
+
+    // Fallback содержимое
+    Vue.createApp({
+        template: `<container-component></container-component>`,
+      })
+      .component("container-component", {
+        template: `
+                  <div style="border:2px dashed #42b983; padding:10px;">
+                    <slot>Тут пока пусто 👀</slot>
+                  </div>
+                `,
+      })
+      .mount("#slots-fallback-demo");
+
+    // Множественные слоты (ещё раз)
+    Vue.createApp({
+        template: `
+                  <multi-slot-card>
+                    <template #header>
+                      <h2>Заголовок 🌟</h2>
+                    </template>
+                    <p>Основной текст карточки.</p>
+                    <template #footer>
+                      <small>Футер</small>
+                    </template>
+                  </multi-slot-card>
+                `,
+      })
+      .component("multi-slot-card", {
+        template: `
+                  <div class="card">
+                    <slot name="header"></slot>
+                    <slot>По умолчанию, если ничего не пришло</slot>
+                    <slot name="footer"></slot>
+                  </div>
+                `,
+      })
+      .mount("#slots-multiple-demo");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Атрибуты HTML</title>
+<meta name="description" content="Что такое атрибуты HTML, их виды и примеры использования." />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <style>
+        .tags-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .tags-list h3 {
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+        .tags-list h4 {
+            font-size: 1.2rem;
+        }
+        .intro-code-block {
+            background: #f8f8f8;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 24px 0;
+            font-size: 1rem;
+            overflow-x: auto;
+        }
+    </style>
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body class="page">
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+            <main class="page__main">
+                <nav class="nav-tabs">
+                    <a href="#html-attributes-intro" class="nav-tabs__link active">Введение</a>
+                    <a href="#html-attributes-types" class="nav-tabs__link">Типы и примеры атрибутов</a>
+                    <a href="#html-attributes-table" class="nav-tabs__link">Сводная таблица</a>
+                </nav>
+                <!--  Введение-->
+                <section class="section" id="html-attributes-intro">
+                    <div class="container">
+                        <h1 class="page__title">Атрибуты HTML</h1>
+                        <p class="note">
+                            <strong>Атрибуты HTML</strong>
+                            — это специальные параметры, которые задаются внутри тега и позволяют дополнительно настраивать его работу, внешний вид или поведение.
+                        </p>
+                        <ul>
+                            <li>
+                                Атрибуты всегда указываются внутри открывающего тега:
+                                <code>&lt;тег атрибут="значение"&gt;</code>
+                                .
+                            </li>
+                            <li>С помощью атрибутов можно задать идентификатор, класс, стили, ссылки, параметры для изображений, форм, списков и других элементов.</li>
+                            <li>Некоторые атрибуты универсальны для большинства тегов, другие — специфичны для определённых элементов.</li>
+                        </ul>
+                        <div class="intro-code-block">
+                            <pre><code>&lt;a href="https://example.com" target="_blank"&gt;Ссылка&lt;/a&gt;
+&lt;img src="photo.jpg" alt="Фото"&gt;
+&lt;input type="text" placeholder="Введите текст"&gt;
+&lt;div class="container" id="main"&gt;...&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Типы и примеры атрибутов -->
+                <section class="section" id="html-attributes-types">
+                    <div class="container">
+                        <h2 class="section__title">Типы и примеры атрибутов</h2>
+                        <ul class="tags-list">
+                            <!-- class -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name"><code>class</code></h3>
+                                    <p class="note">
+                                        <b>class</b>
+                                        — назначает CSS-класс для стилизации элемента.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <ul class="list-ul">
+                                            <li>Может использоваться для группировки элементов с одинаковым стилем.</li>
+                                            <li>Допустимо указывать несколько классов через пробел.</li>
+                                        </ul>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;div class="box highlight"&gt;Текст&lt;/div&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- id -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name"><code>id</code></h3>
+                                    <p class="note">
+                                        <b>id</b>
+                                        — уникальный идентификатор элемента на странице.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <ul class="list-ul">
+                                            <li>Используется для обращения к элементу через CSS или JavaScript.</li>
+                                            <li>
+                                                На странице не должно быть двух элементов с одинаковым
+                                                <code>id</code>
+                                                .
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;h2 id="intro"&gt;Введение&lt;/h2&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- style -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name"><code>style</code></h3>
+                                    <p class="note">
+                                        <b>style</b>
+                                        — позволяет задать встроенные CSS-стили прямо в элементе.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <ul class="list-ul">
+                                            <li>Удобно для быстрого изменения оформления, но для сложных стилей лучше использовать CSS-файл.</li>
+                                        </ul>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;p style="color: red; font-weight: bold;"&gt;Красный текст&lt;/p&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- title -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name"><code>title</code></h3>
+                                    <p class="note">
+                                        <b>title</b>
+                                        — текстовая подсказка, отображается при наведении курсора на элемент.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <ul class="list-ul">
+                                            <li>Работает для большинства тегов, улучшает доступность.</li>
+                                        </ul>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;span title="Подробнее"&gt;?</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- data-* -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name"><code>data-*</code></h3>
+                                    <p class="note">
+                                        <b>data-*</b>
+                                        — пользовательские атрибуты для хранения дополнительных данных.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <ul class="list-ul">
+                                            <li>Позволяет хранить любые значения для работы скриптов или стилей.</li>
+                                            <li>
+                                                Пример:
+                                                <code>data-user="123"</code>
+                                                ,
+                                                <code>data-theme="dark"</code>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;div data-user="123" data-theme="dark"&gt;...</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- src / href / alt / target -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">
+                                        <code>src</code>
+                                        ,
+                                        <code>href</code>
+                                        ,
+                                        <code>alt</code>
+                                        ,
+                                        <code>target</code>
+                                    </h3>
+                                    <p class="note">
+                                        <b>src</b>
+                                        — путь к файлу (например, изображение, видео, скрипт).
+                                        <br />
+                                        <b>href</b>
+                                        — адрес ссылки.
+                                        <br />
+                                        <b>alt</b>
+                                        — альтернативный текст для изображения.
+                                        <br />
+                                        <b>target</b>
+                                        — способ открытия ссылки:
+                                        <code>_blank</code>
+                                        (в новой вкладке),
+                                        <code>_self</code>
+                                        (в той же).
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <ul class="list-ul">
+                                            <li>Часто используются для работы с мультимедиа и навигацией.</li>
+                                        </ul>
+                                    </div>
+                                    <h4>Примеры:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;img src="cat.jpg" alt="Кот"&gt;
+&lt;a href="https://example.com" target="_blank"&gt;Ссылка&lt;/a&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- disabled / checked / selected / readonly -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">
+                                        <code>disabled</code>
+                                        ,
+                                        <code>checked</code>
+                                        ,
+                                        <code>selected</code>
+                                        ,
+                                        <code>readonly</code>
+                                    </h3>
+                                    <p class="note">
+                                        <b>disabled</b>
+                                        — делает элемент неактивным.
+                                        <br />
+                                        <b>checked</b>
+                                        — отмечает чекбокс или радиокнопку.
+                                        <br />
+                                        <b>selected</b>
+                                        — выбирает элемент списка.
+                                        <br />
+                                        <b>readonly</b>
+                                        — запрещает редактирование поля.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <ul class="list-ul">
+                                            <li>Используются в формах и интерактивных элементах.</li>
+                                        </ul>
+                                    </div>
+                                    <h4>Примеры:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;input type="checkbox" checked&gt;
+&lt;input type="text" disabled&gt;
+&lt;select&gt;
+  &lt;option selected&gt;Первый&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- placeholder / value / name -->
+                            <li class="tags-list__item">
+                                <div class="card">
+                                    <h3 class="tags-list__name">
+                                        <code>placeholder</code>
+                                        ,
+                                        <code>value</code>
+                                        ,
+                                        <code>name</code>
+                                    </h3>
+                                    <p class="note">
+                                        <b>placeholder</b>
+                                        — текст-подсказка внутри поля ввода.
+                                        <br />
+                                        <b>value</b>
+                                        — текущее значение элемента.
+                                        <br />
+                                        <b>name</b>
+                                        — имя поля для передачи данных формы.
+                                    </p>
+                                    <div class="tags-list__details card__desc">
+                                        <ul class="list-ul">
+                                            <li>Важны при создании форм для ввода и отправки информации.</li>
+                                        </ul>
+                                    </div>
+                                    <h4>Пример:</h4>
+                                    <div class="code-block">
+                                        <pre><code>&lt;input type="text" name="user" value="Вася" placeholder="Введите имя"&gt;</code></pre>
+                                        <button class="copy-btn">Скопировать</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Сводная таблица популярных атрибутов -->
+                <section class="section" id="html-attributes-table">
+                    <div class="container">
+                        <h2 class="section__title">Сводная таблица популярных атрибутов</h2>
+                        <div class="table-responsive">
+                            <table class="table-note">
+                                <thead>
+                                    <tr>
+                                        <th>Атрибут</th>
+                                        <th>Назначение</th>
+                                        <th>Пример</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>class</code></td>
+                                        <td>CSS-класс для стилизации элемента</td>
+                                        <td><code>&lt;div class="box"&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>id</code></td>
+                                        <td>Уникальный идентификатор элемента</td>
+                                        <td><code>&lt;h2 id="intro"&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>style</code></td>
+                                        <td>Встроенные CSS-стили</td>
+                                        <td><code>&lt;p style="color:red;"&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>title</code></td>
+                                        <td>Всплывающая подсказка при наведении</td>
+                                        <td><code>&lt;span title="Подробнее"&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>data-*</code></td>
+                                        <td>Пользовательские данные для скриптов</td>
+                                        <td><code>&lt;div data-user="123"&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>src</code></td>
+                                        <td>Путь к файлу (изображение, видео)</td>
+                                        <td><code>&lt;img src="cat.jpg"&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>href</code></td>
+                                        <td>Адрес ссылки</td>
+                                        <td><code>&lt;a href="https://..."&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>alt</code></td>
+                                        <td>Альтернативный текст для изображения</td>
+                                        <td><code>&lt;img alt="Кот"&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>target</code></td>
+                                        <td>
+                                            Открытие ссылки (например,
+                                            <code>_blank</code>
+                                            )
+                                        </td>
+                                        <td><code>&lt;a target="_blank"&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>disabled</code></td>
+                                        <td>Отключает элемент формы</td>
+                                        <td><code>&lt;input disabled&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>checked</code></td>
+                                        <td>Отмечает чекбокс или радио</td>
+                                        <td><code>&lt;input checked&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>selected</code></td>
+                                        <td>Выбирает элемент списка</td>
+                                        <td><code>&lt;option selected&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>readonly</code></td>
+                                        <td>Запрещает редактирование поля</td>
+                                        <td><code>&lt;input readonly&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>placeholder</code></td>
+                                        <td>Текст-подсказка в поле ввода</td>
+                                        <td><code>&lt;input placeholder="..."&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>value</code></td>
+                                        <td>Значение элемента</td>
+                                        <td><code>&lt;input value="..."&gt;</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>name</code></td>
+                                        <td>Имя поля для формы</td>
+                                        <td><code>&lt;input name="user"&gt;</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="note note--info">
+                            На практике в HTML используются десятки атрибутов. Полный список и детали можно найти в
+                            <a href="https://developer.mozilla.org/ru/docs/Web/HTML/Attributes" target="_blank"><strong>документации</strong></a>
+                            .
+                        </p>
+                    </div>
+                </section>
+            </main>
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Реактивность в Vuex: асинхронные действия и управление данными</title>
+<meta name="description" content="Как правильно использовать actions в Vuex: асинхронная загрузка данных, обработка ошибок, вызовы из компонентов. Практика для новичков — как связать сервер и хранилище без багов!" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+
+<script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+<link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+<body>
+  <div class="wrapper">
+    <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+    <main class="page">
+      <nav class="nav-tabs">
+        <a href="#intro">Введение</a>
+        <a href="#why-actions">Зачем нужны actions?</a>
+        <a href="#async-example">Асинхронный пример</a>
+        <a href="#call-actions">Вызов actions из компонентов</a>
+        <a href="#error-handling">Обработка ошибок</a>
+        <a href="#button-example">Пример с кнопкой</a>
+        <a href="#summary">Что теперь знаешь?</a>
+        <a href="#exercise">Упражнение</a>
+      </nav>
+
+      <!-- Введение -->
+      <section id="intro" class="section">
+        <div class="container">
+          <h1>Реактивность в Vuex: асинхронные действия и API</h1>
+          <p class="note">
+            <b>Реактивность в Vuex</b> — это способность автоматически отслеживать изменения состояния и обновлять интерфейс пользователя.
+          </p>
+
+
+          <p class="note">
+            Vuex идеально хранит и меняет состояние через <b>state</b> и <b>mutations</b>, но настоящий веб живёт асинхронными запросами! Тут вступают в игру <b>actions</b> — они работают с <b>async/await</b>, делают запросы к API и обновляют состояние без багов.
+          </p>
+          <h4>Что мы изучим?</h4>
+          <ul class="list-ul">
+            <li>📡 Получить пользователей из API</li>
+            <li>🛒 Загрузить товары</li>
+            <li>⏳ Отправить данные и дождаться ответа сервера</li>
+          </ul>
+          <p>Если использовать только mutations, мы скоро столкнёмся с тем, что они не умеют ждать ответа от API!</p>
+          <h4>Почему нужны actions во Vuex</h4>
+          <ul class="list-ul">
+            <li>Mutations — синхронные, не могут ждать API</li>
+            <li>Actions — асинхронные, работают с промисами и async/await</li>
+            <li>Actions вызывают mutations после получения данных</li>
+          </ul>
+          <p>Таким образом, Vuex остаётся реактивным и управляемым, даже при работе с асинхронными операциями!</p>
+        </div>
+      </section>
+
+      <!-- Зачем нужны actions -->
+      <section id="why-actions" class="section">
+        <div class="container">
+          <h2>🔥 Зачем нужны actions?</h2>
+
+          <p class="note">В Vuex есть два основных способа изменять состояние: <b>mutations</b> и <b>actions</b>. Но почему нам нужны именно actions для асинхронных операций?</p>
+          <h3>Mutations vs Actions: в чём разница?</h3>
+
+          <h4>Mutations</h4>
+          <ul class="list-ul">
+
+            <li><b>Mutations</b> отвечают только за <b>изменение состояния (state)</b>, но они <b>обязаны быть синхронными</b>. Если ты попробуешь встроить в мутацию API-запрос или задержку через <code>setTimeout</code>, получишь ошибку или сломанное состояние.</li>
+            <li><b>API-запросы</b> по природе асинхронные — они требуют времени, ведь приходят из внешнего мира. Простая мутация не сможет дождаться ответа!</li>
+          </ul>
+          <h4>Actions</h4>
+          <p>
+            <b>Actions</b> — это “оркестратор” асинхронных операций во Vuex.<br>
+            Они могут:
+          </p>
+          <ul class="list-ul">
+            <li>Выполнять <b>асинхронный код</b> (<code>Promise</code>, <code>async/await</code>, <code>setTimeout</code>, <code>fetch</code> и др).</li>
+            <li>Контролировать последовательность: сначала загрузить что-то с сервера, после этого вызвать мутацию, чтобы обновить <b>state</b>. Это важно для правильного состояния приложения.</li>
+            <li>Комбинировать несколько действий — например, последовательно запросить товары и пользователей, обновить состояние, обработать ошибки.</li>
+            <li>Делать дополнительные проверки до обновления <b>state</b> (например, валидацию, фильтрацию, сортировку данных).</li>
+            <li>Выполнять <b>бизнес-логику</b> и “склеивать” цепочки событий приложения (например, авторизация пользователя, затем загрузка корзины).</li>
+            <li>Логировать, отправлять события аналитике, реагировать на ошибки сервера — всё это место actions, а не mutations.</li>
+          </ul>
+          <h3>🔥 Зачем нужны actions?</h3>
+          <p class="note">Actions позволяют централизованно управлять асинхронной логикой, обеспечивая чистоту и предсказуемость состояния приложения.</p>
+          <h4>Коротко: как работает схема?</h4>
+          <ol class="list-ol">
+            <li><b>Компонент</b> вызывает <code>dispatch</code> action.</li>
+            <li><b>Action</b> делает асинхронный запрос или ждет события.</li>
+            <li>Когда данные готовы — вызывает <code>commit</code> mutation.</li>
+            <li><b>Mutation</b> обновляет <b>state</b>, что сразу отражается во всех реактивных компонентах.</li>
+          </ol>
+          <h4>Без actions сложно:</h4>
+          <ul class="list-ul">
+            <li>Нельзя гарантировать “чистое” состояние — мутации могут завершаться до получения данных.</li>
+            <li>Появляется дублирование кода в компонентах (<code>fetch</code>, <code>then</code>, <code>commit</code> в каждом), сложнее поддерживать.</li>
+          </ul>
+          <h4>С actions легко:</h4>
+          <ul class="list-ul">
+            <li>Всё асинхронное — в одном месте!</li>
+            <li>Приложение становится масштабируемым и управляемым.</li>
+            <li>Чистый и читаемый код: компоненты заботятся только о запуске action, не думают о подробностях API.</li>
+          </ul>
+          <p><b>Итог: actions — центр асинхронной логики Vuex, делают приложение гибким и надежным!</b></p>
+        </div>
+      </section>
+      <!-- Асинхронный пример с API -->
+      <section id="async-example" class="section">
+        <div class="container">
+          <h2>📌 Как actions загружают данные из API</h2>
+          <p class="note">Рассмотрим пример: мы хотим загрузить список пользователей с внешнего API и сохранить их в состоянии Vuex.</p>
+          <h4>Шаг 1: Определяем state и mutations</h4>
+
+
+          <pre><code >const store = createStore({
+  state: {
+    users: [] // 👥 Здесь храним список пользователей
+  },
+  mutations: {
+    setUsers(state, users) {
+      state.users = users; // 🔄 Обновляем state
+    }
+  },
+  actions: {
+    async fetchUsers({ commit }) {
+      const response = await fetch("https://jsonplaceholder.typicode.com/users");
+      const data = await response.json();
+      commit("setUsers", data); // 📥 Передаём данные в mutations
+    }
+  }
+});</code></pre>
+          <h5>Пояснение:</h5>
+          <ul class="list-ul">
+            <li><b>state.users:</b> массив для хранения загруженных пользователей.</li>
+            <li><b>mutation setUsers:</b> обновляет состояние с новыми данными.</li>
+            <li><b>action fetchUsers:</b> асинхронно запрашивает пользователей с API и вызывает мутацию для обновления состояния.</li>
+          </ul>
+
+          <!-- Шаг 2 -->
+          <h4>Шаг 2: Вызов actions из компонента</h4>
+          <pre><code >methods: {
+  loadUsers() {
+    this.$store.dispatch("fetchUsers"); // 🚀 Запускаем action
+  }
+}</code></pre>
+          <h5>Пояснение:</h5>
+          <ul class="list-ul">
+            <li>Метод <b>loadUsers</b> вызывает <code>dispatch</code> для запуска action <b>fetchUsers</b>.</li>
+            <li>Action выполняет асинхронный запрос и обновляет состояние через мутацию.</li>
+          </ul>
+
+
+          <!-- Шаг 3 -->
+          <h4>Шаг 3: Использование данных в компоненте</h4>
+          <pre><code >computed: {
+  users() {
+    return this.$store.state.users; // 👥 Получаем пользователей из state
+  }
+}</code></pre>
+          <h5>Пояснение:</h5>
+          <ul class="list-ul">
+            <li>Вычисляемое свойство <b>users</b> возвращает список пользователей из состояния Vuex.</li>
+            <li>Компонент автоматически обновится, когда состояние изменится после загрузки данных.</li>
+          </ul>
+          <!-- Шаг 4 -->
+          <h4>Шаг 4: Шаблон для отображения пользователей</h4>
+
+          <pre><code class="language-html">&lt;template&gt;
+  &lt;div&gt;
+    &lt;button @click="loadUsers"&gt;Загрузить пользователей&lt;/button&gt;
+    &lt;ul&gt;
+      &lt;li v-for="user in users" :key="user.id"&gt;{{ user.name }}&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
+
+          <h5>Пояснение:</h5>
+          <ul class="list-ul">
+            <li>Кнопка вызывает метод <b>loadUsers</b> для загрузки пользователей.</li>
+            <li>Список пользователей отображается с помощью <code>v-for</code>, автоматически обновляется при изменении состояния.</li>
+          </ul>
+          <p class="note"><b>Вывод: </b>Vuex позволяет удобно и эффективно управлять асинхронными данными в приложении.</p>
+        </div>
+      </section>
+
+
+
+      <!-- Вызов actions из компонента -->
+      <section id="call-actions" class="section">
+        <div class="container">
+          <h2>🎯 Как запускать actions из компонентов</h2>
+          <p>Есть два основных способа вызвать actions из Vue-компонентов: </p>
+
+          <h4>Способ 1: стандартный dispatch()</h4>
+          <p><b>стандартный dispatch()</b> - это метод Vuex для вызова actions напрямую из компонента.</p>
+          <pre><code >
+methods: {
+  loadUsers() {
+    this.$store.dispatch("fetchUsers"); // Запускаем actions
+  }
+}
+          </code></pre>
+          <p>Неудобно — слишком многословно!</p>
+          <h4>Способ 2: mapActions — быстро и красиво</h4>
+          <p><b>mapActions</b> — это хелпер Vuex, который позволяет быстро “маппить” actions в методы компонента.</p>
+          <pre><code >&lt;script&gt;
+import { mapActions } from "vuex";
+export default {
+  methods: {
+    ...mapActions(["fetchUsers"])
+  }
+};
+ &lt;/script&gt;</code></pre>
+          <ul class="list-ul">
+            <li>Можно просто вызывать <code>this.fetchUsers()</code> — Vuex сам отправит запрос</li>
+            <li>Нет лишнего кода, легко читать и поддерживать</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Обработка ошибок -->
+      <section id="error-handling" class="section">
+        <div class="container">
+          <h2>📌 Как actions ловят ошибки</h2>
+          <p class="note">При работе с API всегда есть риск ошибок: сервер может не ответить, данные могут быть некорректными. Важно правильно обрабатывать эти ошибки в actions, чтобы приложение оставалось стабильным.</p>
+          <h4>Пример: обработка ошибок в actions</h4>
+          <pre><code >actions: {
+  async fetchUsers({ commit }) {
+    try {
+      const response = await fetch("https://jsonplaceholder.typicode.com/users");
+      if (!response.ok) {
+        throw new Error("Ошибка загрузки данных!");
+      }
+      const data = await response.json();
+      commit("setUsers", data);
+    } catch (error) {
+      console.error("🚨 Что-то пошло не так:", error.message);
+    }
+  }
+}</code></pre>
+          <h5>Пояснение:</h5>
+          <ul class="list-ul">
+            <li>Весь код — внутри <b>try</b>: безопасно отправляем запрос</li>
+            <li>Ошибки ловятся <b>catch</b> — функция не сломает приложение</li>
+            <li>Можно показать пользователю ошибку или сохранить её в state</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Пример с кнопкой -->
+      <section id="button-example" class="section">
+        <div class="container">
+          <h2>Пример: как запускать actions из UI</h2>
+          <p>Допустим, у нас есть кнопка, которая загружает пользователей при клике. Вот как это сделать с помощью <b>mapActions</b>:</p>
+
+          <pre><code class="language-html">&lt;template&gt;
+  &lt;button @click="fetchUsers">Загрузить пользователей&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import { mapActions } from "vuex";
+export default {
+  methods: {
+    ...mapActions(["fetchUsers"])
+  }
+};
+&lt;/script&gt;</code></pre>
+          <h5>Пояснение:</h5>
+          <ul class="list-ul">
+            <li>При клике на кнопку вызывается <b>actions.fetchUsers()</b></li>
+            <li>Vuex сам делает запрос и обновляет state</li>
+            <li>UI остаётся простым и чистым</li>
+
+          </ul>
+          <p class="note"><b>Вывод:</b> использование <b>mapActions</b> упрощает вызов actions из компонентов и делает код чище.</p>
+
+        </div>
+      </section>
+
+      <!-- Резюме -->
+      <section id="summary" class="section">
+        <div class="container">
+          <h2>Что теперь знаешь?</h2>
+          <ul style="display: flex; flex-direction: column; gap: 10px;">
+            <li>📦 Как хранить данные в state — всё всегда под контролем</li>
+            <li>🔄 Как менять state через mutations — только так и никак иначе</li>
+            <li>🌍 Как actions делают API-запросы и управляют асинхронностью</li>
+          </ul>
+          <h4>Где пригодится?</h4>
+          <ul style="display: flex; flex-direction: column; gap: 10px;">
+
+            <li>📡 Загрузка данных с сервера (пользователи, товары, настройки)</li>
+            <li>🛒 Управление корзиной и заказами в интернет-магазине</li>
+            <li>⏳ Отправка форм и ожидание ответа от сервера</li>
+            <li>🔄 Обновление данных в реальном времени (чат, уведомления)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Практическое упражнение -->
+      <section id="exercise" class="section">
+        <div class="container">
+          <h2>Упражнение 1/10</h2>
+          <h4>Заполни пропуски:</h4>
+          <ol>
+            <li>Объект Vuex, где определяются все <b>actions</b> (подсказка: <code>actions: { ... }</code>)</li>
+            <li>Метод, который передаёт данные в mutations (подсказка: <code>commit()</code>)</li>
+          </ol>
+          <pre><code >
+const store = createStore({
+  state: { users: [] },
+  mutations: {
+    setUsers(state, users) { state.users = users; }
+  },
+  actions: {
+    async fetchUsers({ commit }) {
+      const response = await fetch("https://jsonplaceholder.typicode.com/users");
+      const data = await response.json();
+      commit("setUsers", data);
+    }
+  }
+});
+          </code></pre>
+          <p>Попробуй самостоятельно реализовать <b>actions</b> для других API — ты готов!</p>
+        </div>
+      </section>
+    </main>
+    <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+  </div>
+  
+
+</body>
+
+</html>

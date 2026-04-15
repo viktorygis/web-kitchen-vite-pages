@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JavaScript: Методы массивов</title>
+<meta name="description" content="Полное руководство по методам массивов в JavaScript с примерами" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <nav class="nav-tabs">
+                    <a href="../teoria/arrays-basics.html">← Основы</a>
+                    <a href="#methods-mutating" class="active">Мутирующие</a>
+                    <a href="#methods-nonmutating">Немутирующие</a>
+                    <a href="#methods-iteration">Итерационные</a>
+                </nav>
+
+                <!-- Введение -->
+                <section class="section" id="methods-intro">
+                    <div class="container">
+                        <h1>Методы массивов JavaScript</h1>
+
+                        <p class="note">
+                            <strong>Методы массивов</strong>
+                            — это встроенные функции для работы с массивами. Они делятся на мутирующие (изменяют исходный массив) и немутирующие (возвращают новый массив или значение).
+                        </p>
+
+                        <div class="grid-column-50">
+                            <div class="example">
+                                <h4>Классификация методов:</h4>
+                                <ul class="list-ul">
+                                    <li>Добавление/удаление элементов</li>
+                                    <li>Поиск и фильтрация</li>
+                                    <li>Преобразование</li>
+                                    <li>Сортировка</li>
+                                    <li>Итерация</li>
+                                    <li>Редукция</li>
+                                </ul>
+                            </div>
+                            <div class="example">
+                                <h4>Современные методы (ES6+):</h4>
+                                <ul class="list-ul">
+                                    <li>
+                                        <code>find()</code>
+                                        ,
+                                        <code>findIndex()</code>
+                                    </li>
+                                    <li><code>includes()</code></li>
+                                    <li>
+                                        <code>flat()</code>
+                                        ,
+                                        <code>flatMap()</code>
+                                    </li>
+                                    <li><code>at()</code></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Мутирующие методы -->
+                <section class="section" id="methods-mutating">
+                    <div class="container">
+                        <h2>Мутирующие методы массивов</h2>
+
+                        <p class="note warning">⚠️ Эти методы изменяют исходный массив. Используйте их осторожно!</p>
+
+                        <!-- 1. Добавление/удаление элементов -->
+                        <h2>1. Добавление/удаление элементов</h2>
+
+                        <div class="method-card">
+                            <h3><code>push()</code></h3>
+                            <p><strong>Добавляет элементы в конец массива</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает новую длину массива</li>
+                                <li>Временная сложность: O(1)</li>
+                                <li>Можно добавить несколько элементов через запятую</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>arr.push(element1, ..., elementN)</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Пример:</h4>
+                                <pre><code>const fruits = ['яблоко', 'груша'];
+fruits.push('апельсин', 'лимон');
+console.log(fruits);
+// ['яблоко', 'груша', 'апельсин', 'лимон']</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>pop()</code></h3>
+                            <p><strong>Удаляет последний элемент массива</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает удаленный элемент (или undefined)</li>
+                                <li>Временная сложность: O(1)</li>
+                                <li>Уменьшает length массива на 1</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>arr.pop()</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Пример:</h4>
+                                <pre><code>const fruits = ['яблоко', 'груша', 'апельсин'];
+const lastFruit = fruits.pop();
+console.log(lastFruit); // 'апельсин'
+console.log(fruits); // ['яблоко', 'груша']</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>unshift()</code></h3>
+                            <p><strong>Добавляет элементы в начало массива</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает новую длину массива</li>
+                                <li>Временная сложность: O(n) - менее эффективен чем push</li>
+                                <li>Сдвигает все существующие элементы</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>arr.unshift(element1, ..., elementN)</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Пример:</h4>
+                                <pre><code>const nums = [2, 3];
+nums.unshift(0, 1);
+console.log(nums); // [0, 1, 2, 3]</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>shift()</code></h3>
+                            <p><strong>Удаляет первый элемент массива</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает удаленный элемент (или undefined)</li>
+                                <li>Временная сложность: O(n)</li>
+                                <li>Используется в реализации очереди (queue)</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>arr.shift()</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Пример:</h4>
+                                <pre><code>const queue = ['Аня', 'Борис', 'Вика'];
+const first = queue.shift();
+console.log(first); // 'Аня'
+console.log(queue); // ['Борис', 'Вика']</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- 2. Универсальные методы -->
+                        <h2>2. Универсальные методы</h2>
+
+                        <div class="method-card">
+                            <h3><code>splice()</code></h3>
+                            <p><strong>Добавляет/удаляет элементы в любом месте массива</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает массив удаленных элементов</li>
+                                <li>Временная сложность: O(n)</li>
+                                <li>Параметры: start, deleteCount, items...</li>
+                                <li>Может использоваться для вставки без удаления</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>arr.splice(start, deleteCount, item1, ..., itemN)</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>// Удаление
+const arr1 = [1, 2, 3, 4];
+arr1.splice(1, 2); // [2, 3]
+// arr1: [1, 4]
+
+// Вставка
+const arr2 = ['a', 'd'];
+arr2.splice(1, 0, 'b', 'c'); // []
+// arr2: ['a', 'b', 'c', 'd']
+
+// Замена
+const arr3 = [10, 20, 30];
+arr3.splice(1, 1, 'двадцать'); // [20]
+// arr3: [10, 'двадцать', 30]</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- 3. Изменение порядка -->
+                        <h2>3. Изменение порядка элементов</h2>
+
+                        <div class="method-card">
+                            <h3><code>sort()</code></h3>
+                            <p><strong>Сортирует элементы массива</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает отсортированный массив</li>
+                                <li>Временная сложность: O(n log n)</li>
+                                <li>Без функции сравнения сортирует как строки</li>
+                                <li>Функция сравнения должна возвращать число</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>arr.sort([compareFunction])</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>// Сортировка строк
+const names = ['Мария', 'Анна', 'Иван'];
+names.sort(); // ['Анна', 'Иван', 'Мария']
+
+// Сортировка чисел
+const nums = [10, 2, 5];
+nums.sort((a, b) => a - b); // [2, 5, 10]
+
+// Сортировка объектов
+const users = [
+  { name: 'Аня', age: 25 },
+  { name: 'Петя', age: 30 }
+];
+users.sort((a, b) => a.age - b.age);</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>reverse()</code></h3>
+                            <p><strong>Переворачивает порядок элементов</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает перевернутый массив</li>
+                                <li>Временная сложность: O(n)</li>
+                                <li>Изменяет исходный массив</li>
+                                <li>Первый элемент становится последним</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>arr.reverse()</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Пример:</h4>
+                                <pre><code>const letters = ['a', 'b', 'c'];
+letters.reverse();
+console.log(letters); // ['c', 'b', 'a']</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- 4. Заполнение -->
+                        <h2>4. Заполнение массива</h2>
+
+                        <div class="method-card">
+                            <h3><code>fill()</code></h3>
+                            <p><strong>Заполняет массив одинаковыми значениями</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает измененный массив</li>
+                                <li>Временная сложность: O(n)</li>
+                                <li>Можно указать диапазон [start, end)</li>
+                                <li>Полезен для инициализации массивов</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>arr.fill(value, [start], [end])</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>// Заполнение всего массива
+const arr1 = new Array(3).fill(0);
+// [0, 0, 0]
+
+// Частичное заполнение
+const arr2 = [1, 2, 3, 4, 5];
+arr2.fill('x', 1, 4);
+// [1, 'x', 'x', 'x', 5]</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="note-block warning">
+                            <h4>Важные предупреждения</h4>
+                            <ul class="list-ul">
+                                <li>
+                                    <strong>sort() без функции сравнения</strong>
+                                    преобразует элементы к строкам:
+                                    <code>[10, 2, 5].sort()</code>
+                                    →
+                                    <code>[10, 2, 5]</code>
+                                </li>
+                                <li>
+                                    <strong>splice()</strong>
+                                    может привести к потере данных - сохраняйте возвращаемое значение
+                                </li>
+                                <li>
+                                    <strong>unshift/shift</strong>
+                                    менее эффективны для больших массивов чем push/pop
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h3>Сводная таблица</h3>
+                        <table class="table-note">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%">Метод</th>
+                                    <th style="width: 50%">Описание</th>
+                                    <th style="width: 20%">Синтаксис</th>
+                                    <th style="width: 10%">Возвращает</th>
+                                    <th style="width: 10%">Сложность</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>push()</code></td>
+                                    <td>
+                                        <strong>Добавляет один или несколько элементов в конец массива</strong>
+                                        <ul class="list-ul">
+                                            <li>Изменяет исходный массив</li>
+                                            <li>Эффективен для добавления элементов</li>
+                                            <li>Можно добавить несколько элементов сразу</li>
+                                        </ul>
+                                    </td>
+                                    <td><code>arr.push(elem1, ..., elemN)</code></td>
+                                    <td>Новую длину массива</td>
+                                    <td>O(1)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>pop()</code></td>
+                                    <td>
+                                        <strong>Удаляет последний элемент массива</strong>
+                                        <ul class="list-ul">
+                                            <li>Уменьшает длину массива на 1</li>
+                                            <li>Для пустого массива возвращает undefined</li>
+                                            <li>Часто используется в структурах данных типа стека</li>
+                                        </ul>
+                                    </td>
+                                    <td><code>arr.pop()</code></td>
+                                    <td>Удаленный элемент или undefined</td>
+                                    <td>O(1)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>unshift()</code></td>
+                                    <td>
+                                        <strong>Добавляет элементы в начало массива</strong>
+                                        <ul class="list-ul">
+                                            <li>Сдвигает существующие элементы</li>
+                                            <li>Менее эффективен чем push (из-за переиндексации)</li>
+                                            <li>Можно добавить несколько элементов сразу</li>
+                                        </ul>
+                                    </td>
+                                    <td><code>arr.unshift(elem1, ..., elemN)</code></td>
+                                    <td>Новую длину массива</td>
+                                    <td>O(n)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>shift()</code></td>
+                                    <td>
+                                        <strong>Удаляет первый элемент массива</strong>
+                                        <ul class="list-ul">
+                                            <li>Сдвигает все последующие элементы</li>
+                                            <li>Для пустого массива возвращает undefined</li>
+                                            <li>Используется в очереди (queue)</li>
+                                        </ul>
+                                    </td>
+                                    <td><code>arr.shift()</code></td>
+                                    <td>Удаленный элемент или undefined</td>
+                                    <td>O(n)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>splice()</code></td>
+                                    <td>
+                                        <strong>Универсальный метод для добавления/удаления элементов</strong>
+                                        <ul class="list-ul">
+                                            <li>Может удалять и добавлять элементы одновременно</li>
+                                            <li>Первый параметр - индекс начала изменений</li>
+                                            <li>Второй параметр - количество удаляемых элементов</li>
+                                            <li>Остальные параметры - элементы для добавления</li>
+                                        </ul>
+                                    </td>
+                                    <td><code>arr.splice(start, deleteCount, item1, ..., itemN)</code></td>
+                                    <td>Массив удаленных элементов</td>
+                                    <td>O(n)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>sort()</code></td>
+                                    <td>
+                                        <strong>Сортирует элементы массива на месте</strong>
+                                        <ul class="list-ul">
+                                            <li>Без функции сравнения сортирует как строки</li>
+                                            <li>Функция сравнения должна возвращать число</li>
+                                            <li>Использует устойчивую сортировку в современных движках</li>
+                                            <li>
+                                                Для чисел:
+                                                <code>(a, b) => a - b</code>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td><code>arr.sort([compareFunction])</code></td>
+                                    <td>Отсортированный массив</td>
+                                    <td>O(n log n)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>reverse()</code></td>
+                                    <td>
+                                        <strong>Переворачивает порядок элементов массива</strong>
+                                        <ul class="list-ul">
+                                            <li>Изменяет исходный массив</li>
+                                            <li>Первый элемент становится последним и наоборот</li>
+                                            <li>Работает "на месте" без создания нового массива</li>
+                                        </ul>
+                                    </td>
+                                    <td><code>arr.reverse()</code></td>
+                                    <td>Перевернутый массив</td>
+                                    <td>O(n)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>fill()</code></td>
+                                    <td>
+                                        <strong>Заполняет массив одинаковыми значениями</strong>
+                                        <ul class="list-ul">
+                                            <li>Можно указать диапазон [start, end)</li>
+                                            <li>Полезен для инициализации массивов</li>
+                                            <li>Изменяет исходный массив</li>
+                                        </ul>
+                                    </td>
+                                    <td><code>arr.fill(value, [start], [end])</code></td>
+                                    <td>Измененный массив</td>
+                                    <td>O(n)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Немутирующие методы -->
+                <section class="section" id="methods-nonmutating">
+                    <div class="container">
+                        <h2>Немутирующие методы массивов</h2>
+
+                        <p class="note success">✅ Эти методы НЕ изменяют исходный массив, а возвращают новый массив или значение</p>
+
+                        <!-- 1. Методы доступа -->
+                        <h2>1. Методы доступа</h2>
+
+                        <div class="method-card">
+                            <h3><code>concat()</code></h3>
+                            <p><strong>Объединяет массивы в новый массив</strong></p>
+                            <ul class="list-ul">
+                                <li>Не изменяет исходные массивы</li>
+                                <li>Может принимать массивы и/или значения</li>
+                                <li>Возвращает новый массив</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const newArray = arr.concat(value1, value2, ..., valueN)</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Пример:</h4>
+                                <pre><code>const arr1 = [1, 2];
+const arr2 = [3, 4];
+const combined = arr1.concat(arr2, 5, [6, 7]);
+// [1, 2, 3, 4, 5, 6, 7]</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>slice()</code></h3>
+                            <p><strong>Возвращает копию части массива</strong></p>
+                            <ul class="list-ul">
+                                <li>Параметры: [start], [end]</li>
+                                <li>Отрицательные индексы отсчитываются с конца</li>
+                                <li>Без параметров - полная копия массива</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const newArray = arr.slice([start], [end])</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const nums = [1, 2, 3, 4, 5];
+nums.slice(1, 3); // [2, 3]
+nums.slice(-2);   // [4, 5]
+nums.slice();     // копия массива [1, 2, 3, 4, 5]</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>join()</code></h3>
+                            <p><strong>Объединяет элементы массива в строку</strong></p>
+                            <ul class="list-ul">
+                                <li>По умолчанию разделитель - запятая</li>
+                                <li>Для пустого массива возвращает пустую строку</li>
+                                <li>null/undefined преобразуются в пустые строки</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const str = arr.join([separator])</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>['a', 'b', 'c'].join();    // 'a,b,c'
+['a', 'b', 'c'].join('-'); // 'a-b-c'
+[1, null, 2].join(' ');    // '1  2'</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>toString()</code></h3>
+                            <p><strong>Возвращает строковое представление массива</strong></p>
+                            <ul class="list-ul">
+                                <li>Эквивалентен arr.join()</li>
+                                <li>Для вложенных массивов рекурсивно преобразует элементы</li>
+                                <li>Используется при неявном преобразовании типов</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const str = arr.toString()</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>[1, 2, 3].toString();      // '1,2,3'
+['a', 'b', 'c'].toString(); // 'a,b,c'
+[1, [2, 3]].toString();    // '1,2,3'</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- 2. Методы поиска -->
+                        <h2>2. Методы поиска</h2>
+
+                        <div class="method-card">
+                            <h3>
+                                <code>indexOf()</code>
+                                /
+                                <code>lastIndexOf()</code>
+                            </h3>
+                            <p><strong>Поиск индекса элемента в массиве</strong></p>
+                            <ul class="list-ul">
+                                <li>indexOf() ищет с начала, lastIndexOf() - с конца</li>
+                                <li>Используют строгое сравнение (===)</li>
+                                <li>Возвращают -1 если элемент не найден</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const index = arr.indexOf(searchElement, [fromIndex])
+const lastIndex = arr.lastIndexOf(searchElement, [fromIndex])</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const nums = [1, 2, 3, 2, 1];
+nums.indexOf(2);     // 1
+nums.indexOf(4);     // -1
+nums.lastIndexOf(2); // 3
+nums.indexOf(2, 2);  // 3</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>includes()</code></h3>
+                            <p><strong>Проверяет наличие элемента в массиве</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает true/false</li>
+                                <li>Использует строгое сравнение (===)</li>
+                                <li>Работает с NaN (в отличие от indexOf)</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const result = arr.includes(valueToFind, [fromIndex])</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const arr = [1, 2, 3, NaN];
+arr.includes(2);    // true
+arr.includes(4);    // false
+arr.includes(NaN);  // true (indexOf не может найти NaN)</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3>
+                                <code>find()</code>
+                                /
+                                <code>findIndex()</code>
+                            </h3>
+                            <p><strong>Поиск по условию (ES6+)</strong></p>
+                            <ul class="list-ul">
+                                <li>find() возвращает элемент, findIndex() - его индекс</li>
+                                <li>Возвращают undefined/-1 если не найдено</li>
+                                <li>Принимают функцию-предикат</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const element = arr.find(callback(element, index, array))
+const index = arr.findIndex(callback(element, index, array))</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const users = [
+  {id: 1, name: 'Аня'},
+  {id: 2, name: 'Петя'}
+];
+
+users.find(user => user.id === 2); // {id: 2, name: 'Петя'}
+users.findIndex(user => user.name === 'Маша'); // -1</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- 3. Методы преобразования -->
+                        <h2>3. Методы преобразования</h2>
+
+                        <div class="method-card">
+                            <h3><code>map()</code></h3>
+                            <p><strong>Создает новый массив с преобразованными элементами</strong></p>
+                            <ul class="list-ul">
+                                <li>Не изменяет исходный массив</li>
+                                <li>Длина нового массива = длине исходного</li>
+                                <li>Принимает функцию преобразования</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const newArray = arr.map(callback(currentValue, index, array))</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const nums = [1, 2, 3];
+const doubled = nums.map(n => n * 2); // [2, 4, 6]
+
+const users = [{name: 'Аня'}, {name: 'Петя'}];
+const names = users.map(user => user.name); // ['Аня', 'Петя']</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>filter()</code></h3>
+                            <p><strong>Создает новый массив с элементами, прошедшими проверку</strong></p>
+                            <ul class="list-ul">
+                                <li>Длина нового массива ≤ длине исходного</li>
+                                <li>Принимает функцию-предикат</li>
+                                <li>Возвращает пустой массив, если ни один элемент не прошел проверку</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const newArray = arr.filter(callback(element, index, array))</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const nums = [1, 2, 3, 4, 5];
+const even = nums.filter(n => n % 2 === 0); // [2, 4]
+
+const words = ['apple', 'banana', 'grape'];
+const longWords = words.filter(word => word.length > 5); // ['banana']</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3>
+                                <code>flat()</code>
+                                /
+                                <code>flatMap()</code>
+                                (ES2019)
+                            </h3>
+                            <p><strong>"Выравнивает" вложенные массивы</strong></p>
+                            <ul class="list-ul">
+                                <li>flat() - выравнивает на указанную глубину (по умолчанию 1)</li>
+                                <li>flatMap() = map() + flat(1)</li>
+                                <li>Удаляет пустые слоты</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const newArray = arr.flat([depth])
+const newArray = arr.flatMap(callback)</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const arr = [1, [2, 3], [4, [5]]];
+arr.flat();    // [1, 2, 3, 4, [5]]
+arr.flat(2);   // [1, 2, 3, 4, 5]
+
+const phrases = ['Hello world', 'JavaScript arrays'];
+const words = phrases.flatMap(phrase => phrase.split(' '));
+// ['Hello', 'world', 'JavaScript', 'arrays']</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- 4. Современные методы (ES2023+) -->
+                        <h2>4. Современные методы (ES2023+)</h2>
+
+                        <div class="method-card">
+                            <h3>
+                                <code>toReversed()</code>
+                                /
+                                <code>toSorted()</code>
+                                /
+                                <code>with()</code>
+                            </h3>
+                            <p><strong>Немутирующие версии мутирующих методов</strong></p>
+                            <ul class="list-ul">
+                                <li>toReversed() - немутирующий аналог reverse()</li>
+                                <li>toSorted() - немутирующий аналог sort()</li>
+                                <li>with() - немутирующий аналог arr[index] = value</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const reversed = arr.toReversed()
+const sorted = arr.toSorted([compareFn])
+const newArray = arr.with(index, value)</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const arr = [1, 2, 3];
+arr.toReversed(); // [3, 2, 1] (arr не изменился)
+
+const unsorted = [3, 1, 2];
+unsorted.toSorted((a, b) => a - b); // [1, 2, 3]
+
+const letters = ['a', 'b', 'd'];
+letters.with(2, 'c'); // ['a', 'b', 'c']</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3>
+                                <code>at()</code>
+                                (ES2022)
+                            </h3>
+                            <p><strong>Доступ к элементам по индексу (включая отрицательные)</strong></p>
+                            <ul class="list-ul">
+                                <li>Принимает положительные и отрицательные индексы</li>
+                                <li>arr.at(-1) - последний элемент</li>
+                                <li>Безопаснее arr[index] для вычисляемых индексов</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const element = arr.at(index)</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const fruits = ['apple', 'banana', 'orange'];
+fruits.at(0);   // 'apple'
+fruits.at(-1);  // 'orange'
+fruits.at(-2);  // 'banana'
+fruits.at(5);   // undefined</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Сводная таблица -->
+                        <div class="note-block">
+                            <h3>Сводная таблица немутирующих методов</h3>
+                            <table class="table-note">
+                                <thead>
+                                    <tr>
+                                        <th>Метод</th>
+                                        <th>Возвращает</th>
+                                        <th>Использование</th>
+                                        <th>Особенности</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>concat()</code></td>
+                                        <td>Массив</td>
+                                        <td>Объединение массивов</td>
+                                        <td>Может принимать любое количество аргументов</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>slice()</code></td>
+                                        <td>Массив</td>
+                                        <td>Копирование части массива</td>
+                                        <td>Отрицательные индексы, создание копий</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>join()</code></td>
+                                        <td>Строка</td>
+                                        <td>Объединение элементов</td>
+                                        <td>Разделитель по умолчанию - запятая</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>indexOf()</code>
+                                            <br />
+                                            <code>lastIndexOf()</code>
+                                        </td>
+                                        <td>Число</td>
+                                        <td>Поиск индекса элемента</td>
+                                        <td>Строгое сравнение, возвращает -1 если не найдено</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>includes()</code></td>
+                                        <td>Boolean</td>
+                                        <td>Проверка наличия элемента</td>
+                                        <td>Работает с NaN, строгое сравнение</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>find()</code>
+                                            <br />
+                                            <code>findIndex()</code>
+                                        </td>
+                                        <td>Элемент/Число</td>
+                                        <td>Поиск по условию</td>
+                                        <td>Принимает функцию-предикат</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>map()</code></td>
+                                        <td>Массив</td>
+                                        <td>Преобразование элементов</td>
+                                        <td>Длина = исходному массиву</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>filter()</code></td>
+                                        <td>Массив</td>
+                                        <td>Фильтрация элементов</td>
+                                        <td>Только элементы, прошедшие проверку</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>flat()</code>
+                                            <br />
+                                            <code>flatMap()</code>
+                                        </td>
+                                        <td>Массив</td>
+                                        <td>Выравнивание массивов</td>
+                                        <td>flatMap = map + flat(1)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>at()</code></td>
+                                        <td>Элемент</td>
+                                        <td>Доступ по индексу</td>
+                                        <td>Поддерживает отрицательные индексы</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <code>toReversed()</code>
+                                            <br />
+                                            <code>toSorted()</code>
+                                            <br />
+                                            <code>with()</code>
+                                        </td>
+                                        <td>Массив</td>
+                                        <td>Безопасные операции</td>
+                                        <td>ES2023+ (не поддерживается в старых браузерах)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="note-block info">
+                            <h4>Рекомендации по использованию:</h4>
+                            <ul class="list-ul">
+                                <li>Используйте немутирующие методы для функционального программирования</li>
+                                <li>Методы ES2023+ (toReversed, toSorted, with) - безопасная замена мутирующим операциям</li>
+                                <li>
+                                    Для проверки существования элемента предпочитайте
+                                    <code>includes()</code>
+                                    вместо
+                                    <code>indexOf()</code>
+                                </li>
+                                <li>
+                                    Комбинируйте методы для сложных преобразований:
+                                    <code>filter().map()</code>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Итерационные методы -->
+                <section class="section" id="methods-iteration">
+                    <div class="container">
+                        <h2>Итерационные методы и редукция</h2>
+
+                        <!-- 1. Методы итерации -->
+                        <h2>1. Методы итерации</h2>
+
+                        <div class="method-card">
+                            <h3><code>forEach()</code></h3>
+                            <p><strong>Выполняет функцию для каждого элемента массива</strong></p>
+                            <ul class="list-ul">
+                                <li>Не возвращает значение (возвращает undefined)</li>
+                                <li>Не изменяет массив (но может изменять элементы)</li>
+                                <li>Не прерывается при возврате false (в отличие от for)</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>arr.forEach(callback(currentValue, index, array))</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Пример:</h4>
+                                <pre><code>const fruits = ['apple', 'banana', 'orange'];
+fruits.forEach((fruit, index) => {
+  console.log(`${index}: ${fruit}`);
+});
+// 0: apple
+// 1: banana
+// 2: orange</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>every()</code></h3>
+                            <p><strong>Проверяет, все ли элементы удовлетворяют условию</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает true/false</li>
+                                <li>Прекращает проверку при первом false</li>
+                                <li>Для пустого массива возвращает true</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const result = arr.every(callback(element, index, array))</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const nums = [2, 4, 6, 8];
+const allEven = nums.every(n => n % 2 === 0); // true
+
+const users = [
+  {age: 18},
+  {age: 22},
+  {age: 16}
+];
+const allAdult = users.every(user => user.age >= 18); // false</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="method-card">
+                            <h3><code>some()</code></h3>
+                            <p><strong>Проверяет, удовлетворяет ли условию хотя бы один элемент</strong></p>
+                            <ul class="list-ul">
+                                <li>Возвращает true/false</li>
+                                <li>Прекращает проверку при первом true</li>
+                                <li>Для пустого массива возвращает false</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const result = arr.some(callback(element, index, array))</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>const nums = [1, 3, 5, 8];
+const hasEven = nums.some(n => n % 2 === 0); // true
+
+const tasks = [
+  {completed: false},
+  {completed: true}
+];
+const hasCompleted = tasks.some(task => task.completed); // true</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- 2. Методы редукции -->
+                        <h2>2. Методы редукции</h2>
+
+                        <div class="method-card">
+                            <h3>
+                                <code>reduce()</code>
+                                /
+                                <code>reduceRight()</code>
+                            </h3>
+                            <p><strong>Сводит массив к одному значению (слева направо или справа налево)</strong></p>
+                            <ul class="list-ul">
+                                <li>reduce() обрабатывает массив слева направо</li>
+                                <li>reduceRight() - справа налево</li>
+                                <li>Принимает функцию-редуктор и начальное значение</li>
+                                <li>Широко используется для агрегации данных</li>
+                            </ul>
+
+                            <div class="grid-column-100">
+                                <pre><code>const result = arr.reduce(callback(accumulator, currentValue, index, array), initialValue)
+const result = arr.reduceRight(callback(accumulator, currentValue, index, array), initialValue)</code></pre>
+                            </div>
+                            <div class="grid-column-100">
+                                <h4>Примеры:</h4>
+                                <pre><code>// Сумма элементов
+const nums = [1, 2, 3, 4];
+const sum = nums.reduce((acc, n) => acc + n, 0); // 10
+
+// Максимальное значение
+const max = nums.reduce((acc, n) => Math.max(acc, n), -Infinity); // 4
+
+// Счетчик слов
+const words = ['apple', 'banana', 'apple'];
+const count = words.reduce((acc, word) => {
+  acc[word] = (acc[word] || 0) + 1;
+  return acc;
+}, {}); // { apple: 2, banana: 1 }
+
+// Правое сокращение
+const nested = [[1], [2, 3], [4]];
+const flatRight = nested.reduceRight((acc, arr) => acc.concat(arr), []);
+// [4, 2, 3, 1]</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- 3. Цепочки методов -->
+                        <div class="note-block">
+                            <h3>Цепочки методов</h3>
+                            <p>Методы можно объединять в цепочки для сложных преобразований данных:</p>
+
+                            <div class="method-card">
+                                <h4>Фильтрация + преобразование</h4>
+                                <pre><code>const products = [
+  { name: 'Laptop', price: 1000, category: 'electronics' },
+  { name: 'Shirt', price: 30, category: 'clothes' },
+  { name: 'Phone', price: 800, category: 'electronics' }
+];
+
+// Названия электроники дороже 500
+const result = products
+  .filter(p => p.category === 'electronics' && p.price > 500)
+  .map(p => p.name);
+
+console.log(result); // ['Laptop', 'Phone']</code></pre>
+                            </div>
+
+                            <div class="method-card">
+                                <h4>Обработка + агрегация</h4>
+                                <pre><code>const orders = [
+  { id: 1, items: [ {price: 10}, {price: 20} ] },
+  { id: 2, items: [ {price: 15}, {price: 25} ] }
+];
+
+// Общая стоимость всех товаров во всех заказах
+const total = orders
+  .flatMap(order => order.items)
+  .reduce((sum, item) => sum + item.price, 0);
+
+console.log(total); // 70</code></pre>
+                            </div>
+
+                            <div class="note-block info">
+                                <h4>Рекомендации по цепочкам:</h4>
+                                <ul class="list-ul">
+                                    <li>Фильтруйте перед преобразованием (filter → map) для лучшей производительности</li>
+                                    <li>Избегайте излишне длинных цепочек (более 3-4 операций)</li>
+                                    <li>Для сложных преобразований используйте промежуточные переменные</li>
+                                    <li>Помните, что forEach в конце цепочки не возвращает значение</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+    </body>
+</html>

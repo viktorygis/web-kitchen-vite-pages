@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Основы JavaScript: Типы данных</title>
+<meta name="description" content="Краткое руководство по типам данных в JavaScript" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+
+<!-- Подключение Highlight.js для подсветки синтаксиса -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script>
+  hljs.highlightAll();
+</script>
+
+    <script type="module" crossorigin src="/assets/main-Ias32l34.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DBoOD-eQ.css">
+
+    <body>
+        <div class="wrapper">
+            <header>
+  <div class="container">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="header-menu">
+      <!-- Меню -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <!-- Главная -->
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Главная</a>
+          </li>
+
+          <!-- html -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">HTML</a>
+
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <!-- Основы HTML -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы HTML</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/start-html.html">Введение в HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/tags-html.html">Теги HTML</a></li>
+                    <li><a class="subnav-link" href="/about-html/basic-tags.html">Теги базовые</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-tags.html">Теги форматирования</a></li>
+                    <li><a class="subnav-link" href="/about-html/style-tags.html">Теги стилей</a></li>
+                    <li><a class="subnav-link" href="/about-html/attributes-html.html">Атрибуты</a></li>
+                    <li><a class="subnav-link" href="/about-html/simbol-html.html">Символы и сущности</a></li>
+                  </ul>
+                </div>
+
+                <!-- Семантика и структура -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Семантика и структура</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/semantic-tags-html.html">Семантические теги</a></li>
+                    <li><a class="subnav-link" href="/about-html/nosemantic-tags.html">Теги &lt;div&gt; и &lt;span&gt;</a></li>
+                    <li><a class="subnav-link" href="/about-html/meta-tags.html">Метаданные и SEO</a></li>
+                  </ul>
+                </div>
+
+                <!-- Формы и взаимодействие -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Формы и ввод данных</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/form-html.html">Формы</a></li>
+                    <li><a class="subnav-link" href="/about-html/input-html.html">Элементы ввода</a></li>
+                    <li><a class="subnav-link" href="/about-html/validation-html.html">Валидация форм</a></li>
+                  </ul>
+                </div>
+
+                <!-- Списки и таблицы -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Списки и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/list-html.html">Списки</a></li>
+                    <li><a class="subnav-link" href="/about-html/table-html.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <!-- Мультимедиа и графика -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Мультимедиа и графика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/media-html.html">Мультимедиа</a></li>
+                    <li><a class="subnav-link" href="/about-html/image-html.html">Изображения</a></li>
+                    <li><a class="subnav-link" href="/about-html/svg-html.html">SVG и Canvas</a></li>
+                  </ul>
+                </div>
+
+                <!-- Навигация и ссылки -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Навигация и ссылки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/link-html.html">Ссылки</a></li>
+                    <li><a class="subnav-link" href="/about-html/menu-html.html">Меню и навигация</a></li>
+                    <li><a class="subnav-link" href="/about-html/anchor-html.html">Якоря и переходы</a></li>
+                  </ul>
+                </div>
+
+                <!-- Форматирование текста -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Форматирование текста</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/text-html.html">Текст и заголовки</a></li>
+                    <li><a class="subnav-link" href="/about-html/formatting-html.html">Теги форматирования</a></li>
+                  </ul>
+                </div>
+
+                <!-- Примеры и шаблоны -->
+                <div class="subnav-group">
+                  <div class="subnav-heading">Примеры и шаблоны</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-html/lending-html.html">Lending</a></li>
+                    <li><a class="subnav-link" href="/about-html/template-html.html">Шаблоны HTML</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- css -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">CSS</a>
+            <div class="subnav-list subnav-two-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы CSS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/start-css.html">Основы CSS</a></li>
+                    <li><a class="subnav-link" href="/about-css/cascading-css.html">Каскадность</a></li>
+                    <li><a class="subnav-link" href="/about-css/selector-css.html">Селекторы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-classes.html">Псевдоклассы</a></li>
+                    <li><a class="subnav-link" href="/about-css/pseudo-elements.html">Псевдоэлементы</a></li>
+                    <li><a class="subnav-link" href="/about-css/colors.html">Цвета</a></li>
+                    <li><a class="subnav-link" href="/about-css/text-align.html">Выравнивание текста</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Работа со шрифтом</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/font-size.html">Размер шрифта</a></li>
+                    <li><a class="subnav-link" href="/about-css/font-style.html">Шрифты</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Размеры и единицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/units-css.html">Единицы измерения</a></li>
+                    <li><a class="subnav-link" href="/about-css/dimensions.html">Размеры</a></li>
+                    <li><a class="subnav-link" href="/about-css/border.html">Border</a></li>
+                    <li><a class="subnav-link" href="/about-css/spacing.html">Отступы</a></li>
+                    <li><a class="subnav-link" href="/about-css/overflow.html">Overflow</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Макеты и сетки</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/layout.html">Макеты</a></li>
+                    <li><a class="subnav-link" href="/about-css/flexbox.html">Flexbox</a></li>
+                    <li><a class="subnav-link" href="/about-css/grid.html">Grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/flex-grid.html">Flex-grid</a></li>
+                    <li><a class="subnav-link" href="/about-css/position.html">Position</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Фон, медиа и эффекты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/background.html">Background</a></li>
+                    <li><a class="subnav-link" href="/about-css/media.html">Media</a></li>
+                    <li><a class="subnav-link" href="/about-css/animation.html">Animation</a></li>
+                    <li><a class="subnav-link" href="/about-css/movie-site.html">Movie-site</a></li>
+                  </ul>
+                </div>
+
+                <div class="subnav-group">
+                  <div class="subnav-heading">Элементы и таблицы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-css/button.html">Кнопки</a></li>
+                    <li><a class="subnav-link" href="/about-css/table-css.html">Таблицы</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- scss -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">SCSS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-scss/start-scss.html">Основы scss</a></li>
+              <li><a class="subnav-link" href="/about-scss/variables-scss.html">Переменные</a></li>
+            </ul>
+          </li>
+
+          <!-- Теория JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Теория JS</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы JS</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/intro-to-javascript.html">Введение в JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/javascript-fundamentals.html">Основы JS</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/variables-in-javascript.html">Переменные</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/data-types-in-javascript.html">Типы данных</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/strict-mode-in-javascript.html">Strict mode</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/type-conversion-in-javascript.html">Преобразование типов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/user-interaction-in-javascript.html">Взаимодействие</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Операторы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/basic-operators-and-math.html">Базовые операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/math-operators.html">Math операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/comparison-operators.html">Сравнение</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/logical-operators.html">Логические операторы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/nullish-coalescing-and-assignment-operators.html">Нулевое слияние</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Управление потоком</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/conditional-statements.html">Условия</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/switch-statement.html">Switch</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/while-and-for-loops.html">Циклы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Функции</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/functions-in-javascript.html">Функции</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrow-functions.html">Arrow functions</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/closures.html">Замыкания</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Данные</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/arrays-basics.html">Массивы</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/array-methods.html">Методы массивов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/objects-basics.html">Объекты</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/object-methods-this.html">Методы и this</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Асинхронность</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/async-await.html">Async/Await</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/api.html">API</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/modules-es.html">ES Modules</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">DOM</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-basics.html">Основы DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-selection.html">Выбор элементов</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-manipulation.html">Манипуляции DOM</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/dom-timers.html">Таймеры</a></li>
+                    <li><a class="subnav-link" href="/about-js-teoria/manipulation-classlist.html">classList</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Практика JS -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Практика JS</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-js-praktika/data-types.html">Типы данных</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/conditional.html">Условия</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/operators.html">Операторы</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/functions-in-javascript.html">Функции</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/praktika-arrow-functions.html">Arrow functions</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/closures.html">Замыкания</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/objects.html">Объекты</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/dom.html">DOM</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/execution-context.html">Контекст выполнения</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/example.html">Примеры</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/to-do-list.html">To-Do List</a></li>
+              <li><a class="subnav-link" href="/about-js-praktika/random-user-from-api.html">Random User API</a></li>
+            </ul>
+          </li>
+
+          <!-- Дизайн -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Дизайн</a>
+            <ul class="subnav-list">
+              <li><a class="subnav-link" href="/about-design/design-basic.html">Основы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/bazovie-printsipi-dizaina.html">Принципы дизайна</a></li>
+              <li><a class="subnav-link" href="/about-design/design-color.html">Цвет</a></li>
+              <li><a class="subnav-link" href="/about-design/typography.html">Типографика</a></li>
+              <li><a class="subnav-link" href="/about-design/font-character.html">Шрифт</a></li>
+              <li><a class="subnav-link" href="/about-design/stili-v-graficheskom-dizayne.html">Стили в дизайне</a></li>
+              <li><a class="subnav-link" href="/about-design/rabota-s-grafikoy.html">Работа с графикой</a></li>
+              <li><a class="subnav-link" href="/about-design/prakticheskie-chek-listy-instrumenty.html">Чек-листы и инструменты</a></li>
+              <li><a class="subnav-link" href="/about-design/bonusal-materialy.html">Бонусные материалы</a></li>
+            </ul>
+          </li>
+
+          <!-- vscode -->
+          <li class="nav-item">
+            <a class="nav-link" href="/vscode.html">vscode</a>
+          </li>
+
+          <!-- Vue js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">Vue js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Основы Vue</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vue-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-data.html">Данные и реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-templates-directives.html">Шаблоны и директивы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-events.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vue-v-model.html">v-model</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-intro.html">Введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-props.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-emits.html">Emits</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-slots.html">Slots</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-reactivity.html">Реактивность</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-scoped.html">Scoped стили</a></li>
+                    <li><a class="subnav-link" href="/about-vue/components-vue-dynamic-components.html">Динамические</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/router-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-nested-routes.html">Вложенные маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-guards.html">Navigation Guards</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-programmatic-navigation.html">Программная навигация</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-errors.html">Обработка ошибок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/router-state.html">State</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Vuex</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/vuex-intro.html">Введение в Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-state-getters.html">State и Getters</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-modules.html">Modules</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-reactivity.html">Реактивность Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/vuex-helpers.html">Хелперы Vuex</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">API</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/api-intro.html">Введение в API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch.html">Fetch API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vue.html">Fetch во Vue</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-fetch-vuex-store.html">Fetch + Vuex Store</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-json-server.html">JSON Server</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-async-data-handling.html">Асинхронные данные</a></li>
+                    <li><a class="subnav-link" href="/about-vue/api-auth-tokens.html">Авторизация токены</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Шпаргалки и практика</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-vue/brief-vue-basics.html">Шпаргалка: основы</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-components-vue.html">Шпаргалка: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-router.html">Шпаргалка: роутер</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-vuex.html">Шпаргалка: Vuex</a></li>
+                    <li><a class="subnav-link" href="/about-vue/brief-api-vue.html">Шпаргалка: API</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-vue-intro.html">Практика: введение</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-components-vue.html">Практика: компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-shopping-list-vue.html">Практика: список покупок</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-quotes-day.html">Практика: цитаты дня</a></li>
+                    <li><a class="subnav-link" href="/about-vue/practice-portfolio-vue-practice.html">Практика: портфолио</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- React js -->
+          <li class="nav-item">
+            <a class="nav-link submenu-toggle" href="/#">React js</a>
+            <div class="subnav-list subnav-three-columns">
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Установка и основы</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-installation.html">Установка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-setup.html">Настройка</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics.html">Основы JSX</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-basics-all.html">Основы: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-structure.html">Структура</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-data-basics.html">Данные</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-events-basics.html">События</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-methods.html">Методы</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-hooks.html">Hooks</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Компоненты</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-components.html">Компоненты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-components-all.html">Компоненты: кратко</a></li>
+                    <li><a class="subnav-link" href="/about-react/props-page.html">Props</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-children.html">Children</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-emits.html">Callbacks и Events</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-dynamic-components.html">Динамические</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-cycles-conditions.html">Циклы и условия</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-controlled-inputs.html">Контролируемые инпуты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-forms.html">Формы</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="subnav-column">
+                <div class="subnav-group">
+                  <div class="subnav-heading">Продвинутый уровень</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/react-context.html">Context</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-memo.html">Memo</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-useReducer.html">useReducer</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-redux.html">Redux</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-fetch-api.html">Fetch API</a></li>
+                  </ul>
+                </div>
+                <div class="subnav-group">
+                  <div class="subnav-heading">Router</div>
+                  <ul>
+                    <li><a class="subnav-link" href="/about-react/router-react-intro.html">Введение в Router</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-dynamic.html">Динамические маршруты</a></li>
+                    <li><a class="subnav-link" href="/about-react/react-router-nested.html">Вложенные маршруты</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+            <main class="page">
+                <nav class="nav-tabs">
+                    <a href="#types-intro" class="active">Введение</a>
+                    <a href="#types-primitive">Примитивы</a>
+                    <a href="#types-object">Объекты</a>
+                    <a href="#types-check">Проверка типов</a>
+                </nav>
+
+                <!-- Введение -->
+                <section class="section" id="types-intro">
+                    <div class="container">
+                        <h1>Типы данных в JavaScript</h1>
+
+                        <p class="note">
+                            <strong>JavaScript</strong>
+                            — динамически типизированный язык с 8 основными типами данных.
+                            <br />
+                            Переменные могут менять тип в процессе выполнения программы.
+                        </p>
+
+                        <div class="grid-column-50">
+                            <div class="example">
+                                <h4>Классификация типов:</h4>
+                                <ul class="list-ul">
+                                    <li>7 примитивных типов</li>
+                                    <li>1 объектный тип</li>
+                                    <li>Специальные значения (null, undefined)</li>
+                                </ul>
+                            </div>
+                            <div class="example">
+                                <h4>Особенности:</h4>
+                                <ul class="list-ul">
+                                    <li>Автоматическое преобразование типов</li>
+                                    <li>Гибкость в работе с данными</li>
+                                    <li>Нестрогая типизация</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Примитивные типы -->
+                <section class="section" id="types-primitive">
+                    <div class="container">
+                        <h2>Примитивные типы данных</h2>
+
+                        <p class="note">
+                            <strong>Примитивы</strong>
+                            — простые неизменяемые значения, которые хранятся непосредственно в переменной.
+                            <br />
+                            При присваивании создается копия значения.
+                        </p>
+
+                        <table class="table-note">
+                            <thead>
+                                <tr>
+                                    <th>Тип</th>
+                                    <th>Описание</th>
+                                    <th>Пример</th>
+                                    <th>typeof</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>number</code></td>
+                                    <td>
+                                        Целые и дробные числа (±2
+                                        <sup>53</sup>
+                                        -1)
+                                    </td>
+                                    <td><code>let n = 3.14;</code></td>
+                                    <td>"number"</td>
+                                </tr>
+                                <tr>
+                                    <td><code>bigint</code></td>
+                                    <td>Целые числа произвольной длины</td>
+                                    <td><code>const big = 123n;</code></td>
+                                    <td>"bigint"</td>
+                                </tr>
+                                <tr>
+                                    <td><code>string</code></td>
+                                    <td>Текст в кавычках</td>
+                                    <td><code>let s = "текст";</code></td>
+                                    <td>"string"</td>
+                                </tr>
+                                <tr>
+                                    <td><code>boolean</code></td>
+                                    <td>Логические true/false</td>
+                                    <td><code>let b = true;</code></td>
+                                    <td>"boolean"</td>
+                                </tr>
+                                <tr>
+                                    <td><code>null</code></td>
+                                    <td>Специальное "ничего"</td>
+                                    <td><code>let x = null;</code></td>
+                                    <td>"object" (ошибка)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>undefined</code></td>
+                                    <td>Неприсвоенное значение</td>
+                                    <td><code>let u;</code></td>
+                                    <td>"undefined"</td>
+                                </tr>
+                                <tr>
+                                    <td><code>symbol</code></td>
+                                    <td>Уникальные идентификаторы</td>
+                                    <td><code>const sym = Symbol();</code></td>
+                                    <td>"symbol"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="note-block">
+                            <h3>Особенности примитивов:</h3>
+                            <ul class="list-ul">
+                                <li>Неизменяемы (immutable)</li>
+                                <li>Сравниваются по значению</li>
+                                <li>Занимают фиксированный объем памяти</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Объекты -->
+                <section class="section" id="types-object">
+                    <div class="container">
+                        <h2>Объектные типы</h2>
+
+                        <p class="note">
+                            <strong>Объекты</strong>
+                            — сложные структуры данных, которые могут содержать коллекции свойств и методов.
+                            <br />
+                            При присваивании передается ссылка на объект.
+                        </p>
+
+                        <div class="grid-column-50">
+                            <div>
+                                <h4>Основные объектные типы:</h4>
+                                <ul class="list-ul">
+                                    <li>
+                                        Обычные объекты
+                                        <code>{}</code>
+                                    </li>
+                                    <li>
+                                        Массивы
+                                        <code>[]</code>
+                                    </li>
+                                    <li>
+                                        Функции
+                                        <code>function(){}</code>
+                                    </li>
+                                    <li>
+                                        Даты
+                                        <code>new Date()</code>
+                                    </li>
+                                    <li>
+                                        Регулярные выражения
+                                        <code>/pattern/</code>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Пример объекта:</h4>
+                                <pre><code>const user = {
+  name: "Иван",
+  age: 30,
+  isAdmin: false
+};</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="note-block">
+                            <h3>Особенности объектов:</h3>
+                            <ul class="list-ul">
+                                <li>Изменяемы (mutable)</li>
+                                <li>Сравниваются по ссылке</li>
+                                <li>Могут содержать методы</li>
+                                <li>Имеют прототипы</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="section" id="data-types-details">
+                    <div class="container">
+                        <h2>Подробно о типах данных JavaScript</h2>
+
+                        <!-- Строки -->
+                        <div class="note-block">
+                            <h3>1. Строки (String)</h3>
+                            <p class="note">
+                                <strong>Строки</strong>
+                                — используются для хранения и работы с текстовыми данными.
+                            </p>
+
+                            <div class="grid-column-50">
+                                <div>
+                                    <h4>Основные особенности:</h4>
+                                    <ul class="list-ul">
+                                        <li>Заключаются в кавычки: '', "" или ``</li>
+                                        <li>Поддерживают интерполяцию через ${} в обратных кавычках</li>
+                                        <li>Имеют множество полезных методов (length, toUpperCase и др.)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4>Примеры использования:</h4>
+                                    <pre><code>// Объявление строк
+let name = "Вика";
+let message = `Привет, ${name}!`; // интерполяция
+
+// Методы строк
+console.log(name.length); // 4
+console.log(message.toUpperCase()); // "ПРИВЕТ, ВИКА!"</code></pre>
+                                </div>
+                            </div>
+
+                            <h4>Где применяются:</h4>
+                            <ul class="list-ul">
+                                <li>Хранение имен, адресов, текстовых данных</li>
+                                <li>Формирование сообщений для пользователей</li>
+                                <li>Работа с URL и путями к файлам</li>
+                                <li>Валидация ввода в формах</li>
+                            </ul>
+                        </div>
+
+                        <!-- Числа -->
+                        <div class="note-block">
+                            <h3>2. Числа (Number)</h3>
+                            <p class="note">
+                                <strong>Числа</strong>
+                                — используются для математических операций и хранения числовых данных.
+                            </p>
+
+                            <div class="grid-column-50">
+                                <div>
+                                    <h4>Особенности:</h4>
+                                    <ul class="list-ul">
+                                        <li>Могут быть целыми и дробными</li>
+                                        <li>Поддерживают специальные значения: Infinity, -Infinity, NaN</li>
+                                        <li>Имеют методы для работы (toFixed, toString и др.)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4>Примеры:</h4>
+                                    <pre><code>let age = 38;
+let price = 99.99;
+let result = 10 / 0; // Infinity
+
+// Математические операции
+let total = price * 1.2; // НДС
+let rounded = total.toFixed(2); // "119.99"</code></pre>
+                                </div>
+                            </div>
+
+                            <h4>Применение:</h4>
+                            <ul class="list-ul">
+                                <li>Расчеты в финансовых приложениях</li>
+                                <li>Работа с датами и временем (timestamp)</li>
+                                <li>Графики и диаграммы</li>
+                                <li>Игровая логика (очки, здоровье)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Логические значения -->
+                        <div class="note-block">
+                            <h3>3. Логические значения (Boolean)</h3>
+                            <p class="note">
+                                <strong>Boolean</strong>
+                                — представляют истину (true) или ложь (false).
+                            </p>
+
+                            <div class="grid-column-50">
+                                <div>
+                                    <h4>Особенности:</h4>
+                                    <ul class="list-ul">
+                                        <li>Используются в условиях и сравнениях</li>
+                                        <li>Любое значение можно преобразовать к boolean</li>
+                                        <li>Ложные значения: false, 0, "", null, undefined, NaN</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4>Примеры:</h4>
+                                    <pre><code>let isMom = true;
+let hasDiscount = false;
+
+// Использование в условиях
+if (isMom) {
+  console.log("Это мама");
+}
+
+// Преобразование типов
+console.log(Boolean(1)); // true
+console.log(!!"text"); // true (двойное отрицание)</code></pre>
+                                </div>
+                            </div>
+
+                            <h4>Применение:</h4>
+                            <ul class="list-ul">
+                                <li>Управление потоком выполнения (if/else)</li>
+                                <li>Флаги состояния (isLoading, isActive)</li>
+                                <li>Валидация данных (isValid)</li>
+                                <li>Переключатели (darkMode, notificationsEnabled)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Undefined -->
+                        <div class="note-block">
+                            <h3>4. Undefined</h3>
+                            <p class="note">
+                                <strong>Undefined</strong>
+                                — означает, что переменная объявлена, но не инициализирована.
+                            </p>
+
+                            <div class="grid-column-50">
+                                <div>
+                                    <h4>Особенности:</h4>
+                                    <ul class="list-ul">
+                                        <li>Возвращается при обращении к несуществующему свойству</li>
+                                        <li>Функция возвращает undefined, если нет return</li>
+                                        <li>Не следует явно присваивать undefined</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4>Примеры:</h4>
+                                    <pre><code>let x;
+console.log(x); // undefined
+
+function noReturn() {}
+console.log(noReturn()); // undefined
+
+let obj = {};
+console.log(obj.property); // undefined</code></pre>
+                                </div>
+                            </div>
+
+                            <h4>Применение:</h4>
+                            <ul class="list-ul">
+                                <li>Обнаружение неинициализированных переменных</li>
+                                <li>Проверка наличия свойств объектов</li>
+                                <li>Аргументы функций по умолчанию</li>
+                            </ul>
+                        </div>
+
+                        <!-- Null -->
+                        <div class="note-block">
+                            <h3>5. Null</h3>
+                            <p class="note">
+                                <strong>Null</strong>
+                                — специальное значение, представляющее "ничего" или "пусто".
+                            </p>
+
+                            <div class="grid-column-50">
+                                <div>
+                                    <h4>Особенности:</h4>
+                                    <ul class="list-ul">
+                                        <li>Должен присваиваться явно</li>
+                                        <li>Используется для очистки значений</li>
+                                        <li>typeof null возвращает "object" (историческая ошибка)</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4>Примеры:</h4>
+                                    <pre><code>let y = null; // явное присвоение
+
+// Очистка ссылки
+let data = getData();
+data = null; // освобождаем память
+
+// Проверка
+if (y === null) {
+  console.log("Значение отсутствует");
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <h4>Применение:</h4>
+                            <ul class="list-ul">
+                                <li>Явное указание на отсутствие значения</li>
+                                <li>Очистка ссылок на объекты</li>
+                                <li>Работа с DOM (элемент не найден)</li>
+                                <li>Инициализация переменных перед использованием</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <!-- Проверка типов -->
+                <section class="section" id="types-check">
+                    <div class="container">
+                        <h2>Проверка типов данных</h2>
+
+                        <p class="note">
+                            <strong>Оператор typeof</strong>
+                            — возвращает строку с типом операнда.
+                            <br />
+                            Имеет особенности при работе с null и объектами.
+                        </p>
+
+                        <table class="table-note">
+                            <thead>
+                                <tr>
+                                    <th>Выражение</th>
+                                    <th>Результат typeof</th>
+                                    <th>Примечание</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>typeof 42</code></td>
+                                    <td>"number"</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><code>typeof "текст"</code></td>
+                                    <td>"string"</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><code>typeof true</code></td>
+                                    <td>"boolean"</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><code>typeof undefined</code></td>
+                                    <td>"undefined"</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><code>typeof null</code></td>
+                                    <td>"object"</td>
+                                    <td>Историческая ошибка</td>
+                                </tr>
+                                <tr>
+                                    <td><code>typeof {}</code></td>
+                                    <td>"object"</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><code>typeof []</code></td>
+                                    <td>"object"</td>
+                                    <td>Для массивов используйте Array.isArray()</td>
+                                </tr>
+                                <tr>
+                                    <td><code>typeof function(){}</code></td>
+                                    <td>"function"</td>
+                                    <td>Функции — подвид объектов</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Рекомендации и примеры проверки типов:</h3>
+
+                        <div class="grid-column-100">
+                            <div>
+                                <h4>1. Проверка null:</h4>
+                                <pre><code>const maybeNull = null;
+
+// Правильный способ:
+if (maybeNull === null) {
+  console.log('Это null');
+}
+
+// Неправильно (вернет 'object'):
+console.log(typeof maybeNull);</code></pre>
+                            </div>
+
+                            <div>
+                                <h4>2. Проверка массивов:</h4>
+                                <pre><code>const arr = [1, 2, 3];
+const obj = {};
+
+// Правильный способ:
+console.log(Array.isArray(arr)); // true
+console.log(Array.isArray(obj)); // false
+
+// Неправильно (оба вернут 'object'):
+console.log(typeof arr);
+console.log(typeof obj);</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="grid-column-100">
+                            <div>
+                                <h4>3. Проверка объектов:</h4>
+                                <pre><code>const date = new Date();
+const user = { name: 'John' };
+
+// Проверка конкретного типа:
+console.log(date instanceof Date); // true
+console.log(user instanceof Object); // true
+
+// Проверка на обычный объект (не массив, не null):
+function isPlainObject(value) {
+  return typeof value === 'object'
+    && value !== null
+    && !Array.isArray(value);
+}
+
+console.log(isPlainObject(user)); // true
+console.log(isPlainObject(date)); // false</code></pre>
+                            </div>
+
+                            <div>
+                                <h4>4. Другие полезные проверки:</h4>
+                                <pre><code>// Проверка числа (учитывает NaN):
+function isNumber(value) {
+  return typeof value === 'number' && !isNaN(value);
+}
+
+// Проверка функции:
+const fn = () => {};
+console.log(typeof fn === 'function'); // true
+
+// Проверка undefined:
+let x;
+console.log(typeof x === 'undefined'); // true
+console.log(x === undefined); // тоже работает</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="note">
+                            <h4>Важные замечания:</h4>
+                            <ul class="list-ul">
+                                <li>
+                                    <code>typeof null</code>
+                                    возвращает
+                                    <code>'object'</code>
+                                    - это известная ошибка в языке
+                                </li>
+                                <li>
+                                    Для проверки массивов всегда используйте
+                                    <code>Array.isArray()</code>
+                                </li>
+                                <li>
+                                    <code>instanceof</code>
+                                    не работает с примитивами и между фреймами
+                                </li>
+                                <li>
+                                    Для надежной проверки типов в сложных случаях используйте библиотеки типа
+                                    <code>lodash</code>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+  <a href="#" class="back-to-top">Наверх ↑</a>
+</footer>
+
+        </div>
+
+    </body>
+</html>
